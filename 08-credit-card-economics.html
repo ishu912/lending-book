@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ishan">
-<meta name="dcterms.date" content="2026-02-18">
 
-<title>The Merchant Lending Playbook</title>
+<title>8&nbsp; Credit Card Economics – The Merchant Lending Playbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-how-lending-works.html" rel="next">
+<link href="./09-banks-vs-nbfcs.html" rel="next">
+<link href="./07-checkout-finance.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -85,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-math-of-subvention.html">Part II: The Economics of Merchant Lending</a></li><li class="breadcrumb-item"><a href="./08-credit-card-economics.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Credit Card Economics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -180,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-credit-card-economics.html" class="sidebar-item-text sidebar-link">
+  <a href="./08-credit-card-economics.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Credit Card Economics</span></span></a>
   </div>
 </li>
@@ -242,39 +270,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#key-concepts-at-a-glance" id="toc-key-concepts-at-a-glance" class="nav-link" data-scroll-target="#key-concepts-at-a-glance">Key Concepts at a Glance</a></li>
-  </ul></li>
+  <li><a href="#why-credit-cards-are-special" id="toc-why-credit-cards-are-special" class="nav-link active" data-scroll-target="#why-credit-cards-are-special"><span class="header-section-number">8.1</span> Why Credit Cards Are Special</a></li>
+  <li><a href="#transactors-vs-revolvers" id="toc-transactors-vs-revolvers" class="nav-link" data-scroll-target="#transactors-vs-revolvers"><span class="header-section-number">8.2</span> Transactors vs Revolvers</a></li>
+  <li><a href="#mdr-is-just-short-tenure-subvention" id="toc-mdr-is-just-short-tenure-subvention" class="nav-link" data-scroll-target="#mdr-is-just-short-tenure-subvention"><span class="header-section-number">8.3</span> MDR Is Just Short-Tenure Subvention</a></li>
+  <li><a href="#why-card-apr-is-higher-than-personal-loan-apr" id="toc-why-card-apr-is-higher-than-personal-loan-apr" class="nav-link" data-scroll-target="#why-card-apr-is-higher-than-personal-loan-apr"><span class="header-section-number">8.4</span> Why Card APR Is Higher Than Personal Loan APR</a></li>
+  <li><a href="#why-card-losses-are-manageable" id="toc-why-card-losses-are-manageable" class="nav-link" data-scroll-target="#why-card-losses-are-manageable"><span class="header-section-number">8.5</span> Why Card Losses Are Manageable</a></li>
+  <li><a href="#the-complete-picture" id="toc-the-complete-picture" class="nav-link" data-scroll-target="#the-complete-picture"><span class="header-section-number">8.6</span> The Complete Picture</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-math-of-subvention.html">Part II: The Economics of Merchant Lending</a></li><li class="breadcrumb-item"><a href="./08-credit-card-economics.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Credit Card Economics</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">The Merchant Lending Playbook</h1>
-<p class="subtitle lead">A Practical Guide to Checkout Finance, EMI Economics, and Credit Negotiation</p>
+<h1 class="title"><span id="sec-credit-cards" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Credit Card Economics</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ishan </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 18, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -284,60 +301,139 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This book is about merchant lending — the economics of how checkout finance works, how no-cost EMIs actually work, and where the money really comes from. If you build fintech products, manage payments, or work in lending, this book is for you.</p>
-<p>Merchant lending in India is growing fast. Millions of customers now buy now and pay later at checkout. Thousands of merchants offer no-cost EMI. But most people in product and payments don’t deeply understand the numbers underneath. They see “0%” and assume no money changes hands. They don’t know about subvention. They don’t know why checkout finance is more expensive than home loans. They don’t know what the merchant actually pays for.</p>
-<p>That’s what this book fixes.</p>
-<p>We’ll start with the foundations. What is lending, really? What is subvention? How much does money cost? Then we’ll move to the specific math: how to calculate the cost of a no-cost EMI, how checkout finance economics work, why credit cards are built the way they are. Finally, we’ll give you the tools to negotiate with lenders as a merchant or partner.</p>
-<p>The book assumes you understand products and business. It assumes nothing about finance. Every concept has a concrete example in rupees. We speak plainly and avoid jargon. When a technical term is needed, we explain it right away.</p>
-<section id="key-concepts-at-a-glance" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts-at-a-glance">Key Concepts at a Glance</h2>
+<p>Credit cards are a different animal than EMI loans. They’re like no-cost EMI on steroids: multiple revenue streams, revolving credit, behavioral unpredictability. This chapter shows you why card pricing looks different and how the economics actually work.</p>
+<section id="why-credit-cards-are-special" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="why-credit-cards-are-special"><span class="header-section-number">8.1</span> Why Credit Cards Are Special</h2>
+<p>A credit card generates revenue from five separate sources. No other lending product does this.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Concept</th>
-<th>What It Means</th>
+<th>Revenue Stream</th>
+<th>How It Works</th>
+<th>Typical Yield</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>IRR</strong></td>
-<td>The annual profit rate a lender earns from a loan, including all fees and the timing of cashflows.</td>
+<td><strong>Interchange</strong></td>
+<td>Percentage of transaction value paid by merchant’s bank to card issuer</td>
+<td>0.5-2% of transaction value</td>
 </tr>
 <tr class="even">
-<td><strong>Subvention</strong></td>
-<td>The interest income the merchant pays upfront so the customer sees 0% EMI.</td>
+<td><strong>Interest on Revolvers</strong></td>
+<td>APR charged on customers who carry balances (36-42% APR)</td>
+<td>3-5% of portfolio annually</td>
 </tr>
 <tr class="odd">
-<td><strong>Take-rate</strong></td>
-<td>The total revenue a lender captures as a percentage of the loan amount.</td>
+<td><strong>Annual Fees</strong></td>
+<td>₹500-2,000 per card per year</td>
+<td>0.5-1% of portfolio</td>
 </tr>
 <tr class="even">
-<td><strong>MDR</strong></td>
-<td>Merchant Discount Rate: the payment processing fee, typically 1-2%.</td>
+<td><strong>Late Payment Fees</strong></td>
+<td>₹100-500 per missed payment</td>
+<td>0.5-1.5% of portfolio</td>
 </tr>
 <tr class="odd">
-<td><strong>Float</strong></td>
-<td>The free interest the lender earns on customer deposits before they leave.</td>
-</tr>
-<tr class="even">
-<td><strong>Cost of Funds</strong></td>
-<td>The interest rate the lender pays to borrow money.</td>
-</tr>
-<tr class="odd">
-<td><strong>APR</strong></td>
-<td>Annual Percentage Rate: the full cost of a loan including interest, fees, and charges.</td>
+<td><strong>Forex and Cash Advance Fees</strong></td>
+<td>1-3% on international transactions and cash withdrawals</td>
+<td>0.5% of portfolio</td>
 </tr>
 </tbody>
 </table>
-
-
+<p>A typical card issuer earns maybe 1-2% interchange, 2-3% revolver interest, and 0.5% in other fees = 3.5-5.5% portfolio yield.</p>
+<p>Sounds low. But card issuers also benefit from behavioral economics (customers spend more with cards) and a portfolio effect where profitable revolvers subsidize unprofitable transactors.</p>
 </section>
+<section id="transactors-vs-revolvers" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="transactors-vs-revolvers"><span class="header-section-number">8.2</span> Transactors vs Revolvers</h2>
+<p>Credit cards split customers into two buckets:</p>
+<p><strong>Transactors (60-70% of cardholders):</strong> - Pay the full bill every month - Generate only interchange revenue (~1-2% of spend) - No interest income - Low loss rate because they’re paying every month</p>
+<p><strong>Revolvers (30-40% of cardholders):</strong> - Carry a balance month to month - Pay 36-42% APR on the outstanding balance - Generate massive interest income - Higher loss rate because they’re already struggling</p>
+<p>Here’s the arbitrage: <strong>Transactors make the card system work at scale.</strong> They spend large amounts, generate interchange on every transaction, and almost never default.</p>
+<p><strong>Revolvers</strong> are expensive to manage (collections, write-offs) but pay interest on balances that often exceed the original purchase price over time.</p>
+<p>The card issuer’s job is to price cards, set limits, and manage the portfolio so that revolver interest income covers all the costs and losses.</p>
+<p><strong>Portfolio Math:</strong></p>
+<ul>
+<li>100 cards outstanding</li>
+<li>65 transactors with ₹1,00,000 spend each = ₹65 lakh annual spend</li>
+<li>35 revolvers with average balance ₹25,000 = ₹8.75 lakh total revolving balance</li>
+</ul>
+<p>Interchange on transactors: ₹65 lakh × 1.5% = ₹97,500 Interest on revolvers: ₹8.75 lakh × 36% = ₹3.15 lakh Total annual revenue: ₹4.125 lakh</p>
+<p>Cost of funds for ₹65 lakh in transactor spend: 5% = ₹3.25 lakh (but this is mostly merchant risk, not card issuer) Cost of funds for ₹8.75 lakh in revolver balances: 5% = ₹43,750</p>
+<p>Net available for losses, opex, profit: ₹4.125 lakh - ₹43,750 = ₹3.6875 lakh on a ₹8.75 lakh revolver book = 42% return on revolver capital.</p>
+<p>Revolvers are a goldmine if you can collect on them.</p>
+</section>
+<section id="mdr-is-just-short-tenure-subvention" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="mdr-is-just-short-tenure-subvention"><span class="header-section-number">8.3</span> MDR Is Just Short-Tenure Subvention</h2>
+<p>If you’ve read Chapter 5 (math of subvention), you already understand MDR. Merchant Discount Rate is the fee retailers pay card networks. It’s exactly analogous to checkout finance subvention, just with a much shorter tenure.</p>
+<p>In checkout finance: - Tenure: 3-12 months - Subvention: 3-10%</p>
+<p>In credit cards: - Tenure: 45 days (interest-free period) - MDR: 0.5-2%</p>
+<p>Same mechanism, different duration.</p>
+<p><strong>Why MDR Is Lower Than EMI Subvention:</strong></p>
+<p>When a customer buys ₹30,000 on a card, the merchant gets paid in 2 days (T+2 settlement). The cardholder pays the bank in 45 days. The bank’s capital is only deployed for 45 days instead of 6 months.</p>
+<p>Using the subvention formula from Chapter 5:</p>
+<p><span class="math display">\[\text{Take%} \approx (R - F) \cdot \frac{n+1}{24} + \varepsilon + L\]</span></p>
+<p>For 45-day card payment (1.5 months):</p>
+<p>Take% ≈ (24% - 6%) × (1.5+1)/24 + 1% + 0.5% = 18% × 0.104 + 1.5% = 1.9% + 1.5% = 3.4%</p>
+<p>So MDR on a card should be roughly 1.5-3.5% depending on the bank’s cost of funds and risk model. This lines up with actual MDR (0.5-2% is for the network fee paid by merchant’s bank; the card issuer gets a cut of this plus interchange, which totals 1.5-3%).</p>
+</section>
+<section id="why-card-apr-is-higher-than-personal-loan-apr" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="why-card-apr-is-higher-than-personal-loan-apr"><span class="header-section-number">8.4</span> Why Card APR Is Higher Than Personal Loan APR</h2>
+<p>You can get a personal loan from Bajaj Finance at 12-15% APR.</p>
+<p>You can get a credit card from the same bank at 36-42% APR.</p>
+<p>Why is unsecured revolving credit 3x as expensive as unsecured installment credit?</p>
+<p>Three reasons:</p>
+<p><strong>1. Open-Ended vs Closed-Ended</strong></p>
+<p>A personal loan has a fixed amount and fixed schedule. You borrow ₹1 lakh, you owe ₹1 lakh + interest. Predictable.</p>
+<p>A credit card is open-ended. You have a ₹5 lakh limit. You might spend ₹50,000 in month 1 and ₹4 lakh in month 3. The bank doesn’t know what’s coming.</p>
+<p><strong>2. Duration Uncertainty</strong></p>
+<p>A personal loan matures in 36 months. The bank knows exactly when money is coming back.</p>
+<p>A credit card revolver might carry their balance for 2 months or 24 months. They might clear it suddenly or slowly increase it. The duration is uncertain.</p>
+<p><strong>3. Behavioral Unpredictability</strong></p>
+<p>Someone taking a personal loan signed up for a schedule. If they miss a payment, it’s a break from normal.</p>
+<p>A credit card revolver is already missing payments or making only minimum due. They’re signaling financial stress. The bank prices for higher probability of future stress.</p>
+<p><strong>The Math:</strong></p>
+<p>Personal loan at 15% APR: - Cost of funds: 5% - Expected loss: 2% - Opex: 1% - Capital charge: 1% - Profit margin: 6%</p>
+<p>Credit card at 40% APR: - Cost of funds: 5% - Expected loss: 8% (revolvers have higher default rates) - Opex: 1% - Capital charge: 1% - Profit margin: 25% (to compensate for the risk and uncertain duration)</p>
+<p>The extra 25% APR on cards reflects the extra 6% loss rate and requires fatter profit margins to absorb volatility.</p>
+</section>
+<section id="why-card-losses-are-manageable" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="why-card-losses-are-manageable"><span class="header-section-number">8.5</span> Why Card Losses Are Manageable</h2>
+<p>If card APR is 40% but loss rates are only 5-8%, the math seems fragile. One bad quarter and losses eat all the profit.</p>
+<p>Card issuers manage this through aggressive loss mitigation:</p>
+<p><strong>Minimum Due Enforcement:</strong> Customers must pay at least 5% of the balance every month. This ensures some cash flow even from stressed borrowers.</p>
+<p><strong>Dynamic Credit Limits:</strong> If you miss a payment, your limit drops immediately. If you’re delinquent for 60+ days, your card is blocked.</p>
+<p><strong>Early Collections:</strong> Most issuers call customers at day 1 of missed payment. Day 5, SMS reminder. Day 15, aggressive phone calls. Day 30, legal notice. By the time you’re written off at day 90+, the bank has already recovered 30-50% of the defaulted amount through collections.</p>
+<p><strong>Behavioral Bureau Pressure:</strong> A missed payment goes to CIBIL. Your CIBIL score tanks. This social/financial pressure makes people prioritize credit card payments over other debts.</p>
+<p><strong>Relationship Leverage:</strong> Card issuers know your salary, employer, and linked savings account. They can (with RBI approval) request wage garnishment or set-off from the savings account.</p>
+<p>Taken together, these tools reduce lifetime default rates on cards to 5-8% despite 40% APR, whereas unsecured personal loans see 5-10% default at 15% APR.</p>
+<p>The portfolio math works because: - Transactors (65%) generate profit via interchange and pay zero interest - Revolvers (35%) generate profit via interest, and most of their defaults are recovered via collections by day 90</p>
+</section>
+<section id="the-complete-picture" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="the-complete-picture"><span class="header-section-number">8.6</span> The Complete Picture</h2>
+<p>Credit cards are priced higher than personal loans not because of interest rates alone, but because of: 1. Revolving risk (duration + amount uncertain) 2. Behavioral unpredictability (revolvers are already stressed) 3. Multiple revenue streams (interchange, interest, fees) that need to be managed together 4. A portfolio structure where transactors subsidize revolvers</p>
+<p>The 40% APR on a card revolver is expensive, but the bank prices it this way because the alternative (refusing to lend to revolvers) would eliminate 30-40% of their customer base and the profitable interest revenue.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Memorize This</strong></p>
+<p>Credit cards have multiple revenue streams: interchange (1-2%), interest (2-3%), fees (0.5-1.5%) = 3.5-6.5% total portfolio yield. Transactors (60-70%) subsidize revolvers (30-40%) because revolvers carry high balances at 36-42% APR. Card APR is 3x personal loan APR because duration is uncertain, behavior is unpredictable, and losses are higher. Loss mitigation (limits, collections, bureau) keeps card defaults to 5-8% despite this high leverage.</p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -743,10 +839,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./07-checkout-finance.html" class="pagination-link" aria-label="Checkout Finance and No-Cost EMI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Checkout Finance and No-Cost EMI</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-how-lending-works.html" class="pagination-link" aria-label="How Lending Works">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">How Lending Works</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./09-banks-vs-nbfcs.html" class="pagination-link" aria-label="Banks vs NBFCs: Two Worlds of Lending">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Banks vs NBFCs: Two Worlds of Lending</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

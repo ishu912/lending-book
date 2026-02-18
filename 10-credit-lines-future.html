@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ishan">
-<meta name="dcterms.date" content="2026-02-18">
 
-<title>The Merchant Lending Playbook</title>
+<title>10&nbsp; Credit Lines, UPI, and the Future – The Merchant Lending Playbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-how-lending-works.html" rel="next">
+<link href="./11-checkout-emi-case-study.html" rel="next">
+<link href="./09-banks-vs-nbfcs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -85,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html">Part III: The Bigger Picture</a></li><li class="breadcrumb-item"><a href="./10-credit-lines-future.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Lines, UPI, and the Future</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -203,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-credit-lines-future.html" class="sidebar-item-text sidebar-link">
+  <a href="./10-credit-lines-future.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Lines, UPI, and the Future</span></span></a>
   </div>
 </li>
@@ -242,39 +241,36 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#the-big-idea" id="toc-the-big-idea" class="nav-link active" data-scroll-target="#the-big-idea"><span class="header-section-number">10.1</span> The Big Idea</a></li>
+  <li><a href="#what-would-change" id="toc-what-would-change" class="nav-link" data-scroll-target="#what-would-change"><span class="header-section-number">10.2</span> What Would Change</a>
   <ul class="collapse">
-  <li><a href="#key-concepts-at-a-glance" id="toc-key-concepts-at-a-glance" class="nav-link" data-scroll-target="#key-concepts-at-a-glance">Key Concepts at a Glance</a></li>
+  <li><a href="#customers" id="toc-customers" class="nav-link" data-scroll-target="#customers"><span class="header-section-number">10.2.1</span> Customers</a></li>
+  <li><a href="#banks" id="toc-banks" class="nav-link" data-scroll-target="#banks"><span class="header-section-number">10.2.2</span> Banks</a></li>
+  <li><a href="#merchants" id="toc-merchants" class="nav-link" data-scroll-target="#merchants"><span class="header-section-number">10.2.3</span> Merchants</a></li>
+  <li><a href="#nbfcs" id="toc-nbfcs" class="nav-link" data-scroll-target="#nbfcs"><span class="header-section-number">10.2.4</span> NBFCs</a></li>
+  <li><a href="#bnpl" id="toc-bnpl" class="nav-link" data-scroll-target="#bnpl"><span class="header-section-number">10.2.5</span> BNPL</a></li>
+  <li><a href="#credit-cards" id="toc-credit-cards" class="nav-link" data-scroll-target="#credit-cards"><span class="header-section-number">10.2.6</span> Credit Cards</a></li>
   </ul></li>
+  <li><a href="#rbi-is-building-the-rails" id="toc-rbi-is-building-the-rails" class="nav-link" data-scroll-target="#rbi-is-building-the-rails"><span class="header-section-number">10.3</span> RBI Is Building the Rails</a></li>
+  <li><a href="#whats-slowing-it-down" id="toc-whats-slowing-it-down" class="nav-link" data-scroll-target="#whats-slowing-it-down"><span class="header-section-number">10.4</span> What’s Slowing It Down</a></li>
+  <li><a href="#the-convergence" id="toc-the-convergence" class="nav-link" data-scroll-target="#the-convergence"><span class="header-section-number">10.5</span> The Convergence</a></li>
+  <li><a href="#memorize-this" id="toc-memorize-this" class="nav-link" data-scroll-target="#memorize-this"><span class="header-section-number">10.6</span> Memorize This</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html">Part III: The Bigger Picture</a></li><li class="breadcrumb-item"><a href="./10-credit-lines-future.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Lines, UPI, and the Future</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">The Merchant Lending Playbook</h1>
-<p class="subtitle lead">A Practical Guide to Checkout Finance, EMI Economics, and Credit Negotiation</p>
+<h1 class="title"><span id="sec-credit-lines-future" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Lines, UPI, and the Future</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ishan </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 18, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -284,60 +280,125 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This book is about merchant lending — the economics of how checkout finance works, how no-cost EMIs actually work, and where the money really comes from. If you build fintech products, manage payments, or work in lending, this book is for you.</p>
-<p>Merchant lending in India is growing fast. Millions of customers now buy now and pay later at checkout. Thousands of merchants offer no-cost EMI. But most people in product and payments don’t deeply understand the numbers underneath. They see “0%” and assume no money changes hands. They don’t know about subvention. They don’t know why checkout finance is more expensive than home loans. They don’t know what the merchant actually pays for.</p>
-<p>That’s what this book fixes.</p>
-<p>We’ll start with the foundations. What is lending, really? What is subvention? How much does money cost? Then we’ll move to the specific math: how to calculate the cost of a no-cost EMI, how checkout finance economics work, why credit cards are built the way they are. Finally, we’ll give you the tools to negotiate with lenders as a merchant or partner.</p>
-<p>The book assumes you understand products and business. It assumes nothing about finance. Every concept has a concrete example in rupees. We speak plainly and avoid jargon. When a technical term is needed, we explain it right away.</p>
-<section id="key-concepts-at-a-glance" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts-at-a-glance">Key Concepts at a Glance</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Concept</th>
-<th>What It Means</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>IRR</strong></td>
-<td>The annual profit rate a lender earns from a loan, including all fees and the timing of cashflows.</td>
-</tr>
-<tr class="even">
-<td><strong>Subvention</strong></td>
-<td>The interest income the merchant pays upfront so the customer sees 0% EMI.</td>
-</tr>
-<tr class="odd">
-<td><strong>Take-rate</strong></td>
-<td>The total revenue a lender captures as a percentage of the loan amount.</td>
-</tr>
-<tr class="even">
-<td><strong>MDR</strong></td>
-<td>Merchant Discount Rate: the payment processing fee, typically 1-2%.</td>
-</tr>
-<tr class="odd">
-<td><strong>Float</strong></td>
-<td>The free interest the lender earns on customer deposits before they leave.</td>
-</tr>
-<tr class="even">
-<td><strong>Cost of Funds</strong></td>
-<td>The interest rate the lender pays to borrow money.</td>
-</tr>
-<tr class="odd">
-<td><strong>APR</strong></td>
-<td>Annual Percentage Rate: the full cost of a loan including interest, fees, and charges.</td>
-</tr>
-</tbody>
-</table>
-
-
+<section id="the-big-idea" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="the-big-idea"><span class="header-section-number">10.1</span> The Big Idea</h2>
+<p>What if personal loans came as a credit line you could use instantly at checkout via UPI?</p>
+<p>Picture this: A bank gives you a pre-approved limit of ₹2 lakh. You don’t draw it until you buy something. You’re at a store, see shoes you want, scan the QR code. Instantly, the checkout app offers you: “Buy now, pay in 3 months for ₹500/month.” You say yes. The bank disburses ₹2,500 to the merchant via UPI. You pay EMIs only on what you used — not on an unused limit.</p>
+<p>This is different from today. Today: - BNPL apps pre-approve you. Then you use the app. Then they lend. - Credit cards pre-approve you. But you need to carry a physical card. - Personal loan apps take 10 minutes to disburse ₹2 lakh, whether you want it or not.</p>
+<p>The new model: pre-approved credit line + instant UPI drawdown + EMI at merchant checkout.</p>
 </section>
+<section id="what-would-change" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="what-would-change"><span class="header-section-number">10.2</span> What Would Change</h2>
+<section id="customers" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="customers"><span class="header-section-number">10.2.1</span> Customers</h3>
+<ul>
+<li><strong>Instant approval.</strong> No application form at store. No waiting for bank call. Pre-approved already.</li>
+<li><strong>Cheaper than BNPL/card EMI.</strong> If banks offer 18% IRR instead of 24%, you pay less interest.</li>
+<li><strong>Works everywhere.</strong> UPI QR codes are ubiquitous. No need for app integration. No need to carry a card.</li>
+<li><strong>Simple.</strong> One flow, one approval, one set of T&amp;Cs.</li>
+</ul>
+</section>
+<section id="banks" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="banks"><span class="header-section-number">10.2.2</span> Banks</h3>
+<ul>
+<li><strong>Direct checkout access.</strong> No BNPL middleman taking margin. No card network taking swipe fee.</li>
+<li><strong>High capital turnover.</strong> Loans repaid in 3-6 months. Capital redeployed. Much faster than home loans.</li>
+<li><strong>PL-quality underwriting.</strong> You already have their customer data, bank statement, CIBIL. Approval is confidence, not guessing.</li>
+<li><strong>Very low acquisition cost.</strong> Merchant integration costs far less than advertising BNPL apps. You reach customers where they already are.</li>
+</ul>
+</section>
+<section id="merchants" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="merchants"><span class="header-section-number">10.2.3</span> Merchants</h3>
+<ul>
+<li><strong>Zero MDR.</strong> UPI has near-zero transaction cost. No 1.5% card MDR. No 2-3% BNPL commission.</li>
+<li><strong>Zero subvention.</strong> Customer bears the interest rate (18% IRR, not subsidized). Or rate is low enough to be profitable without subvention.</li>
+<li><strong>Instant conversion.</strong> No customer friction. No app download. No “apply for BNPL” step. “Would you like EMI?” → Yes → Done.</li>
+</ul>
+</section>
+<section id="nbfcs" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="nbfcs"><span class="header-section-number">10.2.4</span> NBFCs</h3>
+<p>This is massive disruption. Their POS moat collapses.</p>
+<p>Today, NBFCs win checkout finance because: - They lend fast with minimal documentation. - They have POS integration and subvention models. - They compete on low subvention (5-8%).</p>
+<p>If a bank offers a credit line at 18% IRR with zero subvention, the NBFC’s subvention model breaks. The merchant asks: why pay 6% subvention to an NBFC when I can offer 0% via bank credit with no cost to me?</p>
+<p>NBFCs will survive in niches: - Very high-risk segments (personal loans to self-employed, informal workers). - Very small loans where banks won’t lend (₹1,000-₹5,000). - Geographic gaps where bank presence is weak.</p>
+<p>But the core checkout market goes to banks.</p>
+</section>
+<section id="bnpl" class="level3" data-number="10.2.5">
+<h3 data-number="10.2.5" class="anchored" data-anchor-id="bnpl"><span class="header-section-number">10.2.5</span> BNPL</h3>
+<p>Nearly dead. BNPL’s entire value prop is: “No-cost checkout lending.” But if a bank offers 18% IRR credit line (cheaper to customer than BNPL’s subvention), with UPI integration (no app needed), BNPL has no story.</p>
+<p>BNPL companies will pivot. Some become payment platforms. Some become credit aggregators. Few remain pure BNPL lenders.</p>
+</section>
+<section id="credit-cards" class="level3" data-number="10.2.6">
+<h3 data-number="10.2.6" class="anchored" data-anchor-id="credit-cards"><span class="header-section-number">10.2.6</span> Credit Cards</h3>
+<p>Significant threat, but not death. Cards retain advantages: - <strong>Rewards.</strong> Cashback, miles, points. Credit lines have none. - <strong>International.</strong> Credit lines work in India. Cards work globally. - <strong>Premium.</strong> High-spend customers like the card status, lounge access, concierge. - <strong>Flexibility.</strong> Credit cards let you revolve (pay minimum, keep balance). Credit lines push EMI. Cards let you choose.</p>
+<p>So cards become premium products. Middle market tilts to credit lines. BNPL shrinks.</p>
+</section>
+</section>
+<section id="rbi-is-building-the-rails" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="rbi-is-building-the-rails"><span class="header-section-number">10.3</span> RBI Is Building the Rails</h2>
+<p>None of this works without infrastructure. RBI is building it:</p>
+<ul>
+<li><strong>UPI on credit.</strong> The ability to draw credit via UPI. Not just payments. Credit push.</li>
+<li><strong>Pre-approved lines.</strong> Digital infrastructure for banks to offer pre-sanctioned limits without a customer touch.</li>
+<li><strong>Digital KYC.</strong> Banks can verify and approve in seconds, not days.</li>
+<li><strong>Account Aggregator.</strong> Banks can pull your bank statement, CIBIL, PAN, directly from authorized sources. No forms. No friction.</li>
+</ul>
+<p>These aren’t pipedreams. RBI has mandated many. The ecosystem is moving.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you work at a bank, NBFC, fintech, or merchant platform, watch RBI’s regulations around UPI credit and Account Aggregator. That’s where the next wave of lending architecture gets built.</p>
+</div>
+</div>
+</section>
+<section id="whats-slowing-it-down" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="whats-slowing-it-down"><span class="header-section-number">10.4</span> What’s Slowing It Down</h2>
+<p>The idea is simple. Execution is hard:</p>
+<ol type="1">
+<li><p><strong>Bank tech lag.</strong> Most banks still run lending on 20-year-old core systems. Integrating real-time UPI credit takes overhaul. It’s cheaper to manage the status quo.</p></li>
+<li><p><strong>Risk model immaturity.</strong> Pre-approved credit lines need good underwriting. Banks have it for home loans. For checkout? Still learning. What’s a good credit score cutoff? What loss rates to expect? Banks are cautious.</p></li>
+<li><p><strong>Operational readiness.</strong> UPI integration means bank ops teams, dispute teams, fraud teams need new training. Customer service needs to handle a new product. It’s not impossible, just messy.</p></li>
+<li><p><strong>NBFC lobbying.</strong> NBFCs will push RBI to restrict bank lending in checkout, citing monopoly risk. RBI will listen. Might slow regulation.</p></li>
+<li><p><strong>Customer awareness.</strong> Millions don’t know they can get a credit line pre-approved. Banks don’t advertise aggressively. So adoption is slow.</p></li>
+<li><p><strong>Merchant integration.</strong> POS systems, e-commerce platforms, QR code generators — all need to integrate the “offer credit” step. Big integration effort.</p></li>
+</ol>
+</section>
+<section id="the-convergence" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="the-convergence"><span class="header-section-number">10.5</span> The Convergence</h2>
+<p>In 5 years, the lending stack looks like this:</p>
+<ul>
+<li><strong>UPI becomes the universal payment + credit rail.</strong> Not just payments. Payments + credit + settlement in one flow.</li>
+<li><strong>Banks provide capital.</strong> They sit on deposits, offer credit lines at 15-20% IRR.</li>
+<li><strong>Fintechs provide tech and underwriting.</strong> Banks co-brand the product. Fintech handles approval, collections, customer service.</li>
+<li><strong>NBFCs find niches.</strong> High-risk lending, geographic coverage, specialty segments (SME, informal workers).</li>
+<li><strong>Cards become premium.</strong> Rewards, international, high-spend. Middle market gone.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some of this is already happening. Bajaj Finserv and ICICI Bank co-market personal loans. HDFC Bank invested in fintech lenders. The ecosystem is shuffling. The direction is clear.</p>
+</div>
+</div>
+</section>
+<section id="memorize-this" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="memorize-this"><span class="header-section-number">10.6</span> Memorize This</h2>
+<p><em>Pre-approved credit lines + UPI will reshape consumer lending. Banks win at checkout. NBFCs shrink. BNPL dies. Cards stay premium. The plumbing is being built now.</em></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -743,10 +804,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./09-banks-vs-nbfcs.html" class="pagination-link" aria-label="Banks vs NBFCs: Two Worlds of Lending">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Banks vs NBFCs: Two Worlds of Lending</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-how-lending-works.html" class="pagination-link" aria-label="How Lending Works">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">How Lending Works</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./11-checkout-emi-case-study.html" class="pagination-link" aria-label="Checkout EMI Case Study">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Checkout EMI Case Study</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ishan">
-<meta name="dcterms.date" content="2026-02-18">
 
-<title>The Merchant Lending Playbook</title>
+<title>4&nbsp; How Lenders Set Their IRR Target – The Merchant Lending Playbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-how-lending-works.html" rel="next">
+<link href="./05-math-of-subvention.html" rel="next">
+<link href="./03-what-is-irr.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -85,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-how-lending-works.html">Part I: Foundations</a></li><li class="breadcrumb-item"><a href="./04-how-lenders-set-irr.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How Lenders Set Their IRR Target</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -145,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-how-lenders-set-irr.html" class="sidebar-item-text sidebar-link">
+  <a href="./04-how-lenders-set-irr.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How Lenders Set Their IRR Target</span></span></a>
   </div>
 </li>
@@ -242,39 +270,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#the-five-components" id="toc-the-five-components" class="nav-link active" data-scroll-target="#the-five-components"><span class="header-section-number">4.1</span> The Five Components</a>
   <ul class="collapse">
-  <li><a href="#key-concepts-at-a-glance" id="toc-key-concepts-at-a-glance" class="nav-link" data-scroll-target="#key-concepts-at-a-glance">Key Concepts at a Glance</a></li>
+  <li><a href="#the-formula" id="toc-the-formula" class="nav-link" data-scroll-target="#the-formula"><span class="header-section-number">4.1.1</span> The Formula</a></li>
   </ul></li>
+  <li><a href="#why-different-lenders-need-different-irrs" id="toc-why-different-lenders-need-different-irrs" class="nav-link" data-scroll-target="#why-different-lenders-need-different-irrs"><span class="header-section-number">4.2</span> Why Different Lenders Need Different IRRs</a></li>
+  <li><a href="#the-per-transaction-vs-portfolio-view" id="toc-the-per-transaction-vs-portfolio-view" class="nav-link" data-scroll-target="#the-per-transaction-vs-portfolio-view"><span class="header-section-number">4.3</span> The Per-Transaction vs Portfolio View</a></li>
+  <li><a href="#how-to-think-like-bajaj-finance" id="toc-how-to-think-like-bajaj-finance" class="nav-link" data-scroll-target="#how-to-think-like-bajaj-finance"><span class="header-section-number">4.4</span> How to Think Like Bajaj Finance</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-how-lending-works.html">Part I: Foundations</a></li><li class="breadcrumb-item"><a href="./04-how-lenders-set-irr.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How Lenders Set Their IRR Target</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">The Merchant Lending Playbook</h1>
-<p class="subtitle lead">A Practical Guide to Checkout Finance, EMI Economics, and Credit Negotiation</p>
+<h1 class="title"><span id="sec-irr-target" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">How Lenders Set Their IRR Target</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ishan </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 18, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -284,60 +302,158 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This book is about merchant lending — the economics of how checkout finance works, how no-cost EMIs actually work, and where the money really comes from. If you build fintech products, manage payments, or work in lending, this book is for you.</p>
-<p>Merchant lending in India is growing fast. Millions of customers now buy now and pay later at checkout. Thousands of merchants offer no-cost EMI. But most people in product and payments don’t deeply understand the numbers underneath. They see “0%” and assume no money changes hands. They don’t know about subvention. They don’t know why checkout finance is more expensive than home loans. They don’t know what the merchant actually pays for.</p>
-<p>That’s what this book fixes.</p>
-<p>We’ll start with the foundations. What is lending, really? What is subvention? How much does money cost? Then we’ll move to the specific math: how to calculate the cost of a no-cost EMI, how checkout finance economics work, why credit cards are built the way they are. Finally, we’ll give you the tools to negotiate with lenders as a merchant or partner.</p>
-<p>The book assumes you understand products and business. It assumes nothing about finance. Every concept has a concrete example in rupees. We speak plainly and avoid jargon. When a technical term is needed, we explain it right away.</p>
-<section id="key-concepts-at-a-glance" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts-at-a-glance">Key Concepts at a Glance</h2>
+<p>A lender’s required Internal Rate of Return (IRR) is not a magic number pulled from thin air. It’s the answer to a simple question: “How much return do I need to make this loan worth the risk?”</p>
+<p>The answer is always the same: add up five things. Every rupee the merchant pays flows into one of these five buckets. This chapter shows you how.</p>
+<section id="the-five-components" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-five-components"><span class="header-section-number">4.1</span> The Five Components</h2>
+<p>When a lender decides they need, say, 18% IRR on a merchant credit product, they’re actually saying: “These five costs and profit targets add up to 18%.”</p>
+<p><strong>Component 1: Cost of Funds</strong></p>
+<p>First, the lender has to borrow money to lend to you. That costs them something.</p>
+<ul>
+<li>A bank borrows at 4-6% (from deposits, other banks, RBI)</li>
+<li>An NBFC borrows at 9-12% (from banks, bonds, commercial paper)</li>
+<li>A fintech borrows at 12-16% (from banks, private lending, aggregators)</li>
+</ul>
+<p>This is their baseline cost. If they lend at anything below this rate, they lose money before we even count risk or operations.</p>
+<p><strong>Component 2: Expected Credit Loss</strong></p>
+<p>Some borrowers will default. You know this. So does the lender.</p>
+<p>Expected Loss = Probability of Default × Loss Given Default</p>
+<p>Suppose the lender expects 3% of merchants to default. And when they default, the lender recovers 40% of the loan (sells inventory, collateral, etc). Then:</p>
+<p>Loss Given Default = 1 - 0.40 = 60% Expected Loss = 3% × 60% = 1.8% of the loan amount</p>
+<p>A ₹100,000 loan in this scenario costs the lender ₹1,800 in expected losses, baked into the price.</p>
+<p><strong>Component 3: Operating Cost</strong></p>
+<p>Running the lending business costs money. KYC checks. Underwriting. Servicing. Collections.</p>
+<p>For merchant lending, this typically runs 1-3% of the loan amount annually.</p>
+<p>A ₹100,000 loan might cost ₹1,000-3,000 to originate, service, and potentially collect on.</p>
+<p><strong>Component 4: Capital/Regulatory Charge</strong></p>
+<p>Banks must hold capital against every loan they make. An 8% capital adequacy requirement means that on a ₹1,00,000 portfolio, they must hold ₹8,000 in capital.</p>
+<p>That capital has a cost. It needs to earn the bank’s cost of equity (typically 15-20% per year). So even though they’re only holding 8%, the cost per loan works out to roughly 1-2% IRR.</p>
+<p>This is pure regulation. It exists to make the banking system safer. The lender passes it to you.</p>
+<p><strong>Component 5: Required Profit</strong></p>
+<p>After costs, the lender wants profit. Shareholders expect a Return on Assets (ROA) — profit as a percentage of assets — of 2-4% per year on average.</p>
+<section id="the-formula" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="the-formula"><span class="header-section-number">4.1.1</span> The Formula</h3>
+<p><span class="math display">\[\text{Required IRR} = \text{Cost of Funds} + \text{Expected Loss} + \text{Opex} + \text{Capital Charge} + \text{Profit Target}\]</span></p>
+<p>Every percentage point in one component has to come from somewhere. If your cost of funds goes up 1%, and you don’t want to cut profit, your lending rate goes up 1%.</p>
+</section>
+</section>
+<section id="why-different-lenders-need-different-irrs" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="why-different-lenders-need-different-irrs"><span class="header-section-number">4.2</span> Why Different Lenders Need Different IRRs</h2>
+<p>Not all lenders are the same. A bank and a fintech face different costs, so they need different IRRs.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Concept</th>
-<th>What It Means</th>
+<th>Component</th>
+<th>Bank (Secured)</th>
+<th>NBFC</th>
+<th>Consumer Finance NBFC</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>IRR</strong></td>
-<td>The annual profit rate a lender earns from a loan, including all fees and the timing of cashflows.</td>
+<td>Cost of Funds</td>
+<td>5%</td>
+<td>10%</td>
+<td>10%</td>
 </tr>
 <tr class="even">
-<td><strong>Subvention</strong></td>
-<td>The interest income the merchant pays upfront so the customer sees 0% EMI.</td>
+<td>Expected Loss</td>
+<td>2%</td>
+<td>2%</td>
+<td>2%</td>
 </tr>
 <tr class="odd">
-<td><strong>Take-rate</strong></td>
-<td>The total revenue a lender captures as a percentage of the loan amount.</td>
+<td>Opex</td>
+<td>1%</td>
+<td>2%</td>
+<td>2%</td>
 </tr>
 <tr class="even">
-<td><strong>MDR</strong></td>
-<td>Merchant Discount Rate: the payment processing fee, typically 1-2%.</td>
+<td>Capital Charge</td>
+<td>1.5%</td>
+<td>1%</td>
+<td>1%</td>
 </tr>
 <tr class="odd">
-<td><strong>Float</strong></td>
-<td>The free interest the lender earns on customer deposits before they leave.</td>
+<td>Profit Target</td>
+<td>2%</td>
+<td>3%</td>
+<td>5-8%</td>
 </tr>
 <tr class="even">
-<td><strong>Cost of Funds</strong></td>
-<td>The interest rate the lender pays to borrow money.</td>
-</tr>
-<tr class="odd">
-<td><strong>APR</strong></td>
-<td>Annual Percentage Rate: the full cost of a loan including interest, fees, and charges.</td>
+<td><strong>Total IRR</strong></td>
+<td><strong>11.5%</strong></td>
+<td><strong>18%</strong></td>
+<td><strong>20-23%</strong></td>
 </tr>
 </tbody>
 </table>
-
-
+<p>A bank can lend at 11.5% for secured loans because deposits are cheap. An NBFC needs 18% because borrowed money costs more. A consumer finance NBFC needs 20-23% because defaults are higher and they need fatter profit margins to survive a bad quarter.</p>
+<p>This is why you see: - Bank personal loans at 10-12% - NBFC personal loans at 15-18% - Fintech personal loans at 18-24%</p>
+<p>The lender’s cost structure makes the IRR, and you pay it.</p>
 </section>
+<section id="the-per-transaction-vs-portfolio-view" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="the-per-transaction-vs-portfolio-view"><span class="header-section-number">4.3</span> The Per-Transaction vs Portfolio View</h2>
+<p>Here’s where merchants get confused. You think in terms of take-rate: the percentage you pay per transaction. The lender thinks in terms of IRR: the annual return on the entire portfolio.</p>
+<p>These are connected by tenure. Short tenure → low take-rate. Long tenure → high take-rate.</p>
+<p><span class="math display">\[\text{Take-rate %} = \frac{\text{Subvention Amount}}{\text{Transaction Value}} \times 100\]</span></p>
+<p>For Bajaj-style consumer durable (CD) loans, typical take-rates are 3-8% depending on: - How long the EMI runs (3 months vs 12 months) - How risky the merchant category is - Competitive pressure in that segment</p>
+<p>A 6-month EMI might cost the merchant 5-6% subvention. A 12-month EMI might cost 8-10%.</p>
+<p>The lender’s 22% IRR is spread across twelve months of getting ₹1/12 of the principal back. Your 6% take-rate is what covers that spread over six months.</p>
+</section>
+<section id="how-to-think-like-bajaj-finance" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="how-to-think-like-bajaj-finance"><span class="header-section-number">4.4</span> How to Think Like Bajaj Finance</h2>
+<p>Bajaj Finance (one of India’s largest NBFC-MFI companies) lends heavily to consumer durables and appliances. Here’s roughly how they think:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Bajaj Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Required IRR</td>
+<td>22-30%</td>
+</tr>
+<tr class="even">
+<td>Expected Loss Rate</td>
+<td>1.5-4%</td>
+</tr>
+<tr class="odd">
+<td>Cost of Funds</td>
+<td>7-9%</td>
+</tr>
+<tr class="even">
+<td>Opex</td>
+<td>2-3%</td>
+</tr>
+<tr class="odd">
+<td>Profit (ROA)</td>
+<td>&gt;4%</td>
+</tr>
+</tbody>
+</table>
+<p>The difference between IRR target and cost of funds (22% - 8% = 14%) has to come from subvention from the merchant, plus whatever the customer pays for processing fees, plus float income, plus down payment contributions.</p>
+<p>If you’re a merchant and Bajaj comes to you with “no-cost EMI,” you know they’re not actually earning 22% from you alone. They’re: 1. Taking subvention from you (the biggest part) 2. Taking processing fees from the customer (1-2%) 3. Earning float on collections (1-2%) 4. Getting some margin from a lower loss rate than they modeled</p>
+<p>It all adds up to 22% IRR.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Memorize This</strong></p>
+<p>Required IRR = Cost of Funds + Losses + Opex + Capital Charge + Profit</p>
+<p>Every basis point (0.01%) in your cost of funds flows directly to what the merchant must pay. If your funding cost rises 1%, you need 1% more from the merchant unless you cut something else.</p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -743,10 +859,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./03-what-is-irr.html" class="pagination-link" aria-label="What Is IRR, Really?">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">What Is IRR, Really?</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-how-lending-works.html" class="pagination-link" aria-label="How Lending Works">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">How Lending Works</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05-math-of-subvention.html" class="pagination-link" aria-label="The Math of Subvention">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Math of Subvention</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,902 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The Merchant Lending Playbook",
+    "section": "",
+    "text": "Preface\nThis book is about merchant lending — the economics of how checkout finance works, how no-cost EMIs actually work, and where the money really comes from. If you build fintech products, manage payments, or work in lending, this book is for you.\nMerchant lending in India is growing fast. Millions of customers now buy now and pay later at checkout. Thousands of merchants offer no-cost EMI. But most people in product and payments don’t deeply understand the numbers underneath. They see “0%” and assume no money changes hands. They don’t know about subvention. They don’t know why checkout finance is more expensive than home loans. They don’t know what the merchant actually pays for.\nThat’s what this book fixes.\nWe’ll start with the foundations. What is lending, really? What is subvention? How much does money cost? Then we’ll move to the specific math: how to calculate the cost of a no-cost EMI, how checkout finance economics work, why credit cards are built the way they are. Finally, we’ll give you the tools to negotiate with lenders as a merchant or partner.\nThe book assumes you understand products and business. It assumes nothing about finance. Every concept has a concrete example in rupees. We speak plainly and avoid jargon. When a technical term is needed, we explain it right away.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#key-concepts-at-a-glance",
+    "href": "index.html#key-concepts-at-a-glance",
+    "title": "The Merchant Lending Playbook",
+    "section": "Key Concepts at a Glance",
+    "text": "Key Concepts at a Glance\n\n\n\n\n\n\n\nConcept\nWhat It Means\n\n\n\n\nIRR\nThe annual profit rate a lender earns from a loan, including all fees and the timing of cashflows.\n\n\nSubvention\nThe interest income the merchant pays upfront so the customer sees 0% EMI.\n\n\nTake-rate\nThe total revenue a lender captures as a percentage of the loan amount.\n\n\nMDR\nMerchant Discount Rate: the payment processing fee, typically 1-2%.\n\n\nFloat\nThe free interest the lender earns on customer deposits before they leave.\n\n\nCost of Funds\nThe interest rate the lender pays to borrow money.\n\n\nAPR\nAnnual Percentage Rate: the full cost of a loan including interest, fees, and charges.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "01-how-lending-works.html",
+    "href": "01-how-lending-works.html",
+    "title": "1  How Lending Works",
+    "section": "",
+    "text": "1.1 The Lending Business in One Sentence\nA lender borrows money cheaply, lends it out at a higher rate, and keeps the difference as profit. The difference is called the spread. It needs to cover losses from defaults and the cost of running the business.\nThat’s it. Everything in lending flows from this idea.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How Lending Works</span>"
+    ]
+  },
+  {
+    "objectID": "01-how-lending-works.html#typical-yields-on-retail-loans-in-india",
+    "href": "01-how-lending-works.html#typical-yields-on-retail-loans-in-india",
+    "title": "1  How Lending Works",
+    "section": "1.2 Typical Yields on Retail Loans in India",
+    "text": "1.2 Typical Yields on Retail Loans in India\nDifferent loans have different yields because they have different risk. A home loan is less risky than a personal loan, so the lender charges less interest. Here’s what you see in the market:\n\n\n\nLoan Type\nCollateral?\nTypical Yield\n\n\n\n\nHome Loan\nYes (property)\n9-10%\n\n\nLoan Against Property (LAP)\nYes (property)\n11-13%\n\n\nAuto Loan (New)\nYes (car)\n10-12%\n\n\nAuto Loan (Used)\nYes (car)\n14-16%\n\n\nGold Loan\nYes (gold)\n10-12%\n\n\nPersonal Loan\nNo\n16-24%\n\n\nCheckout EMI\nNo\n16-28%\n\n\nCredit Card\nNo\n36-48%\n\n\n\nWhy the difference? Collateral. When you borrow for a home and can’t repay, the lender takes the house. When you borrow for a personal loan and can’t repay, the lender has nothing. The lender’s money is at much more risk. So they charge more.\nUnsecured loans also last shorter. A personal loan is typically 2-4 years. A home loan is 20 years. The shorter the loan, the faster the lender gets their money back. If something goes wrong, they lose money for shorter period.\nCheckout EMIs and credit cards are the riskiest in this list. No collateral. The customer can simply not pay. So yields are high — 20%+ is common.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How Lending Works</span>"
+    ]
+  },
+  {
+    "objectID": "01-how-lending-works.html#what-is-subvention",
+    "href": "01-how-lending-works.html#what-is-subvention",
+    "title": "1  How Lending Works",
+    "section": "1.3 What Is Subvention?",
+    "text": "1.3 What Is Subvention?\nSubvention is the interest income that the lender would have earned from the customer, but instead the merchant pays it upfront so the customer gets 0% EMI.\nLet’s use a concrete example.\nA customer buys a ₹30,000 product at a store and pays in 6 equal installments. If the lender charged the standard 22% annual interest, the customer would pay extra money each month. But the merchant wants to offer 0%.\nHere’s what happens: The lender calculates the 22% IRR upfront. This comes to about ₹3,500 in total interest income. Instead of collecting this from the customer, the merchant pays this ₹3,500 to the lender at the time of purchase. The customer then pays ₹5,000 per month for 6 months — exactly the original loan amount divided equally.\nThe customer sees 0% interest. The lender earned 22% IRR anyway. The merchant paid ₹3,500 for the privilege. Everyone is happy.\nThis is subvention.\nSubvention is a subsidy. The merchant is subsidizing the interest so the customer saves money. Why? Because the merchant wants the sale. They’re willing to pay for the convenience of financing.\nThe economics are wild. The lender’s IRR stays the same. The customer’s interest rate drops to 0%. The merchant pays the difference. This only works if the merchant’s profit margin on the product is high enough to absorb the cost.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How Lending Works</span>"
+    ]
+  },
+  {
+    "objectID": "01-how-lending-works.html#mdr-vs-subvention",
+    "href": "01-how-lending-works.html#mdr-vs-subvention",
+    "title": "1  How Lending Works",
+    "section": "1.4 MDR vs Subvention",
+    "text": "1.4 MDR vs Subvention\nMerchants encounter two different finance costs: MDR and subvention. They are not the same.\n\n\n\n\n\n\n\n\nFeature\nMDR\nSubvention\n\n\n\n\nWhat is it?\nMerchant Discount Rate. Fee for payment processing.\nInterest cost for credit financing.\n\n\nTypical amount\n1-2% of transaction\n5-10% of loan amount\n\n\nApplies to\nEvery card transaction\nOnly financing transactions\n\n\nWhen paid\nImmediately\nUpfront for the full loan period\n\n\nWho sets it?\nCard networks (Visa, Mastercard)\nIndividual lenders\n\n\n\nMDR is about processing. When a customer swipes a credit card and makes a payment, the merchant pays the card network and bank for processing that payment. ₹100 purchase → ₹98-99 lands in the merchant’s account.\nSubvention is about financing. When a customer doesn’t pay the ₹100 today but spreads it over 6 months, the lender finances it. The merchant compensates the lender for the interest cost and risk.\nThe key difference: credit costs more than processing. A merchant paying 2% for card processing is getting a much better deal than a merchant paying 8% for subvention. Why? Because with a card, the money is in the merchant’s account in 2 seconds. With a loan, the merchant’s customer might not pay for 12 months.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How Lending Works</span>"
+    ]
+  },
+  {
+    "objectID": "01-how-lending-works.html#the-bajaj-finance-model",
+    "href": "01-how-lending-works.html#the-bajaj-finance-model",
+    "title": "1  How Lending Works",
+    "section": "1.5 The Bajaj Finance Model",
+    "text": "1.5 The Bajaj Finance Model\nBajaj Finance is one of India’s largest lenders in checkout finance. Their economics show how merchant lending really works.\nBajaj earns money from several streams:\n\nSubvention — The merchant pays upfront. This is the biggest source.\nProcessing fees — The customer or merchant pays a small fee (~1-2%) to set up the loan.\nLate fees — If the customer misses a payment, Bajaj charges a late fee. This is 2-4% per month.\nCross-sell — Bajaj markets credit cards and insurance to customers who get a loan. Extra revenue.\nFloat — Bajaj takes customer’s money at the beginning of the month (with salary), but the customer’s bills are due in the middle. Bajaj earns interest on this money for 2 weeks.\n\nThe point: a lender in merchant lending isn’t just earning interest. They’re earning fees, late fees, and income from investments. The subvention is the core, but it’s not the only lever.\n\n\n\n\n\n\nNoteMemorize This\n\n\n\nLending is about the spread. A lender borrows money at one rate and lends at another. The difference, minus losses and costs, is profit. Subvention is not free money for lenders — it’s payment for the interest that the merchant asked them to forgive.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>How Lending Works</span>"
+    ]
+  },
+  {
+    "objectID": "02-cost-of-funds.html",
+    "href": "02-cost-of-funds.html",
+    "title": "2  Cost of Funds",
+    "section": "",
+    "text": "2.1 What Is Cost of Funds?\nCost of funds is the interest rate a lender itself pays to borrow money. This is the floor. A lender can never sustainably lend below their cost of funds. If they do, they lose money on every loan.\nThink of it like this. You own a shop. You buy inventory at wholesale price and sell it at retail price. The wholesale price is your cost. You can’t sell below cost and stay in business. Cost of funds is a lender’s wholesale cost.\nIt directly affects everything a lender does:\nThis is why lenders with cheaper funds dominate their markets. They can undercut competitors and still make money.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Cost of Funds</span>"
+    ]
+  },
+  {
+    "objectID": "02-cost-of-funds.html#what-is-cost-of-funds",
+    "href": "02-cost-of-funds.html#what-is-cost-of-funds",
+    "title": "2  Cost of Funds",
+    "section": "",
+    "text": "A bank with cost of funds at 5% can offer 9% loans and pocket 4%.\nAn NBFC with cost of funds at 10% needs to charge 14% just to pocket the same 4%.\nA fintech with cost of funds at 15% needs to charge 19% for the same profit.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Cost of Funds</span>"
+    ]
+  },
+  {
+    "objectID": "02-cost-of-funds.html#where-different-lenders-get-their-money",
+    "href": "02-cost-of-funds.html#where-different-lenders-get-their-money",
+    "title": "2  Cost of Funds",
+    "section": "2.2 Where Different Lenders Get Their Money",
+    "text": "2.2 Where Different Lenders Get Their Money\nNot all lenders get money the same way. The source matters enormously.\n\n\n\nType of Lender\nFunding Source\nCost of Funds\n\n\n\n\nBank\nCASA deposits (savings & current accounts)\n4-6%\n\n\nBank\nTerm deposits (fixed deposits)\n6-8%\n\n\nNBFC\nBank loans\n8-11%\n\n\nNBFC\nMarket borrowing (bonds, CPs)\n9-12%\n\n\nFintech\nBank loans (smaller, harder to get)\n12-16%\n\n\nFintech\nInvestor equity\nVariable\n\n\n\nBanks have a huge advantage: CASA deposits. CASA stands for Current Account and Savings Account. Customers keep money in these accounts to pay bills and spend. Banks pay these customers almost nothing in interest — typically 3-4% on savings and 0% on current accounts. Yet the bank keeps the money and lends it out at 9% or higher. The spread is massive and stable.\nThis is why banks dominate retail lending and keep it cheap.\nNBFCs don’t have customer deposits. They have to borrow from banks or issue bonds in the market. These are expensive sources. Banks charge NBFCs 8-11% when they lend to them. The market charges 9-12% when NBFCs issue bonds. So the NBFC’s cost of funds is much higher.\nFintechs have it even harder. They’re new and small. Banks are hesitant to lend to them at cheap rates. They often borrow at 12-16%. Some raise money from equity investors, but that’s also expensive in the long run.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Cost of Funds</span>"
+    ]
+  },
+  {
+    "objectID": "02-cost-of-funds.html#why-cost-of-funds-matters-for-everything-else",
+    "href": "02-cost-of-funds.html#why-cost-of-funds-matters-for-everything-else",
+    "title": "2  Cost of Funds",
+    "section": "2.3 Why Cost of Funds Matters for Everything Else",
+    "text": "2.3 Why Cost of Funds Matters for Everything Else\nCost of funds is the rock bottom. It determines pricing, margins, and who can compete.\nHere’s a concrete example.\nA bank and an NBFC both want to offer a ₹1,00,000 personal loan with 0% EMI. To do this, they need to earn 20% IRR (the market rate for personal loans).\nBank’s math: - Cost of funds: 5% - Target IRR: 20% - Spread needed: 15% - They can comfortably charge this spread through subvention and fees.\nNBFC’s math: - Cost of funds: 10% - Target IRR: 20% - Spread needed: 10% - They need to charge 5% less. But the lender (bank borrowing to them) needs to earn 10%. The customer needs a competitive product. Margins get squeezed.\nThe NBFC is in a bind. They can’t lower their cost of funds. They have to accept lower margins or charge higher subvention, which makes their product less competitive.\nNow imagine a large bank enters checkout finance. They have: - Cost of funds: 4% - They can offer subvention that’s 6% cheaper than the NBFC.\nThe NBFC can’t compete on price. This is a real threat in Indian fintech. Fintechs built checkout finance when banks weren’t interested. Now that banks are interested, fintechs are losing share.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Cost of Funds</span>"
+    ]
+  },
+  {
+    "objectID": "02-cost-of-funds.html#cost-of-funds-and-subvention",
+    "href": "02-cost-of-funds.html#cost-of-funds-and-subvention",
+    "title": "2  Cost of Funds",
+    "section": "2.4 Cost of Funds and Subvention",
+    "text": "2.4 Cost of Funds and Subvention\nIn merchant lending, cost of funds directly limits how low subvention can go.\nA lender looks at their cost of funds and says: “What’s the minimum subvention I need to accept to make a profit?”\nLet’s say an NBFC’s cost of funds is 10% and operating costs are 2%. They need to earn at least 12% just to break even. So the minimum subvention they’ll accept on a ₹1,00,000 loan is about ₹12,000 (12% of ₹1,00,000). If a merchant tries to negotiate below ₹12,000, the lender walks away.\nA bank’s cost of funds is 5%. Operating costs are 1%. They need 6% minimum. They can accept ₹6,000 in subvention on the same ₹1,00,000 loan. This bank can undercut the NBFC and still be profitable.\nWhen a large bank enters merchant lending, they can accept lower subvention than NBFCs. NBFCs either drop their subvention to stay competitive (and accept lower margins) or exit the market. This is what’s happening in India right now.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Cost of Funds</span>"
+    ]
+  },
+  {
+    "objectID": "02-cost-of-funds.html#the-spread",
+    "href": "02-cost-of-funds.html#the-spread",
+    "title": "2  Cost of Funds",
+    "section": "2.5 The Spread",
+    "text": "2.5 The Spread\nThe spread (also called net interest margin) is the difference between what a lender charges and their cost of funds.\nFor banks: - Typical cost of funds: 5% - Typical lending rate: 9% - Spread: 4%\nFor NBFCs: - Typical cost of funds: 10% - Typical lending rate: 18-24% - Spread: 8-14%\nFor checkout finance: - The spread is often much higher because the lender gets paid upfront through subvention. - Example: Bank’s cost of funds is 5%. Customer’s stated rate is 0%. But the merchant pays 8% upfront as subvention. The effective spread is 3%.\nHigh spreads don’t always mean high profits. The NBFC might have a 10% spread but also have 8% losses from defaults. The bank might have a 4% spread but only 0.5% losses. After losses and operating costs, the bank’s actual profit is higher.\nBut in general: higher spreads allow for higher margins and more room for mistakes.\n\n\n\n\n\n\nTipMemorize This\n\n\n\nCost of funds is the single biggest driver of lending economics. A lender with cheaper funds can undercut competitors on price and still make more profit. This is why banks dominate retail lending. It’s also why new fintechs struggle — they have expensive funding and can’t compete on price.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Cost of Funds</span>"
+    ]
+  },
+  {
+    "objectID": "03-what-is-irr.html",
+    "href": "03-what-is-irr.html",
+    "title": "3  What Is IRR, Really?",
+    "section": "",
+    "text": "3.1 The Textbook Definition\nIRR stands for Internal Rate of Return. The textbook says: “IRR is the discount rate at which the net present value of all cashflows equals zero.”\nThat definition means nothing to most people. Let’s break it down.\nNPV stands for Net Present Value. It’s a way of comparing money today to money tomorrow. Money tomorrow is worth less than money today. An NPV of zero means: at this interest rate, the lender earned exactly that return. No more, no less.\nHere’s the core idea: If you lend ₹100 today and get back ₹120 in one year, you earned 20%. The IRR is 20%. At a 20% discount rate, the NPV of this investment is zero — meaning 20% was exactly what you earned.\nThat’s IRR. It’s the profit rate.\nBut the definition confuses people because it talks about “zero NPV” and people think “zero” means no profit. It doesn’t. It means the lender earned exactly that rate of return.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What Is IRR, Really?</span>"
+    ]
+  },
+  {
+    "objectID": "03-what-is-irr.html#why-npv-0-doesnt-mean-zero-profit",
+    "href": "03-what-is-irr.html#why-npv-0-doesnt-mean-zero-profit",
+    "title": "3  What Is IRR, Really?",
+    "section": "3.2 Why “NPV = 0” Doesn’t Mean Zero Profit",
+    "text": "3.2 Why “NPV = 0” Doesn’t Mean Zero Profit\nThis is the biggest misconception about IRR. People hear “NPV equals zero” and think the lender made no money. Wrong.\nNPV = 0 at a certain discount rate means the lender earned exactly that discount rate. That IS the profit.\nHere’s an analogy. You deposit ₹1 lakh in a fixed deposit at 8% interest per year. After one year, the bank gives you back ₹1,08,000. The net present value at 8% discount rate is zero. Does that mean you made no profit? No. You made ₹8,000 in profit. That’s 8% of your money.\nThe “zero NPV” is just the math at the rate you earned. It’s not saying you made nothing. It’s identifying the rate itself.\nLet’s use a lending example.\nA lender gives out a ₹30,000 loan. The customer pays ₹5,000 per month for 6 months. The lender also gets ₹3,500 upfront as a processing fee.\nCashflows: - Day 0: Lender gives out -₹30,000 - Day 0: Lender gets back +₹3,500 (fee) - Month 1: Lender gets +₹5,000 - Month 2: Lender gets +₹5,000 - … and so on until Month 6.\nThe lender invested ₹26,500 (₹30,000 - ₹3,500) and got back ₹30,000 (6 × ₹5,000). The profit is ₹3,500. The IRR is the rate that makes the NPV of all these cashflows equal to zero. It turns out to be 22%.\nAt a 22% discount rate, the NPV is exactly zero. The lender earned 22% IRR.\nThis 22% includes: - The principal repayment - The timing of repayments - The upfront fee\nNone of this is “zero profit.” It’s 22% annual profit.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What Is IRR, Really?</span>"
+    ]
+  },
+  {
+    "objectID": "03-what-is-irr.html#irr-vs-the-interest-rate-shown-to-customers",
+    "href": "03-what-is-irr.html#irr-vs-the-interest-rate-shown-to-customers",
+    "title": "3  What Is IRR, Really?",
+    "section": "3.3 IRR vs the Interest Rate Shown to Customers",
+    "text": "3.3 IRR vs the Interest Rate Shown to Customers\nThe interest rate advertised to customers is NOT the IRR. This is crucial.\nWhen a lender advertises “9% personal loan,” that 9% is the interest rate. It’s calculated on the original loan amount. It doesn’t include fees. It doesn’t account for the fact that the customer pays off the loan gradually (so the average balance outstanding is less than the original amount). The 9% is a simplified number.\nThe IRR includes everything: interest, fees, and the timing of when money moves.\nHere are the differences:\n\n\n\nFeature\nStated Rate\nIRR\n\n\n\n\nIncludes processing fee?\nNo\nYes\n\n\nAccounts for repayment timing?\nPartially\nYes\n\n\nAccounts for amortization?\nPartially\nYes\n\n\nAccounts for late charges?\nNo\nYes (expected)\n\n\nEasy to compare?\nSometimes\nYes\n\n\n\nExample 1: 0% EMI\nA checkout finance lender offers 0% EMI to customers. The stated rate is 0%. But the lender gets ₹3,500 upfront as a processing fee on a ₹30,000 loan. The lender’s IRR is 22%.\nThe customer thinks they’re borrowing at 0%. The lender is earning 22%. Both are technically correct. The lender’s 22% includes the upfront fee the customer paid (or the merchant paid).\nExample 2: Home Loan\nA bank offers a home loan at 9% interest per year. The customer also pays a ₹50,000 processing fee on a ₹50,00,000 loan. The stated rate is 9%. The true IRR is about 9.5% once you account for the fee, the timing of repayments, and the amortization schedule.\nThis might seem like a small difference. But on a 20-year loan, it compounds to a lot.\nExample 3: Flat Rate vs Reducing Balance\nSome lenders quote “10% flat” interest. This is confusing. It means 10% of the original amount, paid back in equal monthly installments.\nLet’s say you borrow ₹10,000 at 10% flat for 12 months.\n\nTotal interest paid: ₹1,000 (10% of ₹10,000)\nTotal repayment: ₹11,000\nMonthly payment: ₹916.67\n\nBut here’s the catch. You’re paying ₹916.67 per month even though the outstanding balance decreases. In month 1, you owe ₹10,000 and pay ₹916.67. In month 12, you owe ₹916.67 and pay ₹916.67. You’re paying the same amount regardless of how much you owe.\nThe IRR on this loan is not 10%. It’s about 18-20%. Why? Because the interest is charged on the full amount for the full term, even though you’ve already paid down half the loan.\nThis is why reducing balance is always cheaper than flat rate. In reducing balance, interest is charged only on the outstanding balance.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What Is IRR, Really?</span>"
+    ]
+  },
+  {
+    "objectID": "03-what-is-irr.html#rbis-apr-disclosure-rule",
+    "href": "03-what-is-irr.html#rbis-apr-disclosure-rule",
+    "title": "3  What Is IRR, Really?",
+    "section": "3.4 RBI’s APR Disclosure Rule",
+    "text": "3.4 RBI’s APR Disclosure Rule\nThe Reserve Bank of India now requires lenders to tell customers the APR (Annual Percentage Rate) in a Key Facts Statement. This is a step toward transparency.\nAPR includes all costs: interest, fees, charges, and everything else. The APR is calculated the same way as IRR. It’s the true cost of the loan.\nWhy did RBI introduce this? Because lenders could advertise “9% interest” and hide the actual cost in processing fees, late fees, and other charges. APR makes it harder to hide.\nFor checkout finance, APR disclosure is important. A 0% EMI product looks free. But if there’s a processing fee, that fee should appear in the APR. If the lender disclosed that the true APR is 22%, customers would know the actual cost.\nIn practice, APR disclosures are often overlooked. But they’re the legally required true rate.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What Is IRR, Really?</span>"
+    ]
+  },
+  {
+    "objectID": "03-what-is-irr.html#irr-vs-total-revenue-the-prepayment-paradox",
+    "href": "03-what-is-irr.html#irr-vs-total-revenue-the-prepayment-paradox",
+    "title": "3  What Is IRR, Really?",
+    "section": "3.5 IRR vs Total Revenue — The Prepayment Paradox",
+    "text": "3.5 IRR vs Total Revenue — The Prepayment Paradox\nHere’s a quirk of lending economics that confuses many people.\nWhen a customer prepays a loan (pays it off early), the lender’s IRR goes up but total revenue goes down.\nExample:\nA lender gives a ₹1,00,000 personal loan at 18% IRR over 5 years. The lender expects to earn ₹58,000 in total interest.\nBut the customer prepays after 2 years. The lender gets their principal back plus 2 years of interest. The IRR remains 18%, but the total interest earned is only ₹20,000 instead of ₹58,000.\nThis seems backwards. The IRR stayed the same, but the lender earned less money. Why?\nIRR is the annual rate of return on the money invested, per year. If you earn ₹18 per ₹100 per year, the IRR is 18%, whether you lend for 2 years or 5 years. The total interest earned depends on how long you lend.\nThis is why banks hate prepayment. The IRR doesn’t change, but they lose money. Some loans have prepayment penalties to compensate.\nIn merchant lending (checkout finance, no-cost EMI), prepayment is common. Customers pay off 6-month EMIs early, or miss a payment. Lenders have to factor prepayment risk into their IRR calculations.\n\n\n\n\n\n\nImportantMemorize This\n\n\n\nIRR is the annual profit rate on a loan, including all fees and the timing of cashflows. A stated interest rate is not the same as IRR. IRR is the true cost to the borrower and true profit to the lender. APR is the customer-friendly way to express IRR. When prepayment happens, IRR stays the same but total revenue drops — which is why lenders don’t like prepayment.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>What Is IRR, Really?</span>"
+    ]
+  },
+  {
+    "objectID": "04-how-lenders-set-irr.html",
+    "href": "04-how-lenders-set-irr.html",
+    "title": "4  How Lenders Set Their IRR Target",
+    "section": "",
+    "text": "4.1 The Five Components\nA lender’s required Internal Rate of Return (IRR) is not a magic number pulled from thin air. It’s the answer to a simple question: “How much return do I need to make this loan worth the risk?”\nThe answer is always the same: add up five things. Every rupee the merchant pays flows into one of these five buckets. This chapter shows you how.\nWhen a lender decides they need, say, 18% IRR on a merchant credit product, they’re actually saying: “These five costs and profit targets add up to 18%.”\nComponent 1: Cost of Funds\nFirst, the lender has to borrow money to lend to you. That costs them something.\nThis is their baseline cost. If they lend at anything below this rate, they lose money before we even count risk or operations.\nComponent 2: Expected Credit Loss\nSome borrowers will default. You know this. So does the lender.\nExpected Loss = Probability of Default × Loss Given Default\nSuppose the lender expects 3% of merchants to default. And when they default, the lender recovers 40% of the loan (sells inventory, collateral, etc). Then:\nLoss Given Default = 1 - 0.40 = 60% Expected Loss = 3% × 60% = 1.8% of the loan amount\nA ₹100,000 loan in this scenario costs the lender ₹1,800 in expected losses, baked into the price.\nComponent 3: Operating Cost\nRunning the lending business costs money. KYC checks. Underwriting. Servicing. Collections.\nFor merchant lending, this typically runs 1-3% of the loan amount annually.\nA ₹100,000 loan might cost ₹1,000-3,000 to originate, service, and potentially collect on.\nComponent 4: Capital/Regulatory Charge\nBanks must hold capital against every loan they make. An 8% capital adequacy requirement means that on a ₹1,00,000 portfolio, they must hold ₹8,000 in capital.\nThat capital has a cost. It needs to earn the bank’s cost of equity (typically 15-20% per year). So even though they’re only holding 8%, the cost per loan works out to roughly 1-2% IRR.\nThis is pure regulation. It exists to make the banking system safer. The lender passes it to you.\nComponent 5: Required Profit\nAfter costs, the lender wants profit. Shareholders expect a Return on Assets (ROA) — profit as a percentage of assets — of 2-4% per year on average.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>How Lenders Set Their IRR Target</span>"
+    ]
+  },
+  {
+    "objectID": "04-how-lenders-set-irr.html#the-five-components",
+    "href": "04-how-lenders-set-irr.html#the-five-components",
+    "title": "4  How Lenders Set Their IRR Target",
+    "section": "",
+    "text": "A bank borrows at 4-6% (from deposits, other banks, RBI)\nAn NBFC borrows at 9-12% (from banks, bonds, commercial paper)\nA fintech borrows at 12-16% (from banks, private lending, aggregators)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4.1.1 The Formula\n\\[\\text{Required IRR} = \\text{Cost of Funds} + \\text{Expected Loss} + \\text{Opex} + \\text{Capital Charge} + \\text{Profit Target}\\]\nEvery percentage point in one component has to come from somewhere. If your cost of funds goes up 1%, and you don’t want to cut profit, your lending rate goes up 1%.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>How Lenders Set Their IRR Target</span>"
+    ]
+  },
+  {
+    "objectID": "04-how-lenders-set-irr.html#why-different-lenders-need-different-irrs",
+    "href": "04-how-lenders-set-irr.html#why-different-lenders-need-different-irrs",
+    "title": "4  How Lenders Set Their IRR Target",
+    "section": "4.2 Why Different Lenders Need Different IRRs",
+    "text": "4.2 Why Different Lenders Need Different IRRs\nNot all lenders are the same. A bank and a fintech face different costs, so they need different IRRs.\n\n\n\nComponent\nBank (Secured)\nNBFC\nConsumer Finance NBFC\n\n\n\n\nCost of Funds\n5%\n10%\n10%\n\n\nExpected Loss\n2%\n2%\n2%\n\n\nOpex\n1%\n2%\n2%\n\n\nCapital Charge\n1.5%\n1%\n1%\n\n\nProfit Target\n2%\n3%\n5-8%\n\n\nTotal IRR\n11.5%\n18%\n20-23%\n\n\n\nA bank can lend at 11.5% for secured loans because deposits are cheap. An NBFC needs 18% because borrowed money costs more. A consumer finance NBFC needs 20-23% because defaults are higher and they need fatter profit margins to survive a bad quarter.\nThis is why you see: - Bank personal loans at 10-12% - NBFC personal loans at 15-18% - Fintech personal loans at 18-24%\nThe lender’s cost structure makes the IRR, and you pay it.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>How Lenders Set Their IRR Target</span>"
+    ]
+  },
+  {
+    "objectID": "04-how-lenders-set-irr.html#the-per-transaction-vs-portfolio-view",
+    "href": "04-how-lenders-set-irr.html#the-per-transaction-vs-portfolio-view",
+    "title": "4  How Lenders Set Their IRR Target",
+    "section": "4.3 The Per-Transaction vs Portfolio View",
+    "text": "4.3 The Per-Transaction vs Portfolio View\nHere’s where merchants get confused. You think in terms of take-rate: the percentage you pay per transaction. The lender thinks in terms of IRR: the annual return on the entire portfolio.\nThese are connected by tenure. Short tenure → low take-rate. Long tenure → high take-rate.\n\\[\\text{Take-rate %} = \\frac{\\text{Subvention Amount}}{\\text{Transaction Value}} \\times 100\\]\nFor Bajaj-style consumer durable (CD) loans, typical take-rates are 3-8% depending on: - How long the EMI runs (3 months vs 12 months) - How risky the merchant category is - Competitive pressure in that segment\nA 6-month EMI might cost the merchant 5-6% subvention. A 12-month EMI might cost 8-10%.\nThe lender’s 22% IRR is spread across twelve months of getting ₹1/12 of the principal back. Your 6% take-rate is what covers that spread over six months.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>How Lenders Set Their IRR Target</span>"
+    ]
+  },
+  {
+    "objectID": "04-how-lenders-set-irr.html#how-to-think-like-bajaj-finance",
+    "href": "04-how-lenders-set-irr.html#how-to-think-like-bajaj-finance",
+    "title": "4  How Lenders Set Their IRR Target",
+    "section": "4.4 How to Think Like Bajaj Finance",
+    "text": "4.4 How to Think Like Bajaj Finance\nBajaj Finance (one of India’s largest NBFC-MFI companies) lends heavily to consumer durables and appliances. Here’s roughly how they think:\n\n\n\nMetric\nBajaj Range\n\n\n\n\nRequired IRR\n22-30%\n\n\nExpected Loss Rate\n1.5-4%\n\n\nCost of Funds\n7-9%\n\n\nOpex\n2-3%\n\n\nProfit (ROA)\n&gt;4%\n\n\n\nThe difference between IRR target and cost of funds (22% - 8% = 14%) has to come from subvention from the merchant, plus whatever the customer pays for processing fees, plus float income, plus down payment contributions.\nIf you’re a merchant and Bajaj comes to you with “no-cost EMI,” you know they’re not actually earning 22% from you alone. They’re: 1. Taking subvention from you (the biggest part) 2. Taking processing fees from the customer (1-2%) 3. Earning float on collections (1-2%) 4. Getting some margin from a lower loss rate than they modeled\nIt all adds up to 22% IRR.\n\n\n\n\n\n\nImportant\n\n\n\nMemorize This\nRequired IRR = Cost of Funds + Losses + Opex + Capital Charge + Profit\nEvery basis point (0.01%) in your cost of funds flows directly to what the merchant must pay. If your funding cost rises 1%, you need 1% more from the merchant unless you cut something else.",
+    "crumbs": [
+      "Part I: Foundations",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>How Lenders Set Their IRR Target</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html",
+    "href": "05-math-of-subvention.html",
+    "title": "5  The Math of Subvention",
+    "section": "",
+    "text": "5.1 The Cashflows in a No-Cost EMI Loan\nSubvention is the most misunderstood number in merchant lending. Everyone thinks it’s simple: “6% subvention on a ₹30,000 loan = ₹1,800.” That’s true, but incomplete.\nThe ₹1,800 has to be worth enough to the lender to give them 22% IRR over six months when they also earn float, charge processing fees, and hold capital. This chapter shows you the math.\nWe’ll move from the real calculations to a simple formula you can use on the back of an envelope.\nLet’s trace a ₹30,000 no-cost EMI loan over six months.\nMonth 0 (Disbursement): - Lender pays merchant ₹30,000 - Merchant pays subvention S to the lender (e.g., ₹1,500 = 5%) - Lender pays origination/servicing cost εP (let’s say ε = 1%, so ₹300) - Net lender cash out: ₹30,000 - ₹1,500 + ₹300 = ₹28,800\nMonths 1-6 (Collections): - Customer pays EMI of ₹30,000/6 = ₹5,000 each month\nExpected Loss: Sometime around month 3 (the midpoint), the lender will face expected losses. If loss rate = 2%, that’s ₹600 they won’t collect.\nHere’s the cashflow table:\nThe lender’s job is to find the subvention S that makes the NPV of this cashflow equal to zero at their required IRR.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html#the-cashflows-in-a-no-cost-emi-loan",
+    "href": "05-math-of-subvention.html#the-cashflows-in-a-no-cost-emi-loan",
+    "title": "5  The Math of Subvention",
+    "section": "",
+    "text": "Month\nCustomer Payment\nLender Receives\nNotes\n\n\n\n\n0\n-\n-₹28,800\nNet disbursement after subvention\n\n\n1\n₹5,000\n₹5,000\n\n\n\n2\n₹5,000\n₹5,000\n\n\n\n3 (mid)\n-\n-₹600\nExpected loss taken\n\n\n3\n₹5,000\n₹5,000\n\n\n\n4\n₹5,000\n₹5,000\n\n\n\n5\n₹5,000\n₹5,000\n\n\n\n6\n₹5,000\n₹5,000",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html#converting-annual-irr-to-monthly",
+    "href": "05-math-of-subvention.html#converting-annual-irr-to-monthly",
+    "title": "5  The Math of Subvention",
+    "section": "5.2 Converting Annual IRR to Monthly",
+    "text": "5.2 Converting Annual IRR to Monthly\nAn IRR is always annualized. If the lender needs 24% annual IRR, we need to convert this to a monthly discount rate.\nThe formula is:\n\\[r_{\\text{monthly}} = (1 + r_{\\text{annual}})^{1/12} - 1\\]\nFor 24% annual:\n\\[r_{\\text{monthly}} = (1.24)^{1/12} - 1 = 1.0181 - 1 = 1.81\\%\\]\nSo each month, the lender discounts at 1.81%.\nWhy not just 24% ÷ 12 = 2%? Because interest is compounded. Two percent per month for 12 months gives you \\((1.02)^{12} - 1 = 26.8\\%\\), not 24%. The 1.81% monthly rate properly compounds to 24% annually.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html#the-exact-subvention-formula",
+    "href": "05-math-of-subvention.html#the-exact-subvention-formula",
+    "title": "5  The Math of Subvention",
+    "section": "5.3 The Exact Subvention Formula",
+    "text": "5.3 The Exact Subvention Formula\nThe lender solves for S such that the Net Present Value of all cashflows is zero.\n\\[0 = -P(1 - s + \\varepsilon) + \\sum_{t=1}^{n} \\frac{P/n}{(1 + r)^{t/12}} - L \\cdot P\\]\nWhere: - P = principal (₹30,000) - s = take-rate as a decimal (0.05 for 5%) - ε = opex as a decimal (0.01 for 1%) - r = annual IRR (0.24 for 24%) - n = tenure in months (6) - L = loss rate as a decimal (0.02 for 2%) - t = month number\nThis equation says: “The money I put out today, minus subvention and opex, plus the discounted value of future EMI collections, minus expected losses, equals zero.”\nSolving this requires algebra. The good news: someone already did it. The formula for subvention is:\n\n\\[s \\approx \\frac{r}{(1 + r)^{n/12} - 1} \\cdot \\frac{n + 1}{24} + \\varepsilon + L\\]\n\nThis exact formula is what Bajaj, Flexipay, and every lender uses in their models. But you don’t need to memorize it. The linear approximation below is almost as good.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html#the-back-of-envelope-formula-memorize-this",
+    "href": "05-math-of-subvention.html#the-back-of-envelope-formula-memorize-this",
+    "title": "5  The Math of Subvention",
+    "section": "5.4 The Back-of-Envelope Formula (Memorize This)",
+    "text": "5.4 The Back-of-Envelope Formula (Memorize This)\nHere’s the key insight: in an EMI loan, the lender doesn’t have all the money out for all twelve months. They get it back in chunks.\nAverage time outstanding = \\(\\frac{n + 1}{2}\\) months\nThen we convert from months to years by dividing by 12:\nAverage time as a fraction of year = \\(\\frac{n + 1}{24}\\)\nSo:\n\n\\[\\text{Take%} \\approx (R - F) \\cdot \\frac{n+1}{24} + \\varepsilon + L\\]\n\nWhere: - R = required annual IRR (as a decimal, e.g., 0.24) - F = float yield (typically 4-8%, so 0.05) - n = tenure in months - ε = opex rate - L = loss rate\nLet me walk you through why \\((n+1)/24\\) makes sense.\nWhy \\((n+1)/24\\)?\nYou lend ₹30,000 for 6 months. You get ₹5,000 back each month starting month 1.\n\nAfter month 1: you have ₹25,000 out\nAfter month 2: you have ₹20,000 out\nAfter month 3: you have ₹15,000 out\nAfter month 4: you have ₹10,000 out\nAfter month 5: you have ₹5,000 out\nAfter month 6: you have ₹0 out\n\nAverage = (30 + 25 + 20 + 15 + 10 + 5) / 6 = 17.5k = 3.5 months worth.\nFor a 6-month loan, average tenure is (6+1)/2 = 3.5 months. Divide by 12 to convert to years: 3.5/12 = 0.292 = (6+1)/24. Exactly.\nFor a 3-month loan: (3+1)/24 = 4/24 = 1/6 ≈ 1.67 months average. For a 12-month loan: (12+1)/24 = 13/24 ≈ 5.4 months average.\nThis is why longer tenures need higher subvention. You’re asking the lender to lock up capital for longer.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html#worked-examples",
+    "href": "05-math-of-subvention.html#worked-examples",
+    "title": "5  The Math of Subvention",
+    "section": "5.5 Worked Examples",
+    "text": "5.5 Worked Examples\nLet’s calculate take-rates for three different tenures. Assumptions: - Required IRR: R = 24% - Float yield: F = 6% - Opex rate: ε = 1% - Loss rate: L = 2%\n3-Month Loan:\nExact formula (you’d use a calculator): ~5.2% Back-of-envelope: \\((0.24 - 0.06) \\times \\frac{3+1}{24} + 0.01 + 0.02 = 0.18 \\times 0.167 + 0.03 = 0.030 + 0.03 = 6.0\\%\\)\n6-Month Loan:\nExact formula: ~8.8% Back-of-envelope: \\((0.24 - 0.06) \\times \\frac{6+1}{24} + 0.01 + 0.02 = 0.18 \\times 0.292 + 0.03 = 0.052 + 0.03 = 8.2\\%\\)\n12-Month Loan:\nExact formula: ~14.5% Back-of-envelope: \\((0.24 - 0.06) \\times \\frac{12+1}{24} + 0.01 + 0.02 = 0.18 \\times 0.542 + 0.03 = 0.097 + 0.03 = 12.7\\%\\)\nNotice the back-of-envelope is a bit low for longer tenures. That’s because we used a linear approximation instead of the exact compounding formula. But it’s close enough to sense-check.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html#the-instant-cheat-numbers",
+    "href": "05-math-of-subvention.html#the-instant-cheat-numbers",
+    "title": "5  The Math of Subvention",
+    "section": "5.6 The Instant Cheat Numbers",
+    "text": "5.6 The Instant Cheat Numbers\nFor a lender targeting 24% IRR with 6% float yield, 1% opex, 2% loss rate:\n\n\n\nTenure\nTake-rate\n\n\n\n\n1-month\n~5%\n\n\n3-month\n~6-7%\n\n\n6-month\n~8-10%\n\n\n12-month\n~14-16%\n\n\n\nThese numbers show up everywhere in Indian merchant lending. If you see “6-month EMI, 8% merchant discount,” now you know why.\nThe pattern: For every extra month of tenure, you add roughly 0.3% to the take-rate.\nActually, a simpler cheat: For R = 24%, F = 6%, ε = 1%, L = 2%:\n\\[\\text{Take%} \\approx \\frac{n+1}{10} + 3\\%\\]\n\n1-month: (1+1)/10 + 3% = 5.2%\n3-month: (3+1)/10 + 3% = 7.0%\n6-month: (6+1)/10 + 3% = 10.0%\n12-month: (12+1)/10 + 3% = 16.3%\n\nClose enough for a back-of-envelope calc.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "05-math-of-subvention.html#why-linear-math-always-overestimates",
+    "href": "05-math-of-subvention.html#why-linear-math-always-overestimates",
+    "title": "5  The Math of Subvention",
+    "section": "5.7 Why Linear Math Always Overestimates",
+    "text": "5.7 Why Linear Math Always Overestimates\nHere’s a common mistake. Someone says:\n\n“24% IRR means 2% per month. For 6 months, that’s 2% × 6 = 12% subvention.”\n\nWrong. The lender gets principal back monthly, so they’re not actually earning 24% on the full amount for six months.\nHere’s the intuition: if you lend ₹30,000 and get ₹5,000 back each month, by month 4 you only have ₹10,000 still deployed. You can’t earn 24% on ₹10,000 when you’re only owed ₹10,000. The math doesn’t work.\nThe real answer accounts for this: the lender only needs 8-9% subvention on a 6-month EMI to hit 24% IRR, not 12%.\nThis is why simple “2% per month” estimates are always too high. The true formula includes the recovery of principal, which reduces how much yield the lender needs.\n\n\n\n\n\n\nImportant\n\n\n\nMemorize This\nFor 6-month EMI loans at 24% IRR with 6% float and typical opex/loss:\n\\[\\text{Take%} \\approx (R - F) \\cdot \\frac{n+1}{24} + \\varepsilon + L\\]\nUse \\((n+1)/24\\) because the lender gets principal back over time, not all at the end.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>The Math of Subvention</span>"
+    ]
+  },
+  {
+    "objectID": "06-float-fees-downpayments.html",
+    "href": "06-float-fees-downpayments.html",
+    "title": "6  Float, Fees, and Down Payments",
+    "section": "",
+    "text": "6.1 What Is Float?\nSubvention is not the only way a lender makes money on a merchant lending deal. There are three other levers: float, processing fees, and down payments. This chapter shows you how each one works and how they combine to reduce what you actually have to pay.\nFloat is money sitting idle in someone’s account before it needs to go somewhere else.\nWhen you deposit ₹1,000 in your savings account and it earns 4% interest per year, you’re earning on float. The bank takes your money, deploys it elsewhere at higher rates, and gives you 4%. That 4% is the value of float.\nIn merchant lending, float works the same way. EMI money pools in accounts, refunds accumulate, brand subsidy funds sit waiting. The lender invests this idle cash in short-term money market instruments (bonds, reverse repos, T-bills) earning 5-8% per year.\nThis float income reduces the subvention the lender needs from you.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Float, Fees, and Down Payments</span>"
+    ]
+  },
+  {
+    "objectID": "06-float-fees-downpayments.html#where-float-comes-from",
+    "href": "06-float-fees-downpayments.html#where-float-comes-from",
+    "title": "6  Float, Fees, and Down Payments",
+    "section": "6.2 Where Float Comes From",
+    "text": "6.2 Where Float Comes From\nEMI Collections Pooling\nCustomers pay EMIs on, say, the 10th of each month. But the lender doesn’t immediately deduct from their account or deploy the money. The cash sits in a pooling account earning interest for 1-3 days before it’s reconciled against the loan ledger.\n₹1 crore in EMI collections earning 6% float for 2 days = ₹1,00,00,000 × 0.06 ÷ 365 × 2 = ₹32,877 of free money.\nRefund Pools\nWhen a customer returns a product (within 30 days for appliances, 10 days for electronics), the refund goes into a pool. It sits for 2-7 days before it’s matched to a customer account and reversed.\nIf the NBFC has ₹50 lakh in refunds sitting for an average of 4 days: ₹50,00,000 × 0.06 ÷ 365 × 4 = ₹32,877.\nStaggered Disbursements\nSome lenders disburse in stages. They approve for ₹30,000 but release ₹10,000 at purchase, ₹10,000 at delivery, ₹10,000 at final inspection. Money that was supposed to be out sits earning float between tranches.\nBrand Subsidy Pools\nWhen a brand (like Samsung or LG) subsidizes EMI schemes, they deposit funds upfront. The lender invests this until it’s deployed against actual loans. Brand deposit of ₹1 crore at 7% earning float for 2 months = ₹1,00,00,000 × 0.07 ÷ 12 × 2 = ₹11.67 lakhs.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Float, Fees, and Down Payments</span>"
+    ]
+  },
+  {
+    "objectID": "06-float-fees-downpayments.html#does-t1-settlement-create-float",
+    "href": "06-float-fees-downpayments.html#does-t1-settlement-create-float",
+    "title": "6  Float, Fees, and Down Payments",
+    "section": "6.3 Does T+1 Settlement Create Float?",
+    "text": "6.3 Does T+1 Settlement Create Float?\nNo. People often confuse merchant settlement timing with float. Let me clarify.\nScenario 1: T+0 Settlement, No Float\n\nDay 1: Customer buys for ₹30,000 EMI\nDay 1: Lender disburses ₹28,500 to merchant (net of subvention)\nDay 1: Customer makes first EMI payment (₹5,000)\nDay 1: Lender deducts ₹5,000 from the loan\nResult: No float. Money moved immediately.\n\nScenario 2: T+1 Settlement with Float\n\nDay 1: Customer buys for ₹30,000 EMI\nDay 1: Lender disburses ₹28,500 to merchant\nDay 1: Customer makes first EMI payment (₹5,000)\nDay 2: EMI payment clears and is posted to the loan\nResult: Still no float from settlement timing. The T+1 delay is just about ledger posting, not about earning on idle money.\n\nScenario 3: T+1 Settlement WITH Float (Pooling)\n\nDay 1: Customer buys for ₹30,000 EMI\nDay 1-15: Many customers make payments throughout the month\nDay 15: Lender has ₹50 lakh in unposted EMI payments sitting in a transaction account\nDay 16-17: These payments are reconciled, netted, and posted to loans\nResult: ₹50 lakh earned float for 1-2 days while sitting idle.\n\nThe float comes from batching, not from T+1 settlement itself. T+1 is about when you get paid. Float is about how long money sits in the lender’s account earning interest.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Float, Fees, and Down Payments</span>"
+    ]
+  },
+  {
+    "objectID": "06-float-fees-downpayments.html#how-float-reduces-subvention",
+    "href": "06-float-fees-downpayments.html#how-float-reduces-subvention",
+    "title": "6  Float, Fees, and Down Payments",
+    "section": "6.4 How Float Reduces Subvention",
+    "text": "6.4 How Float Reduces Subvention\nEvery percentage point of float yield saves you roughly 0.3-0.5% in subvention, depending on tenure.\nHere’s why: in a 6-month EMI, the lender has money outstanding for an average of 3.5 months. If they’re earning 6% float on average balances for 3.5 months, that’s:\nFloat income = Average balance × 6% × (3.5/12) = Average balance × 1.75%\nSince average balance on a ₹30,000 loan is ₹15,000, float income is roughly ₹262. That’s worth about 0.87% of the original ₹30,000 principal. So 6% float yield saves roughly 0.87% in subvention on a 6-month loan.\n\n\n\nTenure\nFloat Yield → Subvention Savings\n\n\n\n\n1-month\n6% float → saves ~0.5% subvention\n\n\n3-month\n6% float → saves ~1.0% subvention\n\n\n6-month\n6% float → saves ~1.75% subvention\n\n\n12-month\n6% float → saves ~3.0% subvention\n\n\n\nA 6-month loan that would need 10% subvention at 0% float only needs 8.25% subvention if the lender earns 6% float.\nThis is why lenders obsess over float. It’s free money. It improves unit economics without touching the merchant economics.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Float, Fees, and Down Payments</span>"
+    ]
+  },
+  {
+    "objectID": "06-float-fees-downpayments.html#processing-fees",
+    "href": "06-float-fees-downpayments.html#processing-fees",
+    "title": "6  Float, Fees, and Down Payments",
+    "section": "6.5 Processing Fees",
+    "text": "6.5 Processing Fees\nMany lenders charge the customer an upfront processing fee: 1-3% of the loan amount.\nThis is separate from subvention (paid by merchant) and is instead paid directly by the customer.\nExample:\n\nLoan amount: ₹30,000\nProcessing fee: 2% = ₹600\nSubvention needed (before fee): 9%\nSubvention needed (after fee): 8%\n\nThe ₹600 processing fee is worth about 2% of the loan, which directly offsets the subvention need. If you charge the customer 2% and reduce subvention by 2%, the lender’s IRR stays the same but the merchant cost drops.\nThe GST Nuance:\nProcessing fees are taxable. On a ₹600 fee, GST is 18%: ₹108.\nSo the customer pays ₹708, and the lender keeps ₹600 after remitting ₹108 to the government. Net to lender = ₹600, but customer sees ₹708.\nFrom the merchant’s perspective, if the lender says “we’ll charge the customer 3% processing fee instead of asking you for 3% subvention,” the merchant sees a win (no cost to them). The lender still gets the rupees they need, just from a different pocket.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Float, Fees, and Down Payments</span>"
+    ]
+  },
+  {
+    "objectID": "06-float-fees-downpayments.html#down-payments",
+    "href": "06-float-fees-downpayments.html#down-payments",
+    "title": "6  Float, Fees, and Down Payments",
+    "section": "6.6 Down Payments",
+    "text": "6.6 Down Payments\nA down payment reduces the financed amount. If a customer buys a ₹30,000 TV and puts down ₹9,000 (30%), the lender only finances ₹21,000.\nWhy This Matters for Subvention:\nSubvention is calculated as a percentage of the financed amount, not the total purchase price.\nSubvention without down payment: ₹30,000 × 8% = ₹2,400 Subvention with 30% down: ₹21,000 × 8% = ₹1,680\nSimple rule:\n\\[\\text{Subvention(with down payment)} = \\text{Subvention(no down)} \\times (1 - \\text{Down%})\\]\nA 20% down payment reduces subvention by roughly 20%.\nWhy Merchants and Lenders Like Down Payments:\n\nIt shrinks the financed amount, so less subvention is needed\nCustomer has skin in the game — they paid their own money upfront — so defaults drop sharply\nIf the customer defaults, the down payment is the lender’s cushion\n\nA customer who paid ₹9,000 down is much less likely to default on a ₹21,000 EMI than someone who financed the full ₹30,000.\nResearch from Indian fintech lenders shows default rates drop 30-50% when a down payment is required, because the customer is committed.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Float, Fees, and Down Payments</span>"
+    ]
+  },
+  {
+    "objectID": "06-float-fees-downpayments.html#the-complete-picture",
+    "href": "06-float-fees-downpayments.html#the-complete-picture",
+    "title": "6  Float, Fees, and Down Payments",
+    "section": "6.7 The Complete Picture",
+    "text": "6.7 The Complete Picture\nThese three levers — float, fees, down payments — all reduce merchant cost without cutting lender profitability.\n\n\n\n\n\n\n\n\nLever\nWhat It Does\nEffect on Merchant\n\n\n\n\nFloat\nLender earns 5-8% on idle money\nReduces subvention by 1-3% depending on tenure\n\n\nProcessing Fee\nCustomer pays 1-3% directly\nReduces subvention 1-for-1 (after GST adjustment)\n\n\nDown Payment\nShrinks financed amount\nReduces subvention payout by same % (and reduces defaults)\n\n\n\nWorked Example:\nA lender targets 24% IRR on a 6-month EMI product. Base subvention is 10%.\nNow add three optimizations: - 6% float yield saves 1.75% → new subvention need: 8.25% - 2% processing fee on customer → save another 2% → new need: 6.25% - 20% down payment from customer → save 20% payout → final payout = 6.25% × 0.8 = 5%\nSo a merchant that would have paid ₹3,000 subvention on a ₹30,000 loan now pays only ₹1,050 (5% × ₹21,000 financed). The lender still hits 24% IRR. The customer pays ₹600 processing fee. Everyone is better off.\n\n\n\n\n\n\nNote\n\n\n\nMemorize This\nFloat, fees, and down payments are force multipliers on your profitability as a lender. They reduce merchant cost without cutting IRR. This is why Indian fintech lenders have gotten aggressive on all three: charging processing fees, building float management ops, and pushing down payments.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Float, Fees, and Down Payments</span>"
+    ]
+  },
+  {
+    "objectID": "07-checkout-finance.html",
+    "href": "07-checkout-finance.html",
+    "title": "7  Checkout Finance and No-Cost EMI",
+    "section": "",
+    "text": "7.1 The Checkout Finance Value Chain\nA customer walks into a store or lands on an e-commerce site to buy a ₹30,000 appliance. They see “No-Cost EMI Available.” They choose the EMI option. A complex machine whirs to life.\nThis chapter maps that machine. It shows you who makes money, who pays, and where the arbitrage is.\nWhen a ₹30,000 purchase gets financed through no-cost EMI, five parties are involved:\nMoney Flow on a ₹30,000 Purchase:\nThe math works because subvention (₹1,800 or 6%), float (₹500), and customer fees (₹600) add up to about ₹2,900 of lender income on a ₹30,000 deployment.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Checkout Finance and No-Cost EMI</span>"
+    ]
+  },
+  {
+    "objectID": "07-checkout-finance.html#the-checkout-finance-value-chain",
+    "href": "07-checkout-finance.html#the-checkout-finance-value-chain",
+    "title": "7  Checkout Finance and No-Cost EMI",
+    "section": "",
+    "text": "Party\nRole\nEconomics\n\n\n\n\nCustomer\nApplies for EMI, makes monthly payments\nPays no interest (that’s the point). May pay processing fee (1-2%). Gets 45-90 day credit interest-free.\n\n\nMerchant\nSells the product, takes subvention cost\nReceives ₹28,200 (if 6% subvention = ₹1,800) upfront instead of ₹30,000 on day 0. ROI on ₹1,800 cost = higher conversion, lower returns.\n\n\nLender (NBFC/Bank)\nGives the ₹30,000, collects EMI, absorbs defaults\nTargets 22-30% IRR from subvention + float + fees + lower loss rate.\n\n\nPG/Fintech\nConnects merchant to lender, manages checkout UI, reconciliation, settlements\nTakes 0.5-1.5% of transaction value as a platform fee.\n\n\nBrand (optional)\nMay co-brand or subsidize the EMI offer\nCovers some/all of the subvention cost as a marketing expense. Samsung/LG often do this.\n\n\n\n\n\nDay 0: Customer completes purchase on checkout\nDay 0: Lender approves and disburses ₹30,000\nDay 0: Merchant gets ₹28,200 (₹30k - ₹1,800 subvention) + PG settlement fee\nDay 1-6: Customer pays ₹5,000 each month as EMI\nLender nets: ₹5k × 6 = ₹30k inflow, minus ₹28.2k net outflow to merchant, minus expected losses (~₹600), plus float income (~₹500), plus processing fees from customer (~₹600) = roughly ₹1.3k gross income on ₹28.2k deployment = ~4.6% per 6 months = ~22% IRR.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Checkout Finance and No-Cost EMI</span>"
+    ]
+  },
+  {
+    "objectID": "07-checkout-finance.html#how-no-cost-emi-actually-works",
+    "href": "07-checkout-finance.html#how-no-cost-emi-actually-works",
+    "title": "7  Checkout Finance and No-Cost EMI",
+    "section": "7.2 How No-Cost EMI Actually Works",
+    "text": "7.2 How No-Cost EMI Actually Works\n“No-cost” is one of the most misleading words in lending. Someone always pays. Usually it’s the merchant. Sometimes it’s split with the customer or the brand.\nHere’s the breakdown:\nThe Customer pays: - Processing fee (1-2% upfront) - EMI amount (₹5,000 per month for 6 months = ₹30,000 total) - No interest\nThe Merchant pays: - Subvention (6% in this example = ₹1,800) - Platform fees (0.5-1.5% of transaction = ₹150-450) - Net cost to merchant: 6.5-7.5% of transaction value\nThe Lender earns: - Subvention from merchant (₹1,800) - Processing fees from customer (₹600, net of GST) - Float income on pooled EMI and refund money (₹500) - Interest income on capital requirement (minimal, ~₹100) - Minus: expected losses (~₹600 on 2% default rate) - Total lender income: ~₹2,300 on ₹28,200 deployment\nThe Brand (optional): - May cover 20-50% of the subvention as a marketing cost - On this ₹30k transaction, brand might reimburse ₹300-900 to the lender or merchant - This shows up as “brand-subsidized no-cost EMI”\nNet result: The merchant pays 5-8% of the transaction value. The customer pays almost nothing in rupees (just the processing fee). The lender hits 20-25% IRR. The brand (if involved) treats part of this as a customer acquisition cost.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Checkout Finance and No-Cost EMI</span>"
+    ]
+  },
+  {
+    "objectID": "07-checkout-finance.html#why-merchants-pay-5-10",
+    "href": "07-checkout-finance.html#why-merchants-pay-5-10",
+    "title": "7  Checkout Finance and No-Cost EMI",
+    "section": "7.3 Why Merchants Pay 5-10%",
+    "text": "7.3 Why Merchants Pay 5-10%\nThis is the key question: if a customer can buy with 0% interest, why would a merchant pay 5-10% discount to offer this?\nThe answer is conversion math.\nScenario A: No EMI Offering - 100 visitors - 2% conversion rate - Average order value ₹30,000 - Revenue: 100 × 2% × ₹30,000 = ₹60,000\nScenario B: With No-Cost EMI - 100 visitors - 2.6% conversion rate (30% lift is typical on high-ticket) - Average order value ₹35,000 (EMI allows higher ticket purchases) - Revenue: 100 × 2.6% × ₹35,000 = ₹91,000\nCost of EMI: - Subvention on 91k: 8% = ₹7,280\nNet gain: ₹91,000 - ₹60,000 - ₹7,280 = ₹23,720\nThe merchant makes an extra ₹23,720 in gross profit by paying ₹7,280 in subvention.\nThe ROI on the subvention cost is 23,720 / 7,280 = 3.26x or 226% incremental return.\nThis is why EMI programs are now standard on every appliance, consumer durable, and furniture e-commerce site. The math is too good to pass up.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Checkout Finance and No-Cost EMI</span>"
+    ]
+  },
+  {
+    "objectID": "07-checkout-finance.html#minimum-ticket-size",
+    "href": "07-checkout-finance.html#minimum-ticket-size",
+    "title": "7  Checkout Finance and No-Cost EMI",
+    "section": "7.4 Minimum Ticket Size",
+    "text": "7.4 Minimum Ticket Size\nNot every purchase should be financed. There are fixed costs per loan.\nFixed Costs per Loan: - KYC and identity verification: ₹80-150 - Credit check and underwriting: ₹40-80 - Loan servicing and monitoring: ₹50-100 per year - Collections (if default): ₹200-500\nTotal per-loan cost: roughly ₹300-500 upfront, ₹50-100 per year of active loan.\nThe Math:\nA ₹3,000 loan at 6% subvention earns the lender ₹180.\nIf origination cost is ₹150, the lender is left with ₹30 of margin for the year. One default and they’re underwater.\nA ₹5,000 loan at 6% earns ₹300. Origination cost ₹150 leaves ₹150 margin. Still tight but viable.\nA ₹10,000 loan at 6% earns ₹600. After ₹150 origination, ₹450 margin covers 2-3 defaults’ cost.\nMinimum Ticket Size Formula:\n\\[\\text{Min Ticket} = \\frac{\\text{Fixed Origination Cost}}{\\text{Take-rate%}}\\]\nIf fixed cost is ₹300 and take-rate is 6%:\nMin Ticket = 300 / 0.06 = ₹5,000\nBelow ₹5,000, the math breaks. Most Indian fintechs won’t finance below ₹5,000-10,000 because it’s not profitable.\nThis is one reason why EMI is prevalent in appliances (₹20k+) and furniture (₹30k+) but rare in apparel (₹2-5k).",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Checkout Finance and No-Cost EMI</span>"
+    ]
+  },
+  {
+    "objectID": "07-checkout-finance.html#loss-economics",
+    "href": "07-checkout-finance.html#loss-economics",
+    "title": "7  Checkout Finance and No-Cost EMI",
+    "section": "7.5 Loss Economics",
+    "text": "7.5 Loss Economics\nDefaults are the biggest unknown in merchant lending. How many customers will actually default on their EMIs?\nImportant: Loss rate is lifetime per cohort, not monthly or annualized.\nIf you originate 1,000 loans in January, track them for 12 months, and 30 default (either fully or partially), your loss rate is 3%.\nLoss rates vary wildly by:\n\n\n\nProduct\nTypical Default Rate\n\n\n\n\nAppliances (100% secured)\n1-2%\n\n\nFurniture\n2-3%\n\n\nElectronics (phone, laptop)\n3-4%\n\n\nFashion/Lifestyle\n4-6%\n\n\nPersonal loans\n5-10%\n\n\n\nWhy? Appliances are hard to hide. If you default, the lender repossesses the TV and sells it. You have “skin in the game.”\nFashion items are easy to hide and have no resale value. If you buy a ₹10,000 outfit on EMI and can’t pay, the lender can’t do much. You just don’t pay.\nTiming of Default Matters:\nA customer who defaults in month 1 (after paying just one ₹5,000 EMI) costs the lender nearly the full ₹25,000.\nA customer who defaults in month 5 (after paying ₹25,000) costs the lender only ₹5,000.\nThis is why default rates are tracked by cohort and vintages. A January 2024 cohort and a January 2025 cohort can have very different loss rates, even from the same merchant category.\n\n\n\n\n\n\nImportant\n\n\n\nMemorize This\nMerchants pay 5-10% subvention because conversion lift (20-40%) and higher AOV more than offset the cost. The ROI on subvention is typically 2-4x. Loss rates are portfolio metrics, not monthly. Appliance defaults (1-2%) are vastly lower than personal loan defaults (5-10%) because the product is collateral.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Checkout Finance and No-Cost EMI</span>"
+    ]
+  },
+  {
+    "objectID": "08-credit-card-economics.html",
+    "href": "08-credit-card-economics.html",
+    "title": "8  Credit Card Economics",
+    "section": "",
+    "text": "8.1 Why Credit Cards Are Special\nCredit cards are a different animal than EMI loans. They’re like no-cost EMI on steroids: multiple revenue streams, revolving credit, behavioral unpredictability. This chapter shows you why card pricing looks different and how the economics actually work.\nA credit card generates revenue from five separate sources. No other lending product does this.\nA typical card issuer earns maybe 1-2% interchange, 2-3% revolver interest, and 0.5% in other fees = 3.5-5.5% portfolio yield.\nSounds low. But card issuers also benefit from behavioral economics (customers spend more with cards) and a portfolio effect where profitable revolvers subsidize unprofitable transactors.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Credit Card Economics</span>"
+    ]
+  },
+  {
+    "objectID": "08-credit-card-economics.html#why-credit-cards-are-special",
+    "href": "08-credit-card-economics.html#why-credit-cards-are-special",
+    "title": "8  Credit Card Economics",
+    "section": "",
+    "text": "Revenue Stream\nHow It Works\nTypical Yield\n\n\n\n\nInterchange\nPercentage of transaction value paid by merchant’s bank to card issuer\n0.5-2% of transaction value\n\n\nInterest on Revolvers\nAPR charged on customers who carry balances (36-42% APR)\n3-5% of portfolio annually\n\n\nAnnual Fees\n₹500-2,000 per card per year\n0.5-1% of portfolio\n\n\nLate Payment Fees\n₹100-500 per missed payment\n0.5-1.5% of portfolio\n\n\nForex and Cash Advance Fees\n1-3% on international transactions and cash withdrawals\n0.5% of portfolio",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Credit Card Economics</span>"
+    ]
+  },
+  {
+    "objectID": "08-credit-card-economics.html#transactors-vs-revolvers",
+    "href": "08-credit-card-economics.html#transactors-vs-revolvers",
+    "title": "8  Credit Card Economics",
+    "section": "8.2 Transactors vs Revolvers",
+    "text": "8.2 Transactors vs Revolvers\nCredit cards split customers into two buckets:\nTransactors (60-70% of cardholders): - Pay the full bill every month - Generate only interchange revenue (~1-2% of spend) - No interest income - Low loss rate because they’re paying every month\nRevolvers (30-40% of cardholders): - Carry a balance month to month - Pay 36-42% APR on the outstanding balance - Generate massive interest income - Higher loss rate because they’re already struggling\nHere’s the arbitrage: Transactors make the card system work at scale. They spend large amounts, generate interchange on every transaction, and almost never default.\nRevolvers are expensive to manage (collections, write-offs) but pay interest on balances that often exceed the original purchase price over time.\nThe card issuer’s job is to price cards, set limits, and manage the portfolio so that revolver interest income covers all the costs and losses.\nPortfolio Math:\n\n100 cards outstanding\n65 transactors with ₹1,00,000 spend each = ₹65 lakh annual spend\n35 revolvers with average balance ₹25,000 = ₹8.75 lakh total revolving balance\n\nInterchange on transactors: ₹65 lakh × 1.5% = ₹97,500 Interest on revolvers: ₹8.75 lakh × 36% = ₹3.15 lakh Total annual revenue: ₹4.125 lakh\nCost of funds for ₹65 lakh in transactor spend: 5% = ₹3.25 lakh (but this is mostly merchant risk, not card issuer) Cost of funds for ₹8.75 lakh in revolver balances: 5% = ₹43,750\nNet available for losses, opex, profit: ₹4.125 lakh - ₹43,750 = ₹3.6875 lakh on a ₹8.75 lakh revolver book = 42% return on revolver capital.\nRevolvers are a goldmine if you can collect on them.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Credit Card Economics</span>"
+    ]
+  },
+  {
+    "objectID": "08-credit-card-economics.html#mdr-is-just-short-tenure-subvention",
+    "href": "08-credit-card-economics.html#mdr-is-just-short-tenure-subvention",
+    "title": "8  Credit Card Economics",
+    "section": "8.3 MDR Is Just Short-Tenure Subvention",
+    "text": "8.3 MDR Is Just Short-Tenure Subvention\nIf you’ve read Chapter 5 (math of subvention), you already understand MDR. Merchant Discount Rate is the fee retailers pay card networks. It’s exactly analogous to checkout finance subvention, just with a much shorter tenure.\nIn checkout finance: - Tenure: 3-12 months - Subvention: 3-10%\nIn credit cards: - Tenure: 45 days (interest-free period) - MDR: 0.5-2%\nSame mechanism, different duration.\nWhy MDR Is Lower Than EMI Subvention:\nWhen a customer buys ₹30,000 on a card, the merchant gets paid in 2 days (T+2 settlement). The cardholder pays the bank in 45 days. The bank’s capital is only deployed for 45 days instead of 6 months.\nUsing the subvention formula from Chapter 5:\n\\[\\text{Take%} \\approx (R - F) \\cdot \\frac{n+1}{24} + \\varepsilon + L\\]\nFor 45-day card payment (1.5 months):\nTake% ≈ (24% - 6%) × (1.5+1)/24 + 1% + 0.5% = 18% × 0.104 + 1.5% = 1.9% + 1.5% = 3.4%\nSo MDR on a card should be roughly 1.5-3.5% depending on the bank’s cost of funds and risk model. This lines up with actual MDR (0.5-2% is for the network fee paid by merchant’s bank; the card issuer gets a cut of this plus interchange, which totals 1.5-3%).",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Credit Card Economics</span>"
+    ]
+  },
+  {
+    "objectID": "08-credit-card-economics.html#why-card-apr-is-higher-than-personal-loan-apr",
+    "href": "08-credit-card-economics.html#why-card-apr-is-higher-than-personal-loan-apr",
+    "title": "8  Credit Card Economics",
+    "section": "8.4 Why Card APR Is Higher Than Personal Loan APR",
+    "text": "8.4 Why Card APR Is Higher Than Personal Loan APR\nYou can get a personal loan from Bajaj Finance at 12-15% APR.\nYou can get a credit card from the same bank at 36-42% APR.\nWhy is unsecured revolving credit 3x as expensive as unsecured installment credit?\nThree reasons:\n1. Open-Ended vs Closed-Ended\nA personal loan has a fixed amount and fixed schedule. You borrow ₹1 lakh, you owe ₹1 lakh + interest. Predictable.\nA credit card is open-ended. You have a ₹5 lakh limit. You might spend ₹50,000 in month 1 and ₹4 lakh in month 3. The bank doesn’t know what’s coming.\n2. Duration Uncertainty\nA personal loan matures in 36 months. The bank knows exactly when money is coming back.\nA credit card revolver might carry their balance for 2 months or 24 months. They might clear it suddenly or slowly increase it. The duration is uncertain.\n3. Behavioral Unpredictability\nSomeone taking a personal loan signed up for a schedule. If they miss a payment, it’s a break from normal.\nA credit card revolver is already missing payments or making only minimum due. They’re signaling financial stress. The bank prices for higher probability of future stress.\nThe Math:\nPersonal loan at 15% APR: - Cost of funds: 5% - Expected loss: 2% - Opex: 1% - Capital charge: 1% - Profit margin: 6%\nCredit card at 40% APR: - Cost of funds: 5% - Expected loss: 8% (revolvers have higher default rates) - Opex: 1% - Capital charge: 1% - Profit margin: 25% (to compensate for the risk and uncertain duration)\nThe extra 25% APR on cards reflects the extra 6% loss rate and requires fatter profit margins to absorb volatility.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Credit Card Economics</span>"
+    ]
+  },
+  {
+    "objectID": "08-credit-card-economics.html#why-card-losses-are-manageable",
+    "href": "08-credit-card-economics.html#why-card-losses-are-manageable",
+    "title": "8  Credit Card Economics",
+    "section": "8.5 Why Card Losses Are Manageable",
+    "text": "8.5 Why Card Losses Are Manageable\nIf card APR is 40% but loss rates are only 5-8%, the math seems fragile. One bad quarter and losses eat all the profit.\nCard issuers manage this through aggressive loss mitigation:\nMinimum Due Enforcement: Customers must pay at least 5% of the balance every month. This ensures some cash flow even from stressed borrowers.\nDynamic Credit Limits: If you miss a payment, your limit drops immediately. If you’re delinquent for 60+ days, your card is blocked.\nEarly Collections: Most issuers call customers at day 1 of missed payment. Day 5, SMS reminder. Day 15, aggressive phone calls. Day 30, legal notice. By the time you’re written off at day 90+, the bank has already recovered 30-50% of the defaulted amount through collections.\nBehavioral Bureau Pressure: A missed payment goes to CIBIL. Your CIBIL score tanks. This social/financial pressure makes people prioritize credit card payments over other debts.\nRelationship Leverage: Card issuers know your salary, employer, and linked savings account. They can (with RBI approval) request wage garnishment or set-off from the savings account.\nTaken together, these tools reduce lifetime default rates on cards to 5-8% despite 40% APR, whereas unsecured personal loans see 5-10% default at 15% APR.\nThe portfolio math works because: - Transactors (65%) generate profit via interchange and pay zero interest - Revolvers (35%) generate profit via interest, and most of their defaults are recovered via collections by day 90",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Credit Card Economics</span>"
+    ]
+  },
+  {
+    "objectID": "08-credit-card-economics.html#the-complete-picture",
+    "href": "08-credit-card-economics.html#the-complete-picture",
+    "title": "8  Credit Card Economics",
+    "section": "8.6 The Complete Picture",
+    "text": "8.6 The Complete Picture\nCredit cards are priced higher than personal loans not because of interest rates alone, but because of: 1. Revolving risk (duration + amount uncertain) 2. Behavioral unpredictability (revolvers are already stressed) 3. Multiple revenue streams (interchange, interest, fees) that need to be managed together 4. A portfolio structure where transactors subsidize revolvers\nThe 40% APR on a card revolver is expensive, but the bank prices it this way because the alternative (refusing to lend to revolvers) would eliminate 30-40% of their customer base and the profitable interest revenue.\n\n\n\n\n\n\nNote\n\n\n\nMemorize This\nCredit cards have multiple revenue streams: interchange (1-2%), interest (2-3%), fees (0.5-1.5%) = 3.5-6.5% total portfolio yield. Transactors (60-70%) subsidize revolvers (30-40%) because revolvers carry high balances at 36-42% APR. Card APR is 3x personal loan APR because duration is uncertain, behavior is unpredictable, and losses are higher. Loss mitigation (limits, collections, bureau) keeps card defaults to 5-8% despite this high leverage.",
+    "crumbs": [
+      "Part II: The Economics of Merchant Lending",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Credit Card Economics</span>"
+    ]
+  },
+  {
+    "objectID": "09-banks-vs-nbfcs.html",
+    "href": "09-banks-vs-nbfcs.html",
+    "title": "9  Banks vs NBFCs: Two Worlds of Lending",
+    "section": "",
+    "text": "9.1 Capital-Scarce Lenders (NBFCs, Fintechs)\nThere’s a puzzle in lending — some lenders love short-tenure loans while others hate them. Both are being rational. The difference is their business model.\nNBFCs and fintechs borrow expensive money. Every rupee they borrow costs them something. So their strategy is elegant: lend → get money back fast → lend again → multiply returns on that same capital.\nThink of it like a street vendor with a cart. If you have ₹10,000 in cash, you want to turn it twice a day, not once a week. Turn it fast, keep margins tight, but do volume.\nThey love short tenure because capital turns faster. A ₹10,000 loan at 24% IRR, repaid in 3 months, lets you redeploy that capital 4 times per year. Same ₹10,000, four shots at 24% IRR.\nExamples everywhere: Bajaj CD loans (9-12 months), BNPL (3-6 months), merchant cash advance (repaid in 3-4 months out of daily sales).\nThe optimization formula is simple:\nSo a 24% IRR on a 3-month loan gives ROA = 4 × 24% = 96%. On a 12-month loan? ROA = 1 × 24% = 24%. Same IRR, but you get four times the return on assets by doing it faster.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Banks vs NBFCs: Two Worlds of Lending</span>"
+    ]
+  },
+  {
+    "objectID": "09-banks-vs-nbfcs.html#capital-scarce-lenders-nbfcs-fintechs",
+    "href": "09-banks-vs-nbfcs.html#capital-scarce-lenders-nbfcs-fintechs",
+    "title": "9  Banks vs NBFCs: Two Worlds of Lending",
+    "section": "",
+    "text": "\\[\\text{ROA} = \\text{Capital Turnover} \\times \\text{Yield per Turn}\\] \\[\\text{Annual ROA} = \\frac{1}{\\text{Tenure (in years)}} \\times \\text{IRR}\\]",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Banks vs NBFCs: Two Worlds of Lending</span>"
+    ]
+  },
+  {
+    "objectID": "09-banks-vs-nbfcs.html#deposit-rich-lenders-banks",
+    "href": "09-banks-vs-nbfcs.html#deposit-rich-lenders-banks",
+    "title": "9  Banks vs NBFCs: Two Worlds of Lending",
+    "section": "9.2 Deposit-Rich Lenders (Banks)",
+    "text": "9.2 Deposit-Rich Lenders (Banks)\nBanks have a completely different problem. They sit on cheap CASA deposits — Savings and Current Accounts. Depositors pay close to 0% to 2% interest. Banks have mountains of this capital.\nTheir strategy is opposite: deploy large balance sheet slowly, let customers pay EMIs for years, collect stable interest income across decades. They love long tenure because that maximizes total interest earned.\nHere’s why. A ₹50 lakh home loan at 9% annual rate:\n\n20-year tenure: Total interest paid ≈ ₹1.4 crore\n5-year prepayment: Total interest paid ≈ ₹40 lakh\nLost interest: ₹1.4 crore − ₹40 lakh = ₹1.0 crore foregone\n\nThat’s why banks charge prepayment penalties. They’re protecting the interest stream.\nThe optimization is:\n\n\\[\\text{Profit} = \\text{NII} \\times \\text{Loan Duration}\\]\n\nWhere NII is Net Interest Income. More duration = more total interest = more profit. The tenure is the multiplier.\n\n\n\n\n\n\nNote\n\n\n\nA bank’s nightmare: a customer who borrows ₹50 lakh and prepays in 2 years. They’ve locked in a 9% cost of deposits but earn only 2 years of interest instead of 20. That spread got compressed from ₹1.4 crore to ₹8 lakh.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Banks vs NBFCs: Two Worlds of Lending</span>"
+    ]
+  },
+  {
+    "objectID": "09-banks-vs-nbfcs.html#side-by-side-comparison",
+    "href": "09-banks-vs-nbfcs.html#side-by-side-comparison",
+    "title": "9  Banks vs NBFCs: Two Worlds of Lending",
+    "section": "9.3 Side-by-Side Comparison",
+    "text": "9.3 Side-by-Side Comparison\n\n\n\n\n\n\n\n\n\n\n\nWhat They Love\nWhat They Hate\nCost of Funds\nCapital Source\nRisk Appetite\nOptimization Metric\n\n\n\n\nNBFCs\nShort tenure (3-12 mo)\nLong tenure (24+ mo)\n10-14%\nBorrowings (NCDs, repo)\nCapital turnover × IRR\n\n\nBanks\nLong tenure (5+ years)\nEarly repayment\n2-4%\nDeposits, balance sheet\nNII × duration",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Banks vs NBFCs: Two Worlds of Lending</span>"
+    ]
+  },
+  {
+    "objectID": "09-banks-vs-nbfcs.html#where-checkout-finance-fits",
+    "href": "09-banks-vs-nbfcs.html#where-checkout-finance-fits",
+    "title": "9  Banks vs NBFCs: Two Worlds of Lending",
+    "section": "9.4 Where Checkout Finance Fits",
+    "text": "9.4 Where Checkout Finance Fits\nCheckout finance — “buy now, pay in 3 months” — is a capital-scarce game. Even when a bank subsidiary runs it, it operates like an NBFC. Capital constraint is real.\nWhy? The checkout use case requires instant approval, instant funding to merchant, and monthly EMI collection from customer. That’s capital churn. You can’t make it work with a 20-year loan mindset.\nNBFCs dominate checkout finance because the model fits their DNA. They’re built to borrow expensively, deploy quickly, get capital back fast, and repeat. Banks’ deposit-based model fights this business.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Banks vs NBFCs: Two Worlds of Lending</span>"
+    ]
+  },
+  {
+    "objectID": "09-banks-vs-nbfcs.html#why-banks-dont-chase-small-consumer-loans",
+    "href": "09-banks-vs-nbfcs.html#why-banks-dont-chase-small-consumer-loans",
+    "title": "9  Banks vs NBFCs: Two Worlds of Lending",
+    "section": "9.5 Why Banks Don’t Chase Small Consumer Loans",
+    "text": "9.5 Why Banks Don’t Chase Small Consumer Loans\nBanks could technically enter checkout finance. Most have. But they don’t push hard. Five reasons:\n\nTerrible unit economics on small tickets. A ₹5,000 loan and a ₹50,000 loan cost almost the same to underwrite, approve, and service. Margins get razor-thin. NBFCs can live with 1-2% net margins because they move volume and turn capital. Banks can’t.\nCapital deployment mismatch. Banks have ₹50 crore to deploy. They’d rather make one ₹50 crore home loan than 10,000 ₹5,000 checkout loans. Same upfront work, but the big loan funds faster.\nNo pricing power in no-cost EMI. Checkout finance is sold as “no cost.” The subvention comes from the merchant. The bank can’t raise the interest rate. So yield is capped. That doesn’t work for capital-intensive operations.\nWeak collections for small overdues. If a customer is 10 days late on a ₹50 lakh home loan, the bank’s collection calls matter. For a ₹5,000 loan, the cost of collection exceeds recovery. You swallow the loss.\nRegulatory burden is the same. A ₹5,000 consumer loan and a ₹10 lakh consumer loan need the same RBI compliance, the same credit bureau reporting, the same regulatory capital. So the cost-to-serve per rupee deployed is much higher on the small loan.\n\n\n\n\n\n\n\nImportant\n\n\n\nBanks and NBFCs aren’t being irrational about tenure preferences. They’re optimizing for different constraints. A bank that chases short-tenure small loans is destroying shareholder value. An NBFC that locks capital in long-tenure loans is doing the same. Each is right for their model.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Banks vs NBFCs: Two Worlds of Lending</span>"
+    ]
+  },
+  {
+    "objectID": "09-banks-vs-nbfcs.html#memorize-this",
+    "href": "09-banks-vs-nbfcs.html#memorize-this",
+    "title": "9  Banks vs NBFCs: Two Worlds of Lending",
+    "section": "9.6 Memorize This",
+    "text": "9.6 Memorize This\nBanks hate early repayment because it kills interest income. NBFCs love short tenure because it boosts IRR and capital turns. Different economics, same rationality.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Banks vs NBFCs: Two Worlds of Lending</span>"
+    ]
+  },
+  {
+    "objectID": "10-credit-lines-future.html",
+    "href": "10-credit-lines-future.html",
+    "title": "10  Credit Lines, UPI, and the Future",
+    "section": "",
+    "text": "10.1 The Big Idea\nWhat if personal loans came as a credit line you could use instantly at checkout via UPI?\nPicture this: A bank gives you a pre-approved limit of ₹2 lakh. You don’t draw it until you buy something. You’re at a store, see shoes you want, scan the QR code. Instantly, the checkout app offers you: “Buy now, pay in 3 months for ₹500/month.” You say yes. The bank disburses ₹2,500 to the merchant via UPI. You pay EMIs only on what you used — not on an unused limit.\nThis is different from today. Today: - BNPL apps pre-approve you. Then you use the app. Then they lend. - Credit cards pre-approve you. But you need to carry a physical card. - Personal loan apps take 10 minutes to disburse ₹2 lakh, whether you want it or not.\nThe new model: pre-approved credit line + instant UPI drawdown + EMI at merchant checkout.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Lines, UPI, and the Future</span>"
+    ]
+  },
+  {
+    "objectID": "10-credit-lines-future.html#what-would-change",
+    "href": "10-credit-lines-future.html#what-would-change",
+    "title": "10  Credit Lines, UPI, and the Future",
+    "section": "10.2 What Would Change",
+    "text": "10.2 What Would Change\n\n10.2.1 Customers\n\nInstant approval. No application form at store. No waiting for bank call. Pre-approved already.\nCheaper than BNPL/card EMI. If banks offer 18% IRR instead of 24%, you pay less interest.\nWorks everywhere. UPI QR codes are ubiquitous. No need for app integration. No need to carry a card.\nSimple. One flow, one approval, one set of T&Cs.\n\n\n\n10.2.2 Banks\n\nDirect checkout access. No BNPL middleman taking margin. No card network taking swipe fee.\nHigh capital turnover. Loans repaid in 3-6 months. Capital redeployed. Much faster than home loans.\nPL-quality underwriting. You already have their customer data, bank statement, CIBIL. Approval is confidence, not guessing.\nVery low acquisition cost. Merchant integration costs far less than advertising BNPL apps. You reach customers where they already are.\n\n\n\n10.2.3 Merchants\n\nZero MDR. UPI has near-zero transaction cost. No 1.5% card MDR. No 2-3% BNPL commission.\nZero subvention. Customer bears the interest rate (18% IRR, not subsidized). Or rate is low enough to be profitable without subvention.\nInstant conversion. No customer friction. No app download. No “apply for BNPL” step. “Would you like EMI?” → Yes → Done.\n\n\n\n10.2.4 NBFCs\nThis is massive disruption. Their POS moat collapses.\nToday, NBFCs win checkout finance because: - They lend fast with minimal documentation. - They have POS integration and subvention models. - They compete on low subvention (5-8%).\nIf a bank offers a credit line at 18% IRR with zero subvention, the NBFC’s subvention model breaks. The merchant asks: why pay 6% subvention to an NBFC when I can offer 0% via bank credit with no cost to me?\nNBFCs will survive in niches: - Very high-risk segments (personal loans to self-employed, informal workers). - Very small loans where banks won’t lend (₹1,000-₹5,000). - Geographic gaps where bank presence is weak.\nBut the core checkout market goes to banks.\n\n\n10.2.5 BNPL\nNearly dead. BNPL’s entire value prop is: “No-cost checkout lending.” But if a bank offers 18% IRR credit line (cheaper to customer than BNPL’s subvention), with UPI integration (no app needed), BNPL has no story.\nBNPL companies will pivot. Some become payment platforms. Some become credit aggregators. Few remain pure BNPL lenders.\n\n\n10.2.6 Credit Cards\nSignificant threat, but not death. Cards retain advantages: - Rewards. Cashback, miles, points. Credit lines have none. - International. Credit lines work in India. Cards work globally. - Premium. High-spend customers like the card status, lounge access, concierge. - Flexibility. Credit cards let you revolve (pay minimum, keep balance). Credit lines push EMI. Cards let you choose.\nSo cards become premium products. Middle market tilts to credit lines. BNPL shrinks.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Lines, UPI, and the Future</span>"
+    ]
+  },
+  {
+    "objectID": "10-credit-lines-future.html#rbi-is-building-the-rails",
+    "href": "10-credit-lines-future.html#rbi-is-building-the-rails",
+    "title": "10  Credit Lines, UPI, and the Future",
+    "section": "10.3 RBI Is Building the Rails",
+    "text": "10.3 RBI Is Building the Rails\nNone of this works without infrastructure. RBI is building it:\n\nUPI on credit. The ability to draw credit via UPI. Not just payments. Credit push.\nPre-approved lines. Digital infrastructure for banks to offer pre-sanctioned limits without a customer touch.\nDigital KYC. Banks can verify and approve in seconds, not days.\nAccount Aggregator. Banks can pull your bank statement, CIBIL, PAN, directly from authorized sources. No forms. No friction.\n\nThese aren’t pipedreams. RBI has mandated many. The ecosystem is moving.\n\n\n\n\n\n\nTip\n\n\n\nIf you work at a bank, NBFC, fintech, or merchant platform, watch RBI’s regulations around UPI credit and Account Aggregator. That’s where the next wave of lending architecture gets built.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Lines, UPI, and the Future</span>"
+    ]
+  },
+  {
+    "objectID": "10-credit-lines-future.html#whats-slowing-it-down",
+    "href": "10-credit-lines-future.html#whats-slowing-it-down",
+    "title": "10  Credit Lines, UPI, and the Future",
+    "section": "10.4 What’s Slowing It Down",
+    "text": "10.4 What’s Slowing It Down\nThe idea is simple. Execution is hard:\n\nBank tech lag. Most banks still run lending on 20-year-old core systems. Integrating real-time UPI credit takes overhaul. It’s cheaper to manage the status quo.\nRisk model immaturity. Pre-approved credit lines need good underwriting. Banks have it for home loans. For checkout? Still learning. What’s a good credit score cutoff? What loss rates to expect? Banks are cautious.\nOperational readiness. UPI integration means bank ops teams, dispute teams, fraud teams need new training. Customer service needs to handle a new product. It’s not impossible, just messy.\nNBFC lobbying. NBFCs will push RBI to restrict bank lending in checkout, citing monopoly risk. RBI will listen. Might slow regulation.\nCustomer awareness. Millions don’t know they can get a credit line pre-approved. Banks don’t advertise aggressively. So adoption is slow.\nMerchant integration. POS systems, e-commerce platforms, QR code generators — all need to integrate the “offer credit” step. Big integration effort.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Lines, UPI, and the Future</span>"
+    ]
+  },
+  {
+    "objectID": "10-credit-lines-future.html#the-convergence",
+    "href": "10-credit-lines-future.html#the-convergence",
+    "title": "10  Credit Lines, UPI, and the Future",
+    "section": "10.5 The Convergence",
+    "text": "10.5 The Convergence\nIn 5 years, the lending stack looks like this:\n\nUPI becomes the universal payment + credit rail. Not just payments. Payments + credit + settlement in one flow.\nBanks provide capital. They sit on deposits, offer credit lines at 15-20% IRR.\nFintechs provide tech and underwriting. Banks co-brand the product. Fintech handles approval, collections, customer service.\nNBFCs find niches. High-risk lending, geographic coverage, specialty segments (SME, informal workers).\nCards become premium. Rewards, international, high-spend. Middle market gone.\n\n\n\n\n\n\n\nNote\n\n\n\nSome of this is already happening. Bajaj Finserv and ICICI Bank co-market personal loans. HDFC Bank invested in fintech lenders. The ecosystem is shuffling. The direction is clear.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Lines, UPI, and the Future</span>"
+    ]
+  },
+  {
+    "objectID": "10-credit-lines-future.html#memorize-this",
+    "href": "10-credit-lines-future.html#memorize-this",
+    "title": "10  Credit Lines, UPI, and the Future",
+    "section": "10.6 Memorize This",
+    "text": "10.6 Memorize This\nPre-approved credit lines + UPI will reshape consumer lending. Banks win at checkout. NBFCs shrink. BNPL dies. Cards stay premium. The plumbing is being built now.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Credit Lines, UPI, and the Future</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html",
+    "href": "11-checkout-emi-case-study.html",
+    "title": "11  Checkout EMI Case Study",
+    "section": "",
+    "text": "11.1 The Setup\nThis chapter walks through a real 6-month checkout EMI loan with actual numbers — processing fees, interest, subvention, and all. We’ll calculate the lender’s IRR step by step, so you can see exactly how every concept from earlier chapters comes together.\nA customer buys a laptop on an e-commerce site.\nFrom the customer’s perspective, this looks like a simple 0% EMI — they pay ₹10,000/month for 6 months and a one-time processing fee of ₹1,769.\nBut behind the scenes, the lender’s economics tell a very different story.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#the-setup",
+    "href": "11-checkout-emi-case-study.html#the-setup",
+    "title": "11  Checkout EMI Case Study",
+    "section": "",
+    "text": "Parameter\nValue\n\n\n\n\nProduct price\n₹60,000\n\n\nTenure\n6 months\n\n\nOffer type\n“No-cost EMI”\n\n\nProcessing fee (charged to customer)\n₹1,499 + GST (18%) = ₹1,769\n\n\nSubvention (charged to merchant)\n5.5% of product price = ₹3,300\n\n\nCustomer’s monthly EMI\n₹10,000\n\n\nDown payment\n₹0",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#the-lenders-cashflows-month-by-month",
+    "href": "11-checkout-emi-case-study.html#the-lenders-cashflows-month-by-month",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.2 The Lender’s Cashflows — Month by Month",
+    "text": "11.2 The Lender’s Cashflows — Month by Month\nLet’s trace every rupee from the lender’s point of view.\nAt origination (month 0):\n\n\n\nCashflow\nAmount\nDirection\n\n\n\n\nDisburse loan to merchant\n₹60,000\nOutflow\n\n\nReceive subvention from merchant\n₹3,300\nInflow\n\n\nReceive processing fee (net of GST)\n₹1,499\nInflow\n\n\nOrigination cost (KYC, underwriting, tech)\n₹400\nOutflow\n\n\n\nNet outflow at month 0 = ₹60,000 − ₹3,300 − ₹1,499 + ₹400 = ₹55,601\nSo the lender actually puts out ₹55,601 of their own money, not ₹60,000. The subvention and processing fee reduce day-one exposure.\nMonths 1 through 6:\n\n\n\n\n\n\n\n\n\nMonth\nEMI Received\nOutstanding Before EMI\nOutstanding After EMI\n\n\n\n\n1\n₹10,000\n₹60,000\n₹50,000\n\n\n2\n₹10,000\n₹50,000\n₹40,000\n\n\n3\n₹10,000\n₹40,000\n₹30,000\n\n\n4\n₹10,000\n₹30,000\n₹20,000\n\n\n5\n₹10,000\n₹20,000\n₹10,000\n\n\n6\n₹10,000\n₹10,000\n₹0\n\n\n\nTotal EMIs received: ₹60,000 (the full product price comes back as principal).",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#computing-the-irr",
+    "href": "11-checkout-emi-case-study.html#computing-the-irr",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.3 Computing the IRR",
+    "text": "11.3 Computing the IRR\nNow let’s find the lender’s actual return. The cashflow series looks like this:\n\n\n\nMonth\nCashflow\n\n\n\n\n0\n−₹55,601 (net outflow)\n\n\n1\n+₹10,000\n\n\n2\n+₹10,000\n\n\n3\n+₹10,000\n\n\n4\n+₹10,000\n\n\n5\n+₹10,000\n\n\n6\n+₹10,000\n\n\n\nIRR is the monthly rate \\(r\\) that makes the NPV of these cashflows equal to zero:\n\\[-55,601 + \\frac{10,000}{(1+r)} + \\frac{10,000}{(1+r)^2} + \\cdots + \\frac{10,000}{(1+r)^6} = 0\\]\nSolving numerically (this is what Excel’s IRR function does):\nMonthly IRR ≈ 2.87%\nConverting to annual: \\((1 + 0.0287)^{12} - 1 \\approx\\) 40.3% annual IRR\n\n\n\n\n\n\nImportantThe Customer Sees 0%. The Lender Earns 40%.\n\n\n\nThe customer thinks they’re paying 0% interest. The lender earns a 40% annualised return. The gap is funded by the merchant’s subvention (₹3,300) and the customer’s processing fee (₹1,499). Nobody works for free — the question is just who pays and how much.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#sanity-check-with-the-back-of-envelope-formula",
+    "href": "11-checkout-emi-case-study.html#sanity-check-with-the-back-of-envelope-formula",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.4 Sanity Check with the Back-of-Envelope Formula",
+    "text": "11.4 Sanity Check with the Back-of-Envelope Formula\nLet’s verify using the quick formula from Chapter 5:\n\\[\\text{Take\\%} \\approx (R - F) \\cdot \\frac{n+1}{24} + \\varepsilon + L\\]\nWorking backwards from what we know:\n\nSubvention: 5.5% of ₹60,000 = ₹3,300\nProcessing fee: ₹1,499 (about 2.5% of ₹60,000)\nTotal upfront income: ₹4,799 = about 8% of product price\nTenure: 6 months\nOpex: ~0.67% (₹400 on ₹60,000)\n\nUsing the formula: if total take = 8% and opex = 0.67%, loss = 0 (for now):\n\\[8\\% \\approx R \\cdot \\frac{7}{24} + 0.67\\%\\]\n\\[R \\approx \\frac{7.33\\%}{0.2917} \\approx 25.1\\%\\]\nWait — the formula gives ~25% but the exact IRR is ~40%. Why the gap?\n\n11.4.1 Why the Formula Underestimates Here\nThe back-of-envelope formula is a linear approximation that works well when the monthly rate is small (below ~3%). In this case:\n\nThe monthly rate is 2.87% — right at the edge of where the linear approximation starts to break down\nThe processing fee is upfront (month 0), which has maximum time-value impact. The linear formula doesn’t fully capture this compounding effect\nWith no credit losses in this example, the full upfront income translates to return more efficiently\n\nThe formula is designed for negotiation-grade accuracy (getting you to the right ballpark), not exact IRR computation. For exact numbers, you always need a spreadsheet.\n\n\n\n\n\n\nTipWhen to Use Which\n\n\n\nUse the back-of-envelope formula in meetings and negotiations to quickly check if numbers make sense. Use a spreadsheet (or Excel’s IRR function) for actual deal pricing and contract terms.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#breaking-down-where-the-return-comes-from",
+    "href": "11-checkout-emi-case-study.html#breaking-down-where-the-return-comes-from",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.5 Breaking Down Where the Return Comes From",
+    "text": "11.5 Breaking Down Where the Return Comes From\nLet’s understand the composition of the lender’s income:\n\n\n\nIncome Source\nAmount\n% of Loan\n\n\n\n\nMerchant subvention\n₹3,300\n5.5%\n\n\nCustomer processing fee (net of GST)\n₹1,499\n2.5%\n\n\nTotal income\n₹4,799\n8.0%\n\n\nLess: origination cost\n−₹400\n−0.67%\n\n\nNet income\n₹4,399\n7.33%\n\n\n\nOn a ₹60,000 loan outstanding for an average of 3.5 months, earning ₹4,399 net:\n\\[\\text{Simple annualised yield} = \\frac{4,399}{60,000} \\times \\frac{12}{3.5} \\approx 25.1\\%\\]\nThe difference between this 25% and the true 40% IRR comes from the time value of the upfront income. The subvention and processing fee arrive at month 0, while the loan is repaid over 6 months. This front-loading of income dramatically boosts IRR.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#what-if-we-remove-the-processing-fee",
+    "href": "11-checkout-emi-case-study.html#what-if-we-remove-the-processing-fee",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.6 What If We Remove the Processing Fee?",
+    "text": "11.6 What If We Remove the Processing Fee?\nSuppose the lender waives the processing fee to boost conversion:\n\n\n\nMonth\nCashflow (no processing fee)\n\n\n\n\n0\n−₹57,100 (60,000 − 3,300 + 400)\n\n\n1-6\n+₹10,000 each\n\n\n\nMonthly IRR ≈ 1.65%, Annual IRR ≈ 21.7%\nThat’s a massive drop — from 40% to 22%. The ₹1,499 processing fee nearly doubles the IRR. This is why lenders fight hard to keep processing fees, even small ones.\n\n\n\n\n\n\nImportantProcessing Fees Have Outsized Impact on IRR\n\n\n\nA processing fee of just 2.5% of loan value nearly doubled the IRR (from 22% to 40%). This is because upfront income has maximum time-value — the lender gets it immediately while capital is still fully deployed.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#what-if-the-customer-also-pays-interest",
+    "href": "11-checkout-emi-case-study.html#what-if-the-customer-also-pays-interest",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.7 What If the Customer Also Pays Interest?",
+    "text": "11.7 What If the Customer Also Pays Interest?\nNow let’s model a “low-cost EMI” where the customer pays 12% annual interest (reducing balance) AND the merchant pays a smaller subvention of 3%.\nSetup:\n\n\n\nParameter\nValue\n\n\n\n\nProduct price\n₹60,000\n\n\nTenure\n6 months\n\n\nCustomer interest rate\n12% annual (reducing balance)\n\n\nProcessing fee\n₹999 + GST = ₹1,179\n\n\nMerchant subvention\n3% = ₹1,800\n\n\n\nAt 12% annual on reducing balance, the monthly rate is 1%. The EMI works out to roughly ₹10,340 per month (slightly more than the interest-free version because of interest).\nCashflows:\n\n\n\nMonth\nCashflow\n\n\n\n\n0\n−₹60,000 + ₹1,800 + ₹999 − ₹400 = −₹57,601\n\n\n1\n+₹10,340\n\n\n2\n+₹10,340\n\n\n3\n+₹10,340\n\n\n4\n+₹10,340\n\n\n5\n+₹10,340\n\n\n6\n+₹10,340\n\n\n\nTotal received: ₹62,040\nMonthly IRR ≈ 2.65%, Annual IRR ≈ 36.9%\nEven though the subvention dropped from 5.5% to 3% and the processing fee dropped, the customer interest (12% annual) more than compensates. The lender earns nearly as much overall.\n\n11.7.1 The Trade-off for Merchants\n\n\n\n\n\n\n\n\n\nModel\nMerchant Cost\nCustomer Cost\nLender IRR\n\n\n\n\nPure no-cost EMI\n5.5% subvention\n₹1,769 processing fee\n~40%\n\n\nLow-cost EMI (12%)\n3% subvention\n12% interest + ₹1,179 fee\n~37%\n\n\nNo processing fee\n5.5% subvention\n₹0\n~22%\n\n\n\nThe low-cost EMI model saves the merchant 2.5% in subvention by shifting some cost to the customer as interest. Whether customers accept this depends on ticket size and competition — for a ₹60,000 laptop, the extra ₹2,040 in interest over 6 months may not deter many buyers.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#accounting-for-losses",
+    "href": "11-checkout-emi-case-study.html#accounting-for-losses",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.8 Accounting for Losses",
+    "text": "11.8 Accounting for Losses\nIn reality, some customers default. Let’s add a 2% expected loss (₹1,200) hitting at month 3:\nModified cashflows:\n\n\n\nMonth\nCashflow\n\n\n\n\n0\n−₹55,601 (same as original no-cost EMI)\n\n\n1\n+₹10,000\n\n\n2\n+₹10,000\n\n\n3\n+₹10,000 − ₹1,200 = +₹8,800\n\n\n4\n+₹10,000\n\n\n5\n+₹10,000\n\n\n6\n+₹10,000\n\n\n\nMonthly IRR ≈ 2.50%, Annual IRR ≈ 34.5%\nThe 2% loss shaves about 6 percentage points off the IRR. This is why loss assumptions are one of the most important variables in pricing — and why you should always challenge inflated loss estimates in negotiations (Chapter 12).",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "11-checkout-emi-case-study.html#key-takeaways-from-this-case-study",
+    "href": "11-checkout-emi-case-study.html#key-takeaways-from-this-case-study",
+    "title": "11  Checkout EMI Case Study",
+    "section": "11.9 Key Takeaways from This Case Study",
+    "text": "11.9 Key Takeaways from This Case Study\n\nCustomer sees 0%, lender earns 40%. The gap is real and comes from subvention + processing fee + time value of upfront money.\nProcessing fees have outsized impact. A 2.5% fee nearly doubled IRR because upfront cash has maximum compounding benefit.\nThe back-of-envelope formula gives negotiation-grade accuracy. It pointed to ~25% when true IRR was 40%. The gap comes from high monthly rates and front-loaded income. For deals, always verify with a spreadsheet.\nLow-cost EMI with customer interest can save merchants 2-3% in subvention while barely denting lender returns.\nCredit losses matter a lot. A 2% loss reduced IRR by 6 points. Every percent of loss assumption directly raises what the merchant must pay.\nEverything connects: Cost of funds (Chapter 2) sets the floor. The five-component IRR formula (Chapter 4) determines the target. The subvention formula (Chapter 5) converts that to a per-transaction cost. Float and fees (Chapter 6) adjust the final number. And the negotiation playbook (Chapter 12) helps you challenge any inflated asks.\n\n\n\n\n\n\n\nNoteMemorize This\n\n\n\nOn a 6-month checkout EMI at ₹60,000: with 5.5% subvention + 2.5% processing fee, the lender earns ~40% annual IRR. Remove the processing fee and IRR drops to ~22%. Add 2% losses and it drops further to ~35%. Every variable matters — and now you know how to calculate each one.",
+    "crumbs": [
+      "Part III: The Bigger Picture",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Checkout EMI Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html",
+    "href": "12-negotiation-playbook.html",
+    "title": "12  Negotiation Playbook",
+    "section": "",
+    "text": "12.1 The 30-Second Negotiation Script\nEverything in this book comes together here. This chapter gives you tools to negotiate lending economics — whether you’re a fintech negotiating with lenders, a merchant negotiating subvention, or a product manager designing pricing.\nYou’re in a room. A lender quotes you subvention. It feels high. What do you do?\nStep 1: Ask the IRR target. “What IRR are you targeting on this portfolio?”\nListen. They’ll say something like 24%. Or 28%. That’s your anchor.\nStep 2: Compute the required subvention. Use the formula from Chapter 5:\n\\[\\text{Take\\%} \\approx \\frac{(R - F) \\cdot (n + 1)}{24} + \\varepsilon + L\\]\nWhere: - \\(R\\) = IRR target (e.g., 24%) - \\(F\\) = funding cost (e.g., 10%) - \\(n\\) = tenure in months (e.g., 6) - \\(\\varepsilon\\) = opex cost (e.g., 1%) - \\(L\\) = loss rate (e.g., 2%)\nStep 3: Work the example.\nLender targets 24% IRR. 6-month tenure. No upfront float (so F = 0).\n\\[\\text{Take\\%} = \\frac{(24\\% - 0\\%) \\cdot (6 + 1)}{24} + 1\\% + 2\\%\\] \\[= \\frac{24\\% \\times 7}{24} + 1\\% + 2\\%\\] \\[= 7\\% + 1\\% + 2\\%\\] \\[= 10\\%\\]\nBut they have upfront float. Assume they deploy capital upfront for 1.7 months (the effective float on a 6-month loan). That’s \\(\\frac{1.7}{6} \\approx 28\\%\\) of the funding period.\nFloat adjustment = 10% × 1.7 months of returns = roughly 1.7% reduction.\n\\[\\text{Adjusted Take\\%} \\approx 10\\% - 1.7\\% \\approx 8.3\\%\\]\nStep 4: The pitch.\n“You’re targeting 24% IRR. Opex is 1%, loss is 2%. That means you need ~8-9% total take on a 6-month loan. Let’s settle at 8.5%.”\nNow you have a defensible number. Not arbitrary. Math-based.",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html#the-30-second-negotiation-script",
+    "href": "12-negotiation-playbook.html#the-30-second-negotiation-script",
+    "title": "12  Negotiation Playbook",
+    "section": "",
+    "text": "Note\n\n\n\nLenders respect math. They don’t like being told “industry standard is 8%.” They do respect “I calculated your required take at 8.3% based on your stated IRR target and opex, and here’s why.”",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html#quick-reference-table",
+    "href": "12-negotiation-playbook.html#quick-reference-table",
+    "title": "12  Negotiation Playbook",
+    "section": "12.2 Quick Reference Table",
+    "text": "12.2 Quick Reference Table\nHere’s a table for 24% IRR with 1% opex, 2% loss, no float. Adjust as needed:\n\n\n\nTenure (months)\nRequired Subvention (approx)\n\n\n\n\n1\n2-2.5%\n\n\n3\n4-4.5%\n\n\n6\n8-8.5%\n\n\n9\n11-11.5%\n\n\n12\n14-15%\n\n\n\nThese are ballpark. Adjust for: - Higher opex (add 0.5-1%) - Higher loss assumption (add 0.5% per 1% loss) - Funding cost difference (adjust the F term in the formula)",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html#questions-to-ask-lenders",
+    "href": "12-negotiation-playbook.html#questions-to-ask-lenders",
+    "title": "12  Negotiation Playbook",
+    "section": "12.3 Questions to Ask Lenders",
+    "text": "12.3 Questions to Ask Lenders\nWhen a lender pitches subvention, ask these six questions. Listen carefully to the answers:\n\n12.3.1 1. “What is your assumed lifetime loss rate?”\n\nGood answer: “2-3% for checkout finance, 1-1.5% for home loans.”\nRed flag answer: “5% for all products” or “I don’t know, we estimate it quarterly.”\nWhat to do: If they say 5% for 6-month checkout, they’re overestimating. Industry data suggests 2-3%. Push back.\n\n\n\n12.3.2 2. “Is that realized or buffered?”\n\nGood answer: “Realized. We track it monthly.”\nRed flag answer: “Buffered. We reserve 5% on day 1.”\nWhat to do: Buffering inflates opex. If they buffer high, they’re covering up for inefficiency.\n\n\n\n12.3.3 3. “What is your cost of funds?”\n\nGood answer: “10-12%, split between NCD borrowing (12%) and repo (9%).”\nRed flag answer: “It varies” or “I can’t share that.”\nWhat to do: Cost of funds is the biggest lever. If they quote 14-15%, they’re being greedy. Market rate for NBFCs is 10-12%.\n\n\n\n12.3.4 4. “What average outstanding assumption are you using?”\n\nGood answer: “Average of opening and closing, which is ~30% of loan amount for a 6-month tenure.”\nRed flag answer: “Full loan amount for the full tenure.”\nWhat to do: If they assume full amount, they’re overstating the interest they’ll earn. Challenge it.\n\n\n\n12.3.5 5. “What IRR does this imply?”\n\nGood answer: Lender can work backward from their subvention ask and confirm it drives 24% IRR (or whatever they targeted).\nRed flag answer: “I’m not sure” or “That’s confidential.”\nWhat to do: If they can’t show you the math, they’re winging it. Walk.\n\n\n\n12.3.6 6. “What alternative deployment yields do you have?”\n\nGood answer: “Personal loans at 20%, and home loans at 12%. Your 24% checkout IRR fits between high-risk and lower-risk.”\nRed flag answer: “Checkout is our only option.”\nWhat to do: Their alternatives matter. If they can’t deploy capital anywhere else, they’ll negotiate. If they have tons of high-yield opportunities, they won’t.",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html#red-flags-in-subvention-asks",
+    "href": "12-negotiation-playbook.html#red-flags-in-subvention-asks",
+    "title": "12  Negotiation Playbook",
+    "section": "12.4 Red Flags in Subvention Asks",
+    "text": "12.4 Red Flags in Subvention Asks\nWatch for these five red flags. If you see them, the lender is either incompetent or trying to squeeze you:\n\n12.4.1 1. Linear Math (the biggest mistake)\n“You want 6 months? That’s half of 12 months. So half of 12% subvention is 6%. Here’s ₹6 lakh.”\nWhy it’s wrong: The formula is not linear. A 6-month loan at 24% IRR doesn’t need half the subvention of a 12-month loan. The required subvention is: - 6 months: ~8% - 12 months: ~15%\nLinear thinking would predict 7.5%. Reality is higher because funding drag scales non-linearly with tenure.\n\n\n12.4.2 2. Ignoring Float\n“You’re deploying capital upfront. So your interest benefit is larger. But I’ll ignore that.”\nWhy it’s wrong: Upfront float is real value. If you deploy capital 2 months early, you earn 2 months of interest on that capital. That’s 1.5-2% reduction in required subvention. Never agree to a subvention that doesn’t account for your float.\n\n\n12.4.3 3. Inflated Loss Assumptions\n“I’m assuming 5% loss rate on checkout finance.”\nWhy it’s wrong: For 6-month checkout loans, industry loss rates are 2-3%. 5% is outlier-high. It pads opex. Push back with data.\n\n\n12.4.4 4. Monthly Loss Quoting\n“Our monthly loss is 3%.”\nWhy it’s wrong: That’s 36% annual loss! Nonsense. Losses should always be quoted as annual or as lifetime loss on the cohort. If someone quotes monthly, they’re either confused or lying.\n\n\n12.4.5 5. Tenure-Flat Subvention\n“We need 8% subvention for all tenures: 3 months, 6 months, 12 months.”\nWhy it’s wrong: 8% for 3 months is overpaying them. 8% for 12 months is underpaying them. The formula shows it should scale with tenure:\n\\[\\text{Take\\%} \\propto (n + 1)\\]\nSo subvention should increase with tenure. If a lender quotes flat subvention, they’re not thinking clearly. Or they’re using a loose all-in margin.\n\n\n\n\n\n\nImportant\n\n\n\nRed flag #1 (linear math) is the most common. Most executives, even smart ones, think checkout finance subvention linearly. It’s not. The formula is non-linear. If you remember one thing from this section, remember that.",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html#component-based-negotiation",
+    "href": "12-negotiation-playbook.html#component-based-negotiation",
+    "title": "12  Negotiation Playbook",
+    "section": "12.5 Component-Based Negotiation",
+    "text": "12.5 Component-Based Negotiation\nInstead of haggling over one big number, break subvention into components. This clarifies where the money actually goes.\n\\[\\text{Total Subvention} = \\text{Funding Drag} + \\text{Loss} + \\text{Opex} + \\text{Fair Margin}\\]\nHere are typical ranges for a 6-month tenure with 24% IRR and 10% cost of funds:\n\n\n\nComponent\nLow\nHigh\nNotes\n\n\n\n\nFunding Drag\n3%\n3.5%\n(24%-10%) × 6/24, roughly\n\n\nLoss\n2%\n3%\nIndustry standard for checkout\n\n\nOpex\n0.5%\n1.5%\nDigital lending: mostly tech, not humans\n\n\nFair Margin\n1%\n2%\nProfit for the lender\n\n\nTOTAL\n6.5%\n10%\n\n\n\n\nIf a lender asks for 12%, and this table sums to 8.5%, they’re pocketing 3.5% excess margin. Call it out: “Your components add to 8.5%. You’re asking for 12%. Where does the extra 3.5% go?”\nUsually, they’ll explain it’s for ops, or contingency, or “hard to quantify costs.” But now you’re negotiating on real terms, not magic numbers.",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html#one-page-cheat-sheet",
+    "href": "12-negotiation-playbook.html#one-page-cheat-sheet",
+    "title": "12  Negotiation Playbook",
+    "section": "12.6 One-Page Cheat Sheet",
+    "text": "12.6 One-Page Cheat Sheet\nPrint this and keep it handy:\nCORE FORMULA \\[\\text{Take\\%} \\approx \\frac{(R - F) \\cdot (n + 1)}{24} + \\varepsilon + L\\]\nQUICK NUMBERS\nFor 24% IRR, 10% cost of funds, 1% opex, 2% loss: - 1 month: ~2.5% - 3 months: ~4.5% - 6 months: ~8.5% - 12 months: ~15%\n8 KEY PRINCIPLES\n\nSubvention pays for: funding drag (yield gap) + losses + opex + lender margin.\nFunding drag scales with (tenure + 1), not tenure. Non-linear.\nUpfront float reduces required subvention by ~1.5-2%.\nLoss rate for 6-month checkout is 2-3%, not 5%.\nCost of funds is the biggest lever. Push on it first.\nHigher opex = higher subvention. Digital platforms should have 0.5-1% opex, not 2%.\n“No-cost EMI” is a term for the customer. Subvention is the actual cost.\nIf the lender can’t explain the math, walk. There are other lenders.\n\nDECISION FRAMEWORK\n\n\n\n\n\n\n\n\nLender Asks\nYour Counter\nIf They Refuse\n\n\n\n\n12% on 6-month\n“Components add to 8.5%. What’s the 3.5% for?”\nEscalate to their CFO or walk.\n\n\n10% on 3-month\n“Math says 4.5%. You’re 5.5% high.”\nAsk for cost of funds breakout. Are they 14-15%?\n\n\nFlat 8% all tenures\n“8% for 3 months overpays you. Use tenure-based formula.”\nOffer tiered: 4% (3m), 8% (6m), 14% (12m).\n\n\n5% loss assumption\n“Industry is 2-3%. Where’s the 5% from?”\nAsk for their historical data. If they won’t share, they don’t have it.",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  },
+  {
+    "objectID": "12-negotiation-playbook.html#memorize-this",
+    "href": "12-negotiation-playbook.html#memorize-this",
+    "title": "12  Negotiation Playbook",
+    "section": "12.7 Memorize This",
+    "text": "12.7 Memorize This\nSubvention = Funding Gap + Loss + Opex + Margin. The formula is non-linear with tenure. Cost of funds is your leverage. If they can’t explain the math, find another lender.",
+    "crumbs": [
+      "Part IV: Putting It All Together",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Negotiation Playbook</span>"
+    ]
+  }
+]

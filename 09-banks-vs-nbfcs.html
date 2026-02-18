@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ishan">
-<meta name="dcterms.date" content="2026-02-18">
 
-<title>The Merchant Lending Playbook</title>
+<title>9&nbsp; Banks vs NBFCs: Two Worlds of Lending – The Merchant Lending Playbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-how-lending-works.html" rel="next">
+<link href="./10-credit-lines-future.html" rel="next">
+<link href="./08-credit-card-economics.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -85,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html">Part III: The Bigger Picture</a></li><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Banks vs NBFCs: Two Worlds of Lending</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -197,7 +225,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-banks-vs-nbfcs.html" class="sidebar-item-text sidebar-link">
+  <a href="./09-banks-vs-nbfcs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Banks vs NBFCs: Two Worlds of Lending</span></span></a>
   </div>
 </li>
@@ -242,39 +270,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#key-concepts-at-a-glance" id="toc-key-concepts-at-a-glance" class="nav-link" data-scroll-target="#key-concepts-at-a-glance">Key Concepts at a Glance</a></li>
-  </ul></li>
+  <li><a href="#capital-scarce-lenders-nbfcs-fintechs" id="toc-capital-scarce-lenders-nbfcs-fintechs" class="nav-link active" data-scroll-target="#capital-scarce-lenders-nbfcs-fintechs"><span class="header-section-number">9.1</span> Capital-Scarce Lenders (NBFCs, Fintechs)</a></li>
+  <li><a href="#deposit-rich-lenders-banks" id="toc-deposit-rich-lenders-banks" class="nav-link" data-scroll-target="#deposit-rich-lenders-banks"><span class="header-section-number">9.2</span> Deposit-Rich Lenders (Banks)</a></li>
+  <li><a href="#side-by-side-comparison" id="toc-side-by-side-comparison" class="nav-link" data-scroll-target="#side-by-side-comparison"><span class="header-section-number">9.3</span> Side-by-Side Comparison</a></li>
+  <li><a href="#where-checkout-finance-fits" id="toc-where-checkout-finance-fits" class="nav-link" data-scroll-target="#where-checkout-finance-fits"><span class="header-section-number">9.4</span> Where Checkout Finance Fits</a></li>
+  <li><a href="#why-banks-dont-chase-small-consumer-loans" id="toc-why-banks-dont-chase-small-consumer-loans" class="nav-link" data-scroll-target="#why-banks-dont-chase-small-consumer-loans"><span class="header-section-number">9.5</span> Why Banks Don’t Chase Small Consumer Loans</a></li>
+  <li><a href="#memorize-this" id="toc-memorize-this" class="nav-link" data-scroll-target="#memorize-this"><span class="header-section-number">9.6</span> Memorize This</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html">Part III: The Bigger Picture</a></li><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Banks vs NBFCs: Two Worlds of Lending</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">The Merchant Lending Playbook</h1>
-<p class="subtitle lead">A Practical Guide to Checkout Finance, EMI Economics, and Credit Negotiation</p>
+<h1 class="title"><span id="sec-banks-vs-nbfcs" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Banks vs NBFCs: Two Worlds of Lending</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ishan </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 18, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -284,60 +301,125 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This book is about merchant lending — the economics of how checkout finance works, how no-cost EMIs actually work, and where the money really comes from. If you build fintech products, manage payments, or work in lending, this book is for you.</p>
-<p>Merchant lending in India is growing fast. Millions of customers now buy now and pay later at checkout. Thousands of merchants offer no-cost EMI. But most people in product and payments don’t deeply understand the numbers underneath. They see “0%” and assume no money changes hands. They don’t know about subvention. They don’t know why checkout finance is more expensive than home loans. They don’t know what the merchant actually pays for.</p>
-<p>That’s what this book fixes.</p>
-<p>We’ll start with the foundations. What is lending, really? What is subvention? How much does money cost? Then we’ll move to the specific math: how to calculate the cost of a no-cost EMI, how checkout finance economics work, why credit cards are built the way they are. Finally, we’ll give you the tools to negotiate with lenders as a merchant or partner.</p>
-<p>The book assumes you understand products and business. It assumes nothing about finance. Every concept has a concrete example in rupees. We speak plainly and avoid jargon. When a technical term is needed, we explain it right away.</p>
-<section id="key-concepts-at-a-glance" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts-at-a-glance">Key Concepts at a Glance</h2>
+<p>There’s a puzzle in lending — some lenders love short-tenure loans while others hate them. Both are being rational. The difference is their business model.</p>
+<section id="capital-scarce-lenders-nbfcs-fintechs" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="capital-scarce-lenders-nbfcs-fintechs"><span class="header-section-number">9.1</span> Capital-Scarce Lenders (NBFCs, Fintechs)</h2>
+<p>NBFCs and fintechs borrow expensive money. Every rupee they borrow costs them something. So their strategy is elegant: lend → get money back fast → lend again → multiply returns on that same capital.</p>
+<p>Think of it like a street vendor with a cart. If you have ₹10,000 in cash, you want to turn it twice a day, not once a week. Turn it fast, keep margins tight, but do volume.</p>
+<p>They love short tenure because capital turns faster. A ₹10,000 loan at 24% IRR, repaid in 3 months, lets you redeploy that capital 4 times per year. Same ₹10,000, four shots at 24% IRR.</p>
+<p>Examples everywhere: Bajaj CD loans (9-12 months), BNPL (3-6 months), merchant cash advance (repaid in 3-4 months out of daily sales).</p>
+<p>The optimization formula is simple:</p>
+<div class="formula-box">
+<p><span class="math display">\[\text{ROA} = \text{Capital Turnover} \times \text{Yield per Turn}\]</span> <span class="math display">\[\text{Annual ROA} = \frac{1}{\text{Tenure (in years)}} \times \text{IRR}\]</span></p>
+</div>
+<p>So a 24% IRR on a 3-month loan gives ROA = 4 × 24% = 96%. On a 12-month loan? ROA = 1 × 24% = 24%. Same IRR, but you get four times the return on assets by doing it faster.</p>
+</section>
+<section id="deposit-rich-lenders-banks" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="deposit-rich-lenders-banks"><span class="header-section-number">9.2</span> Deposit-Rich Lenders (Banks)</h2>
+<p>Banks have a completely different problem. They sit on cheap CASA deposits — Savings and Current Accounts. Depositors pay close to 0% to 2% interest. Banks have mountains of this capital.</p>
+<p>Their strategy is opposite: deploy large balance sheet slowly, let customers pay EMIs for years, collect stable interest income across decades. They love long tenure because that maximizes total interest earned.</p>
+<p>Here’s why. A ₹50 lakh home loan at 9% annual rate:</p>
+<ul>
+<li><strong>20-year tenure</strong>: Total interest paid ≈ ₹1.4 crore</li>
+<li><strong>5-year prepayment</strong>: Total interest paid ≈ ₹40 lakh</li>
+<li><strong>Lost interest</strong>: ₹1.4 crore − ₹40 lakh = ₹1.0 crore foregone</li>
+</ul>
+<p>That’s why banks charge prepayment penalties. They’re protecting the interest stream.</p>
+<p>The optimization is:</p>
+<div class="formula-box">
+<p><span class="math display">\[\text{Profit} = \text{NII} \times \text{Loan Duration}\]</span></p>
+</div>
+<p>Where NII is Net Interest Income. More duration = more total interest = more profit. The tenure is the multiplier.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A bank’s nightmare: a customer who borrows ₹50 lakh and prepays in 2 years. They’ve locked in a 9% cost of deposits but earn only 2 years of interest instead of 20. That spread got compressed from ₹1.4 crore to ₹8 lakh.</p>
+</div>
+</div>
+</section>
+<section id="side-by-side-comparison" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="side-by-side-comparison"><span class="header-section-number">9.3</span> Side-by-Side Comparison</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Concept</th>
-<th>What It Means</th>
+<th>What They Love</th>
+<th>What They Hate</th>
+<th>Cost of Funds</th>
+<th>Capital Source</th>
+<th>Risk Appetite</th>
+<th>Optimization Metric</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>IRR</strong></td>
-<td>The annual profit rate a lender earns from a loan, including all fees and the timing of cashflows.</td>
+<td><strong>NBFCs</strong></td>
+<td>Short tenure (3-12 mo)</td>
+<td>Long tenure (24+ mo)</td>
+<td>10-14%</td>
+<td>Borrowings (NCDs, repo)</td>
+<td>Capital turnover × IRR</td>
 </tr>
 <tr class="even">
-<td><strong>Subvention</strong></td>
-<td>The interest income the merchant pays upfront so the customer sees 0% EMI.</td>
-</tr>
-<tr class="odd">
-<td><strong>Take-rate</strong></td>
-<td>The total revenue a lender captures as a percentage of the loan amount.</td>
-</tr>
-<tr class="even">
-<td><strong>MDR</strong></td>
-<td>Merchant Discount Rate: the payment processing fee, typically 1-2%.</td>
-</tr>
-<tr class="odd">
-<td><strong>Float</strong></td>
-<td>The free interest the lender earns on customer deposits before they leave.</td>
-</tr>
-<tr class="even">
-<td><strong>Cost of Funds</strong></td>
-<td>The interest rate the lender pays to borrow money.</td>
-</tr>
-<tr class="odd">
-<td><strong>APR</strong></td>
-<td>Annual Percentage Rate: the full cost of a loan including interest, fees, and charges.</td>
+<td><strong>Banks</strong></td>
+<td>Long tenure (5+ years)</td>
+<td>Early repayment</td>
+<td>2-4%</td>
+<td>Deposits, balance sheet</td>
+<td>NII × duration</td>
 </tr>
 </tbody>
 </table>
-
-
 </section>
+<section id="where-checkout-finance-fits" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="where-checkout-finance-fits"><span class="header-section-number">9.4</span> Where Checkout Finance Fits</h2>
+<p>Checkout finance — “buy now, pay in 3 months” — is a capital-scarce game. Even when a bank subsidiary runs it, it operates like an NBFC. Capital constraint is real.</p>
+<p>Why? The checkout use case requires instant approval, instant funding to merchant, and monthly EMI collection from customer. That’s capital churn. You can’t make it work with a 20-year loan mindset.</p>
+<p>NBFCs dominate checkout finance because the model fits their DNA. They’re built to borrow expensively, deploy quickly, get capital back fast, and repeat. Banks’ deposit-based model fights this business.</p>
+</section>
+<section id="why-banks-dont-chase-small-consumer-loans" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="why-banks-dont-chase-small-consumer-loans"><span class="header-section-number">9.5</span> Why Banks Don’t Chase Small Consumer Loans</h2>
+<p>Banks could technically enter checkout finance. Most have. But they don’t push hard. Five reasons:</p>
+<ol type="1">
+<li><p><strong>Terrible unit economics on small tickets.</strong> A ₹5,000 loan and a ₹50,000 loan cost almost the same to underwrite, approve, and service. Margins get razor-thin. NBFCs can live with 1-2% net margins because they move volume and turn capital. Banks can’t.</p></li>
+<li><p><strong>Capital deployment mismatch.</strong> Banks have ₹50 crore to deploy. They’d rather make one ₹50 crore home loan than 10,000 ₹5,000 checkout loans. Same upfront work, but the big loan funds faster.</p></li>
+<li><p><strong>No pricing power in no-cost EMI.</strong> Checkout finance is sold as “no cost.” The subvention comes from the merchant. The bank can’t raise the interest rate. So yield is capped. That doesn’t work for capital-intensive operations.</p></li>
+<li><p><strong>Weak collections for small overdues.</strong> If a customer is 10 days late on a ₹50 lakh home loan, the bank’s collection calls matter. For a ₹5,000 loan, the cost of collection exceeds recovery. You swallow the loss.</p></li>
+<li><p><strong>Regulatory burden is the same.</strong> A ₹5,000 consumer loan and a ₹10 lakh consumer loan need the same RBI compliance, the same credit bureau reporting, the same regulatory capital. So the cost-to-serve per rupee deployed is much higher on the small loan.</p></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Banks and NBFCs aren’t being irrational about tenure preferences. They’re optimizing for different constraints. A bank that chases short-tenure small loans is destroying shareholder value. An NBFC that locks capital in long-tenure loans is doing the same. Each is right for their model.</p>
+</div>
+</div>
+</section>
+<section id="memorize-this" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="memorize-this"><span class="header-section-number">9.6</span> Memorize This</h2>
+<p><em>Banks hate early repayment because it kills interest income. NBFCs love short tenure because it boosts IRR and capital turns. Different economics, same rationality.</em></p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -743,10 +825,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./08-credit-card-economics.html" class="pagination-link" aria-label="Credit Card Economics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Credit Card Economics</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-how-lending-works.html" class="pagination-link" aria-label="How Lending Works">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">How Lending Works</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10-credit-lines-future.html" class="pagination-link" aria-label="Credit Lines, UPI, and the Future">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Lines, UPI, and the Future</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

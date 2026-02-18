@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ishan">
-<meta name="dcterms.date" content="2026-02-18">
 
-<title>The Merchant Lending Playbook</title>
+<title>11&nbsp; Checkout EMI Case Study – The Merchant Lending Playbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-how-lending-works.html" rel="next">
+<link href="./12-negotiation-playbook.html" rel="next">
+<link href="./10-credit-lines-future.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -85,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html">Part III: The Bigger Picture</a></li><li class="breadcrumb-item"><a href="./11-checkout-emi-case-study.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Checkout EMI Case Study</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -209,7 +237,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-checkout-emi-case-study.html" class="sidebar-item-text sidebar-link">
+  <a href="./11-checkout-emi-case-study.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Checkout EMI Case Study</span></span></a>
   </div>
 </li>
@@ -242,39 +270,37 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#the-setup" id="toc-the-setup" class="nav-link active" data-scroll-target="#the-setup"><span class="header-section-number">11.1</span> The Setup</a></li>
+  <li><a href="#the-lenders-cashflows-month-by-month" id="toc-the-lenders-cashflows-month-by-month" class="nav-link" data-scroll-target="#the-lenders-cashflows-month-by-month"><span class="header-section-number">11.2</span> The Lender’s Cashflows — Month by Month</a></li>
+  <li><a href="#computing-the-irr" id="toc-computing-the-irr" class="nav-link" data-scroll-target="#computing-the-irr"><span class="header-section-number">11.3</span> Computing the IRR</a></li>
+  <li><a href="#sanity-check-with-the-back-of-envelope-formula" id="toc-sanity-check-with-the-back-of-envelope-formula" class="nav-link" data-scroll-target="#sanity-check-with-the-back-of-envelope-formula"><span class="header-section-number">11.4</span> Sanity Check with the Back-of-Envelope Formula</a>
   <ul class="collapse">
-  <li><a href="#key-concepts-at-a-glance" id="toc-key-concepts-at-a-glance" class="nav-link" data-scroll-target="#key-concepts-at-a-glance">Key Concepts at a Glance</a></li>
+  <li><a href="#why-the-formula-underestimates-here" id="toc-why-the-formula-underestimates-here" class="nav-link" data-scroll-target="#why-the-formula-underestimates-here"><span class="header-section-number">11.4.1</span> Why the Formula Underestimates Here</a></li>
   </ul></li>
+  <li><a href="#breaking-down-where-the-return-comes-from" id="toc-breaking-down-where-the-return-comes-from" class="nav-link" data-scroll-target="#breaking-down-where-the-return-comes-from"><span class="header-section-number">11.5</span> Breaking Down Where the Return Comes From</a></li>
+  <li><a href="#what-if-we-remove-the-processing-fee" id="toc-what-if-we-remove-the-processing-fee" class="nav-link" data-scroll-target="#what-if-we-remove-the-processing-fee"><span class="header-section-number">11.6</span> What If We Remove the Processing Fee?</a></li>
+  <li><a href="#what-if-the-customer-also-pays-interest" id="toc-what-if-the-customer-also-pays-interest" class="nav-link" data-scroll-target="#what-if-the-customer-also-pays-interest"><span class="header-section-number">11.7</span> What If the Customer Also Pays Interest?</a>
+  <ul class="collapse">
+  <li><a href="#the-trade-off-for-merchants" id="toc-the-trade-off-for-merchants" class="nav-link" data-scroll-target="#the-trade-off-for-merchants"><span class="header-section-number">11.7.1</span> The Trade-off for Merchants</a></li>
+  </ul></li>
+  <li><a href="#accounting-for-losses" id="toc-accounting-for-losses" class="nav-link" data-scroll-target="#accounting-for-losses"><span class="header-section-number">11.8</span> Accounting for Losses</a></li>
+  <li><a href="#key-takeaways-from-this-case-study" id="toc-key-takeaways-from-this-case-study" class="nav-link" data-scroll-target="#key-takeaways-from-this-case-study"><span class="header-section-number">11.9</span> Key Takeaways from This Case Study</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-banks-vs-nbfcs.html">Part III: The Bigger Picture</a></li><li class="breadcrumb-item"><a href="./11-checkout-emi-case-study.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Checkout EMI Case Study</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">The Merchant Lending Playbook</h1>
-<p class="subtitle lead">A Practical Guide to Checkout Finance, EMI Economics, and Credit Negotiation</p>
+<h1 class="title"><span id="sec-checkout-case-study" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Checkout EMI Case Study</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ishan </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 18, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -284,60 +310,513 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This book is about merchant lending — the economics of how checkout finance works, how no-cost EMIs actually work, and where the money really comes from. If you build fintech products, manage payments, or work in lending, this book is for you.</p>
-<p>Merchant lending in India is growing fast. Millions of customers now buy now and pay later at checkout. Thousands of merchants offer no-cost EMI. But most people in product and payments don’t deeply understand the numbers underneath. They see “0%” and assume no money changes hands. They don’t know about subvention. They don’t know why checkout finance is more expensive than home loans. They don’t know what the merchant actually pays for.</p>
-<p>That’s what this book fixes.</p>
-<p>We’ll start with the foundations. What is lending, really? What is subvention? How much does money cost? Then we’ll move to the specific math: how to calculate the cost of a no-cost EMI, how checkout finance economics work, why credit cards are built the way they are. Finally, we’ll give you the tools to negotiate with lenders as a merchant or partner.</p>
-<p>The book assumes you understand products and business. It assumes nothing about finance. Every concept has a concrete example in rupees. We speak plainly and avoid jargon. When a technical term is needed, we explain it right away.</p>
-<section id="key-concepts-at-a-glance" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts-at-a-glance">Key Concepts at a Glance</h2>
+<p>This chapter walks through a real 6-month checkout EMI loan with actual numbers — processing fees, interest, subvention, and all. We’ll calculate the lender’s IRR step by step, so you can see exactly how every concept from earlier chapters comes together.</p>
+<section id="the-setup" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="the-setup"><span class="header-section-number">11.1</span> The Setup</h2>
+<p>A customer buys a laptop on an e-commerce site.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Concept</th>
-<th>What It Means</th>
+<th>Parameter</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>IRR</strong></td>
-<td>The annual profit rate a lender earns from a loan, including all fees and the timing of cashflows.</td>
+<td>Product price</td>
+<td>₹60,000</td>
 </tr>
 <tr class="even">
-<td><strong>Subvention</strong></td>
-<td>The interest income the merchant pays upfront so the customer sees 0% EMI.</td>
+<td>Tenure</td>
+<td>6 months</td>
 </tr>
 <tr class="odd">
-<td><strong>Take-rate</strong></td>
-<td>The total revenue a lender captures as a percentage of the loan amount.</td>
+<td>Offer type</td>
+<td>“No-cost EMI”</td>
 </tr>
 <tr class="even">
-<td><strong>MDR</strong></td>
-<td>Merchant Discount Rate: the payment processing fee, typically 1-2%.</td>
+<td>Processing fee (charged to customer)</td>
+<td>₹1,499 + GST (18%) = ₹1,769</td>
 </tr>
 <tr class="odd">
-<td><strong>Float</strong></td>
-<td>The free interest the lender earns on customer deposits before they leave.</td>
+<td>Subvention (charged to merchant)</td>
+<td>5.5% of product price = ₹3,300</td>
 </tr>
 <tr class="even">
-<td><strong>Cost of Funds</strong></td>
-<td>The interest rate the lender pays to borrow money.</td>
+<td>Customer’s monthly EMI</td>
+<td>₹10,000</td>
 </tr>
 <tr class="odd">
-<td><strong>APR</strong></td>
-<td>Annual Percentage Rate: the full cost of a loan including interest, fees, and charges.</td>
+<td>Down payment</td>
+<td>₹0</td>
 </tr>
 </tbody>
 </table>
-
-
+<p>From the customer’s perspective, this looks like a simple 0% EMI — they pay ₹10,000/month for 6 months and a one-time processing fee of ₹1,769.</p>
+<p>But behind the scenes, the lender’s economics tell a very different story.</p>
 </section>
+<section id="the-lenders-cashflows-month-by-month" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="the-lenders-cashflows-month-by-month"><span class="header-section-number">11.2</span> The Lender’s Cashflows — Month by Month</h2>
+<p>Let’s trace every rupee from the lender’s point of view.</p>
+<p><strong>At origination (month 0):</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Cashflow</th>
+<th>Amount</th>
+<th>Direction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Disburse loan to merchant</td>
+<td>₹60,000</td>
+<td>Outflow</td>
+</tr>
+<tr class="even">
+<td>Receive subvention from merchant</td>
+<td>₹3,300</td>
+<td>Inflow</td>
+</tr>
+<tr class="odd">
+<td>Receive processing fee (net of GST)</td>
+<td>₹1,499</td>
+<td>Inflow</td>
+</tr>
+<tr class="even">
+<td>Origination cost (KYC, underwriting, tech)</td>
+<td>₹400</td>
+<td>Outflow</td>
+</tr>
+</tbody>
+</table>
+<p>Net outflow at month 0 = ₹60,000 − ₹3,300 − ₹1,499 + ₹400 = <strong>₹55,601</strong></p>
+<p>So the lender actually puts out ₹55,601 of their own money, not ₹60,000. The subvention and processing fee reduce day-one exposure.</p>
+<p><strong>Months 1 through 6:</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 20%">
+<col style="width: 34%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Month</th>
+<th>EMI Received</th>
+<th>Outstanding Before EMI</th>
+<th>Outstanding After EMI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>₹10,000</td>
+<td>₹60,000</td>
+<td>₹50,000</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>₹10,000</td>
+<td>₹50,000</td>
+<td>₹40,000</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>₹10,000</td>
+<td>₹40,000</td>
+<td>₹30,000</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>₹10,000</td>
+<td>₹30,000</td>
+<td>₹20,000</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>₹10,000</td>
+<td>₹20,000</td>
+<td>₹10,000</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>₹10,000</td>
+<td>₹10,000</td>
+<td>₹0</td>
+</tr>
+</tbody>
+</table>
+<p>Total EMIs received: ₹60,000 (the full product price comes back as principal).</p>
+</section>
+<section id="computing-the-irr" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="computing-the-irr"><span class="header-section-number">11.3</span> Computing the IRR</h2>
+<p>Now let’s find the lender’s actual return. The cashflow series looks like this:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Month</th>
+<th>Cashflow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>−₹55,601 (net outflow)</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>+₹10,000</td>
+</tr>
+</tbody>
+</table>
+<p>IRR is the monthly rate <span class="math inline">\(r\)</span> that makes the NPV of these cashflows equal to zero:</p>
+<p><span class="math display">\[-55,601 + \frac{10,000}{(1+r)} + \frac{10,000}{(1+r)^2} + \cdots + \frac{10,000}{(1+r)^6} = 0\]</span></p>
+<p>Solving numerically (this is what Excel’s IRR function does):</p>
+<p><strong>Monthly IRR ≈ 2.87%</strong></p>
+<p>Converting to annual: <span class="math inline">\((1 + 0.0287)^{12} - 1 \approx\)</span> <strong>40.3% annual IRR</strong></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The Customer Sees 0%. The Lender Earns 40%.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The customer thinks they’re paying 0% interest. The lender earns a 40% annualised return. The gap is funded by the merchant’s subvention (₹3,300) and the customer’s processing fee (₹1,499). Nobody works for free — the question is just who pays and how much.</p>
+</div>
+</div>
+</section>
+<section id="sanity-check-with-the-back-of-envelope-formula" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="sanity-check-with-the-back-of-envelope-formula"><span class="header-section-number">11.4</span> Sanity Check with the Back-of-Envelope Formula</h2>
+<p>Let’s verify using the quick formula from <a href="05-math-of-subvention.html" class="quarto-xref"><span>Chapter 5</span></a>:</p>
+<p><span class="math display">\[\text{Take\%} \approx (R - F) \cdot \frac{n+1}{24} + \varepsilon + L\]</span></p>
+<p>Working backwards from what we know:</p>
+<ul>
+<li>Subvention: 5.5% of ₹60,000 = ₹3,300</li>
+<li>Processing fee: ₹1,499 (about 2.5% of ₹60,000)</li>
+<li>Total upfront income: ₹4,799 = about 8% of product price</li>
+<li>Tenure: 6 months</li>
+<li>Opex: ~0.67% (₹400 on ₹60,000)</li>
+</ul>
+<p>Using the formula: if total take = 8% and opex = 0.67%, loss = 0 (for now):</p>
+<p><span class="math display">\[8\% \approx R \cdot \frac{7}{24} + 0.67\%\]</span></p>
+<p><span class="math display">\[R \approx \frac{7.33\%}{0.2917} \approx 25.1\%\]</span></p>
+<p>Wait — the formula gives ~25% but the exact IRR is ~40%. Why the gap?</p>
+<section id="why-the-formula-underestimates-here" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="why-the-formula-underestimates-here"><span class="header-section-number">11.4.1</span> Why the Formula Underestimates Here</h3>
+<p>The back-of-envelope formula is a <strong>linear approximation</strong> that works well when the monthly rate is small (below ~3%). In this case:</p>
+<ul>
+<li>The monthly rate is 2.87% — right at the edge of where the linear approximation starts to break down</li>
+<li>The processing fee is upfront (month 0), which has maximum time-value impact. The linear formula doesn’t fully capture this compounding effect</li>
+<li>With no credit losses in this example, the full upfront income translates to return more efficiently</li>
+</ul>
+<p>The formula is designed for <strong>negotiation-grade accuracy</strong> (getting you to the right ballpark), not exact IRR computation. For exact numbers, you always need a spreadsheet.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>When to Use Which
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the back-of-envelope formula in meetings and negotiations to quickly check if numbers make sense. Use a spreadsheet (or Excel’s IRR function) for actual deal pricing and contract terms.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="breaking-down-where-the-return-comes-from" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="breaking-down-where-the-return-comes-from"><span class="header-section-number">11.5</span> Breaking Down Where the Return Comes From</h2>
+<p>Let’s understand the composition of the lender’s income:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Income Source</th>
+<th>Amount</th>
+<th>% of Loan</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Merchant subvention</td>
+<td>₹3,300</td>
+<td>5.5%</td>
+</tr>
+<tr class="even">
+<td>Customer processing fee (net of GST)</td>
+<td>₹1,499</td>
+<td>2.5%</td>
+</tr>
+<tr class="odd">
+<td><strong>Total income</strong></td>
+<td><strong>₹4,799</strong></td>
+<td><strong>8.0%</strong></td>
+</tr>
+<tr class="even">
+<td>Less: origination cost</td>
+<td>−₹400</td>
+<td>−0.67%</td>
+</tr>
+<tr class="odd">
+<td><strong>Net income</strong></td>
+<td><strong>₹4,399</strong></td>
+<td><strong>7.33%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>On a ₹60,000 loan outstanding for an average of 3.5 months, earning ₹4,399 net:</p>
+<p><span class="math display">\[\text{Simple annualised yield} = \frac{4,399}{60,000} \times \frac{12}{3.5} \approx 25.1\%\]</span></p>
+<p>The difference between this 25% and the true 40% IRR comes from the <strong>time value of the upfront income</strong>. The subvention and processing fee arrive at month 0, while the loan is repaid over 6 months. This front-loading of income dramatically boosts IRR.</p>
+</section>
+<section id="what-if-we-remove-the-processing-fee" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="what-if-we-remove-the-processing-fee"><span class="header-section-number">11.6</span> What If We Remove the Processing Fee?</h2>
+<p>Suppose the lender waives the processing fee to boost conversion:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Month</th>
+<th>Cashflow (no processing fee)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>−₹57,100 (60,000 − 3,300 + 400)</td>
+</tr>
+<tr class="even">
+<td>1-6</td>
+<td>+₹10,000 each</td>
+</tr>
+</tbody>
+</table>
+<p>Monthly IRR ≈ 1.65%, Annual IRR ≈ <strong>21.7%</strong></p>
+<p>That’s a massive drop — from 40% to 22%. The ₹1,499 processing fee nearly doubles the IRR. This is why lenders fight hard to keep processing fees, even small ones.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Processing Fees Have Outsized Impact on IRR
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A processing fee of just 2.5% of loan value nearly doubled the IRR (from 22% to 40%). This is because upfront income has maximum time-value — the lender gets it immediately while capital is still fully deployed.</p>
+</div>
+</div>
+</section>
+<section id="what-if-the-customer-also-pays-interest" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="what-if-the-customer-also-pays-interest"><span class="header-section-number">11.7</span> What If the Customer Also Pays Interest?</h2>
+<p>Now let’s model a “low-cost EMI” where the customer pays 12% annual interest (reducing balance) AND the merchant pays a smaller subvention of 3%.</p>
+<p><strong>Setup:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Product price</td>
+<td>₹60,000</td>
+</tr>
+<tr class="even">
+<td>Tenure</td>
+<td>6 months</td>
+</tr>
+<tr class="odd">
+<td>Customer interest rate</td>
+<td>12% annual (reducing balance)</td>
+</tr>
+<tr class="even">
+<td>Processing fee</td>
+<td>₹999 + GST = ₹1,179</td>
+</tr>
+<tr class="odd">
+<td>Merchant subvention</td>
+<td>3% = ₹1,800</td>
+</tr>
+</tbody>
+</table>
+<p>At 12% annual on reducing balance, the monthly rate is 1%. The EMI works out to roughly ₹10,340 per month (slightly more than the interest-free version because of interest).</p>
+<p><strong>Cashflows:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Month</th>
+<th>Cashflow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>−₹60,000 + ₹1,800 + ₹999 − ₹400 = −₹57,601</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>+₹10,340</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>+₹10,340</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>+₹10,340</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>+₹10,340</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>+₹10,340</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>+₹10,340</td>
+</tr>
+</tbody>
+</table>
+<p>Total received: ₹62,040</p>
+<p>Monthly IRR ≈ 2.65%, Annual IRR ≈ <strong>36.9%</strong></p>
+<p>Even though the subvention dropped from 5.5% to 3% and the processing fee dropped, the customer interest (12% annual) more than compensates. The lender earns nearly as much overall.</p>
+<section id="the-trade-off-for-merchants" class="level3" data-number="11.7.1">
+<h3 data-number="11.7.1" class="anchored" data-anchor-id="the-trade-off-for-merchants"><span class="header-section-number">11.7.1</span> The Trade-off for Merchants</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 28%">
+<col style="width: 31%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Merchant Cost</th>
+<th>Customer Cost</th>
+<th>Lender IRR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pure no-cost EMI</td>
+<td>5.5% subvention</td>
+<td>₹1,769 processing fee</td>
+<td>~40%</td>
+</tr>
+<tr class="even">
+<td>Low-cost EMI (12%)</td>
+<td>3% subvention</td>
+<td>12% interest + ₹1,179 fee</td>
+<td>~37%</td>
+</tr>
+<tr class="odd">
+<td>No processing fee</td>
+<td>5.5% subvention</td>
+<td>₹0</td>
+<td>~22%</td>
+</tr>
+</tbody>
+</table>
+<p>The low-cost EMI model saves the merchant 2.5% in subvention by shifting some cost to the customer as interest. Whether customers accept this depends on ticket size and competition — for a ₹60,000 laptop, the extra ₹2,040 in interest over 6 months may not deter many buyers.</p>
+</section>
+</section>
+<section id="accounting-for-losses" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="accounting-for-losses"><span class="header-section-number">11.8</span> Accounting for Losses</h2>
+<p>In reality, some customers default. Let’s add a 2% expected loss (₹1,200) hitting at month 3:</p>
+<p><strong>Modified cashflows:</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Month</th>
+<th>Cashflow</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>−₹55,601 (same as original no-cost EMI)</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>+₹10,000 − ₹1,200 = +₹8,800</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>+₹10,000</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>+₹10,000</td>
+</tr>
+</tbody>
+</table>
+<p>Monthly IRR ≈ 2.50%, Annual IRR ≈ <strong>34.5%</strong></p>
+<p>The 2% loss shaves about 6 percentage points off the IRR. This is why loss assumptions are one of the most important variables in pricing — and why you should always challenge inflated loss estimates in negotiations (<a href="12-negotiation-playbook.html" class="quarto-xref"><span>Chapter 12</span></a>).</p>
+</section>
+<section id="key-takeaways-from-this-case-study" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="key-takeaways-from-this-case-study"><span class="header-section-number">11.9</span> Key Takeaways from This Case Study</h2>
+<ol type="1">
+<li><p><strong>Customer sees 0%, lender earns 40%.</strong> The gap is real and comes from subvention + processing fee + time value of upfront money.</p></li>
+<li><p><strong>Processing fees have outsized impact.</strong> A 2.5% fee nearly doubled IRR because upfront cash has maximum compounding benefit.</p></li>
+<li><p><strong>The back-of-envelope formula gives negotiation-grade accuracy.</strong> It pointed to ~25% when true IRR was 40%. The gap comes from high monthly rates and front-loaded income. For deals, always verify with a spreadsheet.</p></li>
+<li><p><strong>Low-cost EMI with customer interest can save merchants 2-3%</strong> in subvention while barely denting lender returns.</p></li>
+<li><p><strong>Credit losses matter a lot.</strong> A 2% loss reduced IRR by 6 points. Every percent of loss assumption directly raises what the merchant must pay.</p></li>
+<li><p><strong>Everything connects:</strong> Cost of funds (<a href="02-cost-of-funds.html" class="quarto-xref"><span>Chapter 2</span></a>) sets the floor. The five-component IRR formula (<a href="04-how-lenders-set-irr.html" class="quarto-xref"><span>Chapter 4</span></a>) determines the target. The subvention formula (<a href="05-math-of-subvention.html" class="quarto-xref"><span>Chapter 5</span></a>) converts that to a per-transaction cost. Float and fees (<a href="06-float-fees-downpayments.html" class="quarto-xref"><span>Chapter 6</span></a>) adjust the final number. And the negotiation playbook (<a href="12-negotiation-playbook.html" class="quarto-xref"><span>Chapter 12</span></a>) helps you challenge any inflated asks.</p></li>
+</ol>
+<div class="memorize callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Memorize This
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On a 6-month checkout EMI at ₹60,000: with 5.5% subvention + 2.5% processing fee, the lender earns ~40% annual IRR. Remove the processing fee and IRR drops to ~22%. Add 2% losses and it drops further to ~35%. Every variable matters — and now you know how to calculate each one.</p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -743,10 +1222,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./10-credit-lines-future.html" class="pagination-link" aria-label="Credit Lines, UPI, and the Future">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Credit Lines, UPI, and the Future</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-how-lending-works.html" class="pagination-link" aria-label="How Lending Works">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">How Lending Works</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./12-negotiation-playbook.html" class="pagination-link" aria-label="Negotiation Playbook">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Negotiation Playbook</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

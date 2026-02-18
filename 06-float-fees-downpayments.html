@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ishan">
-<meta name="dcterms.date" content="2026-02-18">
 
-<title>The Merchant Lending Playbook</title>
+<title>6&nbsp; Float, Fees, and Down Payments – The Merchant Lending Playbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-how-lending-works.html" rel="next">
+<link href="./07-checkout-finance.html" rel="next">
+<link href="./05-math-of-subvention.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -85,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-math-of-subvention.html">Part II: The Economics of Merchant Lending</a></li><li class="breadcrumb-item"><a href="./06-float-fees-downpayments.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Float, Fees, and Down Payments</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -112,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -168,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-float-fees-downpayments.html" class="sidebar-item-text sidebar-link">
+  <a href="./06-float-fees-downpayments.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Float, Fees, and Down Payments</span></span></a>
   </div>
 </li>
@@ -242,39 +270,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#key-concepts-at-a-glance" id="toc-key-concepts-at-a-glance" class="nav-link" data-scroll-target="#key-concepts-at-a-glance">Key Concepts at a Glance</a></li>
-  </ul></li>
+  <li><a href="#what-is-float" id="toc-what-is-float" class="nav-link active" data-scroll-target="#what-is-float"><span class="header-section-number">6.1</span> What Is Float?</a></li>
+  <li><a href="#where-float-comes-from" id="toc-where-float-comes-from" class="nav-link" data-scroll-target="#where-float-comes-from"><span class="header-section-number">6.2</span> Where Float Comes From</a></li>
+  <li><a href="#does-t1-settlement-create-float" id="toc-does-t1-settlement-create-float" class="nav-link" data-scroll-target="#does-t1-settlement-create-float"><span class="header-section-number">6.3</span> Does T+1 Settlement Create Float?</a></li>
+  <li><a href="#how-float-reduces-subvention" id="toc-how-float-reduces-subvention" class="nav-link" data-scroll-target="#how-float-reduces-subvention"><span class="header-section-number">6.4</span> How Float Reduces Subvention</a></li>
+  <li><a href="#processing-fees" id="toc-processing-fees" class="nav-link" data-scroll-target="#processing-fees"><span class="header-section-number">6.5</span> Processing Fees</a></li>
+  <li><a href="#down-payments" id="toc-down-payments" class="nav-link" data-scroll-target="#down-payments"><span class="header-section-number">6.6</span> Down Payments</a></li>
+  <li><a href="#the-complete-picture" id="toc-the-complete-picture" class="nav-link" data-scroll-target="#the-complete-picture"><span class="header-section-number">6.7</span> The Complete Picture</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-math-of-subvention.html">Part II: The Economics of Merchant Lending</a></li><li class="breadcrumb-item"><a href="./06-float-fees-downpayments.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Float, Fees, and Down Payments</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">The Merchant Lending Playbook</h1>
-<p class="subtitle lead">A Practical Guide to Checkout Finance, EMI Economics, and Credit Negotiation</p>
+<h1 class="title"><span id="sec-float-fees" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Float, Fees, and Down Payments</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Ishan </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 18, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -284,60 +302,180 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This book is about merchant lending — the economics of how checkout finance works, how no-cost EMIs actually work, and where the money really comes from. If you build fintech products, manage payments, or work in lending, this book is for you.</p>
-<p>Merchant lending in India is growing fast. Millions of customers now buy now and pay later at checkout. Thousands of merchants offer no-cost EMI. But most people in product and payments don’t deeply understand the numbers underneath. They see “0%” and assume no money changes hands. They don’t know about subvention. They don’t know why checkout finance is more expensive than home loans. They don’t know what the merchant actually pays for.</p>
-<p>That’s what this book fixes.</p>
-<p>We’ll start with the foundations. What is lending, really? What is subvention? How much does money cost? Then we’ll move to the specific math: how to calculate the cost of a no-cost EMI, how checkout finance economics work, why credit cards are built the way they are. Finally, we’ll give you the tools to negotiate with lenders as a merchant or partner.</p>
-<p>The book assumes you understand products and business. It assumes nothing about finance. Every concept has a concrete example in rupees. We speak plainly and avoid jargon. When a technical term is needed, we explain it right away.</p>
-<section id="key-concepts-at-a-glance" class="level2">
-<h2 class="anchored" data-anchor-id="key-concepts-at-a-glance">Key Concepts at a Glance</h2>
+<p>Subvention is not the only way a lender makes money on a merchant lending deal. There are three other levers: float, processing fees, and down payments. This chapter shows you how each one works and how they combine to reduce what you actually have to pay.</p>
+<section id="what-is-float" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="what-is-float"><span class="header-section-number">6.1</span> What Is Float?</h2>
+<p>Float is money sitting idle in someone’s account before it needs to go somewhere else.</p>
+<p>When you deposit ₹1,000 in your savings account and it earns 4% interest per year, you’re earning on float. The bank takes your money, deploys it elsewhere at higher rates, and gives you 4%. That 4% is the value of float.</p>
+<p>In merchant lending, float works the same way. EMI money pools in accounts, refunds accumulate, brand subsidy funds sit waiting. The lender invests this idle cash in short-term money market instruments (bonds, reverse repos, T-bills) earning 5-8% per year.</p>
+<p>This float income reduces the subvention the lender needs from you.</p>
+</section>
+<section id="where-float-comes-from" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="where-float-comes-from"><span class="header-section-number">6.2</span> Where Float Comes From</h2>
+<p><strong>EMI Collections Pooling</strong></p>
+<p>Customers pay EMIs on, say, the 10th of each month. But the lender doesn’t immediately deduct from their account or deploy the money. The cash sits in a pooling account earning interest for 1-3 days before it’s reconciled against the loan ledger.</p>
+<p>₹1 crore in EMI collections earning 6% float for 2 days = ₹1,00,00,000 × 0.06 ÷ 365 × 2 = ₹32,877 of free money.</p>
+<p><strong>Refund Pools</strong></p>
+<p>When a customer returns a product (within 30 days for appliances, 10 days for electronics), the refund goes into a pool. It sits for 2-7 days before it’s matched to a customer account and reversed.</p>
+<p>If the NBFC has ₹50 lakh in refunds sitting for an average of 4 days: ₹50,00,000 × 0.06 ÷ 365 × 4 = ₹32,877.</p>
+<p><strong>Staggered Disbursements</strong></p>
+<p>Some lenders disburse in stages. They approve for ₹30,000 but release ₹10,000 at purchase, ₹10,000 at delivery, ₹10,000 at final inspection. Money that was supposed to be out sits earning float between tranches.</p>
+<p><strong>Brand Subsidy Pools</strong></p>
+<p>When a brand (like Samsung or LG) subsidizes EMI schemes, they deposit funds upfront. The lender invests this until it’s deployed against actual loans. Brand deposit of ₹1 crore at 7% earning float for 2 months = ₹1,00,00,000 × 0.07 ÷ 12 × 2 = ₹11.67 lakhs.</p>
+</section>
+<section id="does-t1-settlement-create-float" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="does-t1-settlement-create-float"><span class="header-section-number">6.3</span> Does T+1 Settlement Create Float?</h2>
+<p>No.&nbsp;People often confuse merchant settlement timing with float. Let me clarify.</p>
+<p><strong>Scenario 1: T+0 Settlement, No Float</strong></p>
+<ul>
+<li>Day 1: Customer buys for ₹30,000 EMI</li>
+<li>Day 1: Lender disburses ₹28,500 to merchant (net of subvention)</li>
+<li>Day 1: Customer makes first EMI payment (₹5,000)</li>
+<li>Day 1: Lender deducts ₹5,000 from the loan</li>
+<li>Result: No float. Money moved immediately.</li>
+</ul>
+<p><strong>Scenario 2: T+1 Settlement with Float</strong></p>
+<ul>
+<li>Day 1: Customer buys for ₹30,000 EMI</li>
+<li>Day 1: Lender disburses ₹28,500 to merchant</li>
+<li>Day 1: Customer makes first EMI payment (₹5,000)</li>
+<li>Day 2: EMI payment clears and is posted to the loan</li>
+<li>Result: Still no float from settlement timing. The T+1 delay is just about ledger posting, not about earning on idle money.</li>
+</ul>
+<p><strong>Scenario 3: T+1 Settlement WITH Float (Pooling)</strong></p>
+<ul>
+<li>Day 1: Customer buys for ₹30,000 EMI</li>
+<li>Day 1-15: Many customers make payments throughout the month</li>
+<li>Day 15: Lender has ₹50 lakh in unposted EMI payments sitting in a transaction account</li>
+<li>Day 16-17: These payments are reconciled, netted, and posted to loans</li>
+<li>Result: ₹50 lakh earned float for 1-2 days while sitting idle.</li>
+</ul>
+<p>The float comes from <em>batching</em>, not from T+1 settlement itself. T+1 is about when you get paid. Float is about how long money sits in the lender’s account earning interest.</p>
+</section>
+<section id="how-float-reduces-subvention" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="how-float-reduces-subvention"><span class="header-section-number">6.4</span> How Float Reduces Subvention</h2>
+<p>Every percentage point of float yield saves you roughly 0.3-0.5% in subvention, depending on tenure.</p>
+<p>Here’s why: in a 6-month EMI, the lender has money outstanding for an average of 3.5 months. If they’re earning 6% float on average balances for 3.5 months, that’s:</p>
+<p>Float income = Average balance × 6% × (3.5/12) = Average balance × 1.75%</p>
+<p>Since average balance on a ₹30,000 loan is ₹15,000, float income is roughly ₹262. That’s worth about 0.87% of the original ₹30,000 principal. So 6% float yield saves roughly 0.87% in subvention on a 6-month loan.</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Concept</th>
-<th>What It Means</th>
+<th>Tenure</th>
+<th>Float Yield → Subvention Savings</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>IRR</strong></td>
-<td>The annual profit rate a lender earns from a loan, including all fees and the timing of cashflows.</td>
+<td>1-month</td>
+<td>6% float → saves ~0.5% subvention</td>
 </tr>
 <tr class="even">
-<td><strong>Subvention</strong></td>
-<td>The interest income the merchant pays upfront so the customer sees 0% EMI.</td>
+<td>3-month</td>
+<td>6% float → saves ~1.0% subvention</td>
 </tr>
 <tr class="odd">
-<td><strong>Take-rate</strong></td>
-<td>The total revenue a lender captures as a percentage of the loan amount.</td>
+<td>6-month</td>
+<td>6% float → saves ~1.75% subvention</td>
 </tr>
 <tr class="even">
-<td><strong>MDR</strong></td>
-<td>Merchant Discount Rate: the payment processing fee, typically 1-2%.</td>
-</tr>
-<tr class="odd">
-<td><strong>Float</strong></td>
-<td>The free interest the lender earns on customer deposits before they leave.</td>
-</tr>
-<tr class="even">
-<td><strong>Cost of Funds</strong></td>
-<td>The interest rate the lender pays to borrow money.</td>
-</tr>
-<tr class="odd">
-<td><strong>APR</strong></td>
-<td>Annual Percentage Rate: the full cost of a loan including interest, fees, and charges.</td>
+<td>12-month</td>
+<td>6% float → saves ~3.0% subvention</td>
 </tr>
 </tbody>
 </table>
-
-
+<p>A 6-month loan that would need 10% subvention at 0% float only needs 8.25% subvention if the lender earns 6% float.</p>
+<p>This is why lenders obsess over float. It’s free money. It improves unit economics without touching the merchant economics.</p>
 </section>
+<section id="processing-fees" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="processing-fees"><span class="header-section-number">6.5</span> Processing Fees</h2>
+<p>Many lenders charge the customer an upfront processing fee: 1-3% of the loan amount.</p>
+<p>This is separate from subvention (paid by merchant) and is instead paid directly by the customer.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Loan amount: ₹30,000</li>
+<li>Processing fee: 2% = ₹600</li>
+<li>Subvention needed (before fee): 9%</li>
+<li>Subvention needed (after fee): 8%</li>
+</ul>
+<p>The ₹600 processing fee is worth about 2% of the loan, which directly offsets the subvention need. If you charge the customer 2% and reduce subvention by 2%, the lender’s IRR stays the same but the merchant cost drops.</p>
+<p><strong>The GST Nuance:</strong></p>
+<p>Processing fees are taxable. On a ₹600 fee, GST is 18%: ₹108.</p>
+<p>So the customer pays ₹708, and the lender keeps ₹600 after remitting ₹108 to the government. Net to lender = ₹600, but customer sees ₹708.</p>
+<p>From the merchant’s perspective, if the lender says “we’ll charge the customer 3% processing fee instead of asking you for 3% subvention,” the merchant sees a win (no cost to them). The lender still gets the rupees they need, just from a different pocket.</p>
+</section>
+<section id="down-payments" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="down-payments"><span class="header-section-number">6.6</span> Down Payments</h2>
+<p>A down payment reduces the financed amount. If a customer buys a ₹30,000 TV and puts down ₹9,000 (30%), the lender only finances ₹21,000.</p>
+<p><strong>Why This Matters for Subvention:</strong></p>
+<p>Subvention is calculated as a percentage of the financed amount, not the total purchase price.</p>
+<p>Subvention without down payment: ₹30,000 × 8% = ₹2,400 Subvention with 30% down: ₹21,000 × 8% = ₹1,680</p>
+<p>Simple rule:</p>
+<p><span class="math display">\[\text{Subvention(with down payment)} = \text{Subvention(no down)} \times (1 - \text{Down%})\]</span></p>
+<p>A 20% down payment reduces subvention by roughly 20%.</p>
+<p><strong>Why Merchants and Lenders Like Down Payments:</strong></p>
+<ol type="1">
+<li>It shrinks the financed amount, so less subvention is needed</li>
+<li>Customer has skin in the game — they paid their own money upfront — so defaults drop sharply</li>
+<li>If the customer defaults, the down payment is the lender’s cushion</li>
+</ol>
+<p>A customer who paid ₹9,000 down is much less likely to default on a ₹21,000 EMI than someone who financed the full ₹30,000.</p>
+<p>Research from Indian fintech lenders shows default rates drop 30-50% when a down payment is required, because the customer is committed.</p>
+</section>
+<section id="the-complete-picture" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="the-complete-picture"><span class="header-section-number">6.7</span> The Complete Picture</h2>
+<p>These three levers — float, fees, down payments — all reduce merchant cost without cutting lender profitability.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Lever</th>
+<th>What It Does</th>
+<th>Effect on Merchant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Float</td>
+<td>Lender earns 5-8% on idle money</td>
+<td>Reduces subvention by 1-3% depending on tenure</td>
+</tr>
+<tr class="even">
+<td>Processing Fee</td>
+<td>Customer pays 1-3% directly</td>
+<td>Reduces subvention 1-for-1 (after GST adjustment)</td>
+</tr>
+<tr class="odd">
+<td>Down Payment</td>
+<td>Shrinks financed amount</td>
+<td>Reduces subvention payout by same % (and reduces defaults)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Worked Example:</strong></p>
+<p>A lender targets 24% IRR on a 6-month EMI product. Base subvention is 10%.</p>
+<p>Now add three optimizations: - 6% float yield saves 1.75% → new subvention need: 8.25% - 2% processing fee on customer → save another 2% → new need: 6.25% - 20% down payment from customer → save 20% payout → final payout = 6.25% × 0.8 = 5%</p>
+<p>So a merchant that would have paid ₹3,000 subvention on a ₹30,000 loan now pays only ₹1,050 (5% × ₹21,000 financed). The lender still hits 24% IRR. The customer pays ₹600 processing fee. Everyone is better off.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Memorize This</strong></p>
+<p>Float, fees, and down payments are force multipliers on your profitability as a lender. They reduce merchant cost without cutting IRR. This is why Indian fintech lenders have gotten aggressive on all three: charging processing fees, building float management ops, and pushing down payments.</p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -743,10 +881,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./05-math-of-subvention.html" class="pagination-link" aria-label="The Math of Subvention">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Math of Subvention</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-how-lending-works.html" class="pagination-link" aria-label="How Lending Works">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">How Lending Works</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07-checkout-finance.html" class="pagination-link" aria-label="Checkout Finance and No-Cost EMI">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Checkout Finance and No-Cost EMI</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
